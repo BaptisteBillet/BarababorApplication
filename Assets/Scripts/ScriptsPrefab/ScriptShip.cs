@@ -16,9 +16,11 @@ public class ScriptShip : MonoBehaviour
 
 	//Characteristics of the ship and the Array where they're memorized 
 	public int m_Speed;
-	public int m_Damage;
+	public float m_Damage;
 	public int m_HealthPoint;
 	public int m_Capacity;
+
+
 
 	int [] m_CharacteristicsArray = new int[4];
 
@@ -31,35 +33,52 @@ public class ScriptShip : MonoBehaviour
 	//______________________________________________________________________________________
 
 	//Different parts of the ship
-	public GameObject [] m_ArrayofElements = new GameObject[4]; 
+	public string [] m_ArrayofElements = new string[4]; 
 
-	ScriptElements m_ScriptBow;
-	ScriptElements m_ScriptStern;
-	ScriptElements m_ScriptMast;
-	ScriptElements m_ScriptKeel;
+	string m_CurrentBow;
+	string m_CurrentStern;
+	string m_CurrentMast;
+	string m_CurrentKeel;
 
+	public GameObject m_BoathousePanel;
+	ScriptBoathouseManager m_ScriptBoathouseManager;
 
 
 	// Use this for initialization
 	void Start () 
 	{
-
-		m_ScriptKeel = m_ArrayofElements [0].GetComponent<ScriptElements>();
-		m_ScriptBow = m_ArrayofElements [1].GetComponent<ScriptElements>();
-		m_ScriptStern = m_ArrayofElements [2].GetComponent<ScriptElements>();
-		m_ScriptMast = m_ArrayofElements [3].GetComponent<ScriptElements>();
+		m_ScriptBoathouseManager = m_BoathousePanel.GetComponent<ScriptBoathouseManager> ();
 
 
+		m_CurrentBow = m_ScriptBoathouseManager.m_CurrentBow;
+		m_CurrentKeel = m_ScriptBoathouseManager.m_CurrentKeel;
+		m_CurrentMast = m_ScriptBoathouseManager.m_CurrentMast;
+		m_CurrentStern = m_ScriptBoathouseManager.m_CurrentStern;
+
+		m_ArrayofElements [0]=m_CurrentKeel;
+		m_ArrayofElements [1]=m_CurrentBow ;
+		m_ArrayofElements [2]=m_CurrentStern;
+		m_ArrayofElements [3]=m_CurrentMast;
+
+	
 		CharacteristicsCalculation (); 
+
+		Debug.Log ("Speed" + " " + m_Speed);
+		Debug.Log ("Damage" + " " + m_Damage);
+		Debug.Log ("Cap" + " " + m_Capacity);
+		Debug.Log ("Hp" + " " + m_HealthPoint);
+
+		int m_ConvertedDamage = Mathf.CeilToInt(m_Damage);
 
 		//Initialize all the members
 		m_FirstValue = 0;
 		m_SecondValue = 0;
 
 		m_CharacteristicsArray [0] = m_Speed;
-		m_CharacteristicsArray [1] = m_Damage;
+		m_CharacteristicsArray [1] = m_ConvertedDamage;
 		m_CharacteristicsArray [2] = m_HealthPoint;
 		m_CharacteristicsArray [3] = m_Capacity;
+
 
 
 		ArchetypeAttribution ();// Launch ArchetypeAttribution.
@@ -120,10 +139,10 @@ public class ScriptShip : MonoBehaviour
 	public void CharacteristicsCalculation ()
 	{
 	
-		m_Speed = m_ScriptKeel.m_Speed + m_ScriptBow.m_Speed + m_ScriptStern.m_Speed + m_ScriptMast.m_Speed;
-		m_Damage = m_ScriptKeel.m_Damage + m_ScriptBow.m_Damage + m_ScriptStern.m_Damage + m_ScriptMast.m_Damage;
-		m_HealthPoint = m_ScriptKeel.m_HealthPoint + m_ScriptBow.m_HealthPoint + m_ScriptStern.m_HealthPoint + m_ScriptMast.m_HealthPoint;
-		m_Capacity = m_ScriptKeel.m_Capacity + m_ScriptBow.m_Capacity + m_ScriptStern.m_Capacity + m_ScriptMast.m_Capacity;
+		m_Speed = TriDataBase.instance.m_BowDico[m_CurrentBow].m_Speed + TriDataBase.instance.m_SternDico[m_CurrentStern].m_Speed + TriDataBase.instance.m_KeelDico[m_CurrentKeel].m_Speed + TriDataBase.instance.m_MastDico[m_CurrentMast].m_Speed;
+		m_Damage = TriDataBase.instance.m_BowDico[m_CurrentBow].m_Damage + TriDataBase.instance.m_SternDico[m_CurrentStern].m_Damage + TriDataBase.instance.m_KeelDico[m_CurrentKeel].m_Damage + TriDataBase.instance.m_MastDico[m_CurrentMast].m_Damage;
+		m_HealthPoint = TriDataBase.instance.m_BowDico[m_CurrentBow].m_HealthPoint + TriDataBase.instance.m_SternDico[m_CurrentStern].m_HealthPoint + TriDataBase.instance.m_KeelDico[m_CurrentKeel].m_HealthPoint + TriDataBase.instance.m_MastDico[m_CurrentMast].m_HealthPoint;
+		m_Capacity = TriDataBase.instance.m_BowDico[m_CurrentBow].m_Capacity + TriDataBase.instance.m_SternDico[m_CurrentStern].m_Capacity + TriDataBase.instance.m_KeelDico[m_CurrentKeel].m_Capacity + TriDataBase.instance.m_MastDico[m_CurrentMast].m_Capacity;
 
 
 	}

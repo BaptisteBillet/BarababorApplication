@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 
 public class ScriptShipPieces : MonoBehaviour {
@@ -10,14 +11,14 @@ public class ScriptShipPieces : MonoBehaviour {
 	public Image m_PieceIconField;
 	public Sprite m_PieceIcon;
 	public Text m_PieceNameField;
-	public string m_PieceName;
+	public string m_PieceNameShown;
 	//_______________________________________________________________
 
 	//Characteristics of the piece
-	public int m_Speed;
-	public int m_Damage;
-	public int m_Capacity;
-	public int m_HealthPoint;
+	int m_Speed;
+	float m_Damage;
+	int m_Capacity;
+	int m_HealthPoint;
 	//_______________________________________________________________
 
 	//Description of the piece
@@ -59,22 +60,24 @@ public class ScriptShipPieces : MonoBehaviour {
 
 	//Mesh and Renderer of the piece we want to place on the ship
 
-	public GameObject m_Piece;
-	MeshFilter m_PieceShape;
-	Renderer m_PiecePaint; 
+	public string m_PieceName; 
+
+	public string m_PieceType; // Enter Here the type of the piece, if it's a bow, a keel, a stern or a mast
 
 	public bool m_IsAvailable;
+
+
+
+
 
 	#endregion
 
 	void Start () 
 	{
+	
 
 
-		m_PieceShape = m_Piece.GetComponent<MeshFilter> ();
-		m_PiecePaint = m_Piece.GetComponent<Renderer> ();
-
-		this.gameObject.SetActive (m_IsAvailable);// The piece is available only if it has been unlocked (bought in the shop) 
+		this.gameObject.SetActive (m_IsAvailable);// The piece is available only if it has been unlocked (bought in the shop)
 
 		m_ScriptBoathouseManager = m_BoathousePanel.GetComponent<ScriptBoathouseManager> ();//Get the script which controls the whole boathouse menu
 
@@ -82,12 +85,15 @@ public class ScriptShipPieces : MonoBehaviour {
 
 		m_ScriptShip = m_Ship.GetComponent<ScriptShip> ();// Get the ship's script, useful to get it's caracteristics 
 
+
+		GetCharacteristics ();
+
 		PieceSelection ();
+
 
 		m_Description = "Vitesse :" + " " + m_Speed + " " + ", Domage :" + " " + m_Damage + " " + ", Capacité :" + " " + m_Capacity + " " + ", Points de vie :" + m_HealthPoint;// Display the piece's description like that
 
-		m_SelectedPieceShape=m_PieceToChange.GetComponent<MeshFilter> ();//Get the Meshfilter of the ship's piece that's meant to be changed
-		m_SelectedPieceRenderer = m_PieceToChange.GetComponent<Renderer> ();//Get also it's Renderer
+
 	
 	}
 
@@ -107,34 +113,70 @@ public class ScriptShipPieces : MonoBehaviour {
 
 	public void ModifyPieceAppearance()// Started with in the same time as DisplayPieceInfo 
 	{
-		m_SelectedPieceShape.mesh = m_PieceShape.mesh; // change the shape of the piece on the boat by the selected piece's one
-		m_SelectedPieceRenderer.material = m_PiecePaint.material;// same with the color, texture...
+
 
 	}
 
 	public void PieceSelection ()
 	{
-		switch (m_Piece.tag) 
+		switch (m_PieceType) 
 		{
 		case "Keel":
-			m_PieceToChange = m_ScriptShip.m_ArrayofElements [0];
+			m_PieceName = m_ScriptShip.m_ArrayofElements [0];
 			break;
 		
 		case "Bow":
-			m_PieceToChange = m_ScriptShip.m_ArrayofElements [1];
+			m_PieceName = m_ScriptShip.m_ArrayofElements [1];
 			break;
 
 		case "Stern":
-			m_PieceToChange = m_ScriptShip.m_ArrayofElements[2];
+			m_PieceName = m_ScriptShip.m_ArrayofElements[2];
 			break;
 
 		case "Mast" : 
-			m_PieceToChange = m_ScriptShip.m_ArrayofElements[3];
+			m_PieceName = m_ScriptShip.m_ArrayofElements[3];
 			break;
 
 		}
 	}
 
+
+
+	public void GetCharacteristics ()
+	{
+		switch (m_PieceType) 
+		{
+		case "Keel" : 
+			m_Speed = TriDataBase.instance.m_KeelDico[m_PieceName].m_Speed;
+			m_Damage = TriDataBase.instance.m_KeelDico[m_PieceName].m_Damage;
+			m_HealthPoint = TriDataBase.instance.m_KeelDico[m_PieceName].m_HealthPoint;
+			m_Capacity =TriDataBase.instance.m_KeelDico[m_PieceName].m_Capacity;
+			break;
+
+		case "Bow" : 
+			m_Speed = TriDataBase.instance.m_BowDico[m_PieceName].m_Speed;
+			m_Damage = TriDataBase.instance.m_BowDico[m_PieceName].m_Damage;
+			m_HealthPoint = TriDataBase.instance.m_BowDico[m_PieceName].m_HealthPoint;
+			m_Capacity =TriDataBase.instance.m_BowDico[m_PieceName].m_Capacity;
+			break;
+
+		case "Stern" : 
+			m_Speed = TriDataBase.instance.m_SternDico[m_PieceName].m_Speed;
+			m_Damage = TriDataBase.instance.m_SternDico[m_PieceName].m_Damage;
+			m_HealthPoint = TriDataBase.instance.m_SternDico[m_PieceName].m_HealthPoint;
+			m_Capacity =TriDataBase.instance.m_SternDico[m_PieceName].m_Capacity;
+			break;
+
+		case "Mast" : 
+			m_Speed = TriDataBase.instance.m_MastDico[m_PieceName].m_Speed;
+			m_Damage = TriDataBase.instance.m_MastDico[m_PieceName].m_Damage;
+			m_HealthPoint = TriDataBase.instance.m_MastDico[m_PieceName].m_HealthPoint;
+			m_Capacity =TriDataBase.instance.m_MastDico[m_PieceName].m_Capacity;
+			break;
+
+		}
+
+	}
 
 
 
