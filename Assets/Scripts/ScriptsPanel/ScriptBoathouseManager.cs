@@ -15,6 +15,7 @@ public class ScriptBoathouseManager : MonoBehaviour {
 	GameObject m_SelectedPiece;
 	ScriptShipPieces m_ScriptShipPieces;
 
+    public bool m_FirstTime;
 
 	string m_MemorizedKeel;
 	string m_MemorizedBow;
@@ -29,16 +30,34 @@ public class ScriptBoathouseManager : MonoBehaviour {
 	// Use this for initialization
 	void Awake () 
 	{
-		//To delete
-		PlayerPrefs.SetString ("m_MemorizedKeel", "QuilleDefault");
-		PlayerPrefs.SetString ("m_MemorizedBow", "ProueDefault");
-		PlayerPrefs.SetString ("m_MemorizedStern", "PoupeDefault");
-		PlayerPrefs.SetString ("m_MemorizedMast", "Voile");
+        if (m_FirstTime==true)
+        {
+            
+            PlayerPrefs.SetString("m_MemorizedKeel", "QuilleDefault");
+            PlayerPrefs.SetString("m_MemorizedBow", "ProueDefault");
+            PlayerPrefs.SetString("m_MemorizedStern", "PoupeDefault");
+            PlayerPrefs.SetString("m_MemorizedMast", "VoileDefault");
 
-		m_CurrentBow = PlayerPrefs.GetString ("m_MemorizedBow");
-		m_CurrentKeel = PlayerPrefs.GetString ("m_MemorizedKeel");
-		m_CurrentStern = PlayerPrefs.GetString ("m_MemorizedStern");
-		m_CurrentMast = PlayerPrefs.GetString ("m_MemorizedMast");
+          
+
+            m_CurrentBow = PlayerPrefs.GetString("m_MemorizedBow");
+            m_CurrentKeel = PlayerPrefs.GetString("m_MemorizedKeel");
+            m_CurrentStern = PlayerPrefs.GetString("m_MemorizedStern");
+            m_CurrentMast = PlayerPrefs.GetString("m_MemorizedMast");
+
+     
+        }
+
+        else
+        {
+            m_CurrentBow = PlayerPrefs.GetString("m_MemorizedBow");
+            m_CurrentKeel = PlayerPrefs.GetString("m_MemorizedKeel");
+            m_CurrentStern = PlayerPrefs.GetString("m_MemorizedStern");
+            m_CurrentMast = PlayerPrefs.GetString("m_MemorizedMast");
+        }
+
+       
+		
 	}
 
 	
@@ -59,7 +78,7 @@ public class ScriptBoathouseManager : MonoBehaviour {
 	public void ShipStorage (GameObject Ship)
 	{
 		m_SelectedShip = Ship;
-		Debug.Log (m_SelectedShip);
+		
 	}
 
 	public void GetPiece (GameObject PieceSelected)
@@ -67,19 +86,27 @@ public class ScriptBoathouseManager : MonoBehaviour {
 		m_SelectedPiece = PieceSelected;
 		m_ScriptShipPieces = m_SelectedPiece.GetComponent<ScriptShipPieces> ();
 
-	}
+       Debug.Log (m_ScriptShipPieces.m_PieceName);
+
+        Debug.Log(m_ScriptShipPieces.m_PieceType);
+    }
 
 	public void SavePiece ()
 	{
-		switch (m_ScriptShipPieces.m_PieceType) 
+
+        Debug.Log(m_ScriptShipPieces.m_PieceType);
+
+        switch (m_ScriptShipPieces.m_PieceType) 
 		{
 		case "Keel":
 			PlayerPrefs.SetString ("m_MemorizedKeel", m_ScriptShipPieces.m_PieceName);
+            
 			break;
 			
 		case "Bow":
 			PlayerPrefs.SetString ("m_MemorizedBow", m_ScriptShipPieces.m_PieceName);
-			break;
+                Debug.Log("OY");
+            break;
 			
 		case "Stern":
 			PlayerPrefs.SetString ("m_MemorizedStern", m_ScriptShipPieces.m_PieceName);
@@ -89,6 +116,7 @@ public class ScriptBoathouseManager : MonoBehaviour {
 			PlayerPrefs.SetString ("m_MemorizedMast", m_ScriptShipPieces.m_PieceName);
 			break;
 		}
+        
 
 	}
 

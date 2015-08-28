@@ -75,8 +75,6 @@ public class ScriptShipPieces : MonoBehaviour {
 	void Start () 
 	{
 	
-
-
 		this.gameObject.SetActive (m_IsAvailable);// The piece is available only if it has been unlocked (bought in the shop)
 
 		m_ScriptBoathouseManager = m_BoathousePanel.GetComponent<ScriptBoathouseManager> ();//Get the script which controls the whole boathouse menu
@@ -85,16 +83,6 @@ public class ScriptShipPieces : MonoBehaviour {
 
 		m_ScriptShip = m_Ship.GetComponent<ScriptShip> ();// Get the ship's script, useful to get it's caracteristics 
 
-
-		GetCharacteristics ();
-
-		PieceSelection ();
-
-
-		m_Description = "Vitesse :" + " " + m_Speed + " " + ", Domage :" + " " + m_Damage + " " + ", Capacité :" + " " + m_Capacity + " " + ", Points de vie :" + m_HealthPoint;// Display the piece's description like that
-
-
-	
 	}
 
 
@@ -122,19 +110,19 @@ public class ScriptShipPieces : MonoBehaviour {
 		switch (m_PieceType) 
 		{
 		case "Keel":
-			m_PieceName = m_ScriptShip.m_ArrayofElements [0];
+			m_ScriptShip.m_ArrayofElements [0] = m_PieceName;
 			break;
 		
 		case "Bow":
-			m_PieceName = m_ScriptShip.m_ArrayofElements [1];
+			m_ScriptShip.m_ArrayofElements [1] = m_PieceName;
 			break;
 
 		case "Stern":
-			m_PieceName = m_ScriptShip.m_ArrayofElements[2];
+			m_ScriptShip.m_ArrayofElements[2] = m_PieceName;
 			break;
 
 		case "Mast" : 
-			m_PieceName = m_ScriptShip.m_ArrayofElements[3];
+			m_ScriptShip.m_ArrayofElements[3] = m_PieceName;
 			break;
 
 		}
@@ -176,7 +164,8 @@ public class ScriptShipPieces : MonoBehaviour {
 
 		}
 
-	}
+        m_Description = "Vitesse :" + " " + m_Speed + " " + ", Domage :" + " " + m_Damage + " " + ", Capacité :" + " " + m_Capacity + " " + ", Points de vie :" + m_HealthPoint;// Display the piece's description like that
+    }
 
 
 

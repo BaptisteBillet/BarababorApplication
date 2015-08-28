@@ -44,6 +44,13 @@ public class ScriptShip : MonoBehaviour
 	ScriptBoathouseManager m_ScriptBoathouseManager;
 
 
+    //To Delete
+
+    public Text m_SpeedField;
+    public Text m_DamageField;
+    public Text m_CapacityField;
+    public Text m_HealthPointField;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -55,18 +62,15 @@ public class ScriptShip : MonoBehaviour
 		m_CurrentMast = m_ScriptBoathouseManager.m_CurrentMast;
 		m_CurrentStern = m_ScriptBoathouseManager.m_CurrentStern;
 
-		m_ArrayofElements [0]=m_CurrentKeel;
+
+        m_ArrayofElements [0]=m_CurrentKeel;
 		m_ArrayofElements [1]=m_CurrentBow ;
 		m_ArrayofElements [2]=m_CurrentStern;
 		m_ArrayofElements [3]=m_CurrentMast;
 
-	
-		CharacteristicsCalculation (); 
+        CharacteristicsCalculation();
 
-		Debug.Log ("Speed" + " " + m_Speed);
-		Debug.Log ("Damage" + " " + m_Damage);
-		Debug.Log ("Cap" + " " + m_Capacity);
-		Debug.Log ("Hp" + " " + m_HealthPoint);
+        Debug.Log(m_CurrentBow);
 
 		int m_ConvertedDamage = Mathf.CeilToInt(m_Damage);
 
@@ -79,9 +83,12 @@ public class ScriptShip : MonoBehaviour
 		m_CharacteristicsArray [2] = m_HealthPoint;
 		m_CharacteristicsArray [3] = m_Capacity;
 
+        m_SpeedField.text =" " + m_Speed;
+        m_DamageField.text =" " + m_Damage;
+        m_CapacityField.text = "" + m_Capacity;
+        m_HealthPointField.text = " " + m_HealthPoint;
 
-
-		ArchetypeAttribution ();// Launch ArchetypeAttribution.
+        ArchetypeAttribution ();// Launch ArchetypeAttribution.
 
 	}
 
