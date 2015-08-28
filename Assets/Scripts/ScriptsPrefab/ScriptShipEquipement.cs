@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 
 
-public class ScriptShipPieces : MonoBehaviour {
+public class ScriptShipEquipement : MonoBehaviour {
 
 	#region MembersDeclaration
 	//Definitions of the piece
@@ -14,7 +14,7 @@ public class ScriptShipPieces : MonoBehaviour {
 	public string m_PieceNameShown;
 	//_______________________________________________________________
 
-	//Characteristics of the piece
+	//Characteristics of the Equipement
 	int m_Speed;
 	float m_Damage;
 	int m_Capacity;
