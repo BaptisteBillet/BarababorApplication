@@ -66,13 +66,16 @@ public class ScriptShipPieces : MonoBehaviour {
 
 	public bool m_IsAvailable;
 
+    int SubstractSpeed;
+    int SubstractDamage;
+    int SubstractCapacity;
+    int SubstractHealthPoint;
 
 
 
+    #endregion
 
-	#endregion
-
-	void Start () 
+    void Start () 
 	{
 	
 		this.gameObject.SetActive (m_IsAvailable);// The piece is available only if it has been unlocked (bought in the shop)
@@ -88,13 +91,54 @@ public class ScriptShipPieces : MonoBehaviour {
 
 	public void DisplayPieceInfo ()//Started by a button click
 	{
+        string Substracter;
+         
+        switch (m_PieceType)
+        {
+            case "Keel":
+                Substracter = m_ScriptShip.m_CurrentKeel;
 
+                SubstractSpeed = TriDataBase.instance.m_KeelDico[Substracter].m_Speed;
+                SubstractDamage = Mathf.CeilToInt(TriDataBase.instance.m_KeelDico[Substracter].m_Damage);
+                SubstractCapacity = TriDataBase.instance.m_KeelDico[Substracter].m_Capacity;
+                SubstractHealthPoint = TriDataBase.instance.m_KeelDico[Substracter].m_HealthPoint;
+                break;
+
+            case "Bow":
+                Substracter = m_ScriptShip.m_CurrentBow;
+
+                SubstractSpeed = TriDataBase.instance.m_BowDico[Substracter].m_Speed;
+                SubstractDamage = Mathf.CeilToInt(TriDataBase.instance.m_BowDico[Substracter].m_Damage);
+                SubstractCapacity = TriDataBase.instance.m_BowDico[Substracter].m_Capacity;
+                SubstractHealthPoint = TriDataBase.instance.m_BowDico[Substracter].m_HealthPoint;
+                break;
+
+            case "Stern":
+                Substracter = m_ScriptShip.m_CurrentStern;
+
+                SubstractSpeed = TriDataBase.instance.m_SternDico[Substracter].m_Speed;
+                SubstractDamage = Mathf.CeilToInt(TriDataBase.instance.m_SternDico[Substracter].m_Damage);
+                SubstractCapacity = TriDataBase.instance.m_SternDico[Substracter].m_Capacity;
+                SubstractHealthPoint = TriDataBase.instance.m_SternDico[Substracter].m_HealthPoint;
+                break;
+
+            case "Mast":
+
+                Substracter = m_ScriptShip.m_CurrentMast;
+
+                SubstractSpeed = TriDataBase.instance.m_MastDico[Substracter].m_Speed;
+                SubstractDamage = Mathf.CeilToInt(TriDataBase.instance.m_MastDico[Substracter].m_Damage);
+                SubstractCapacity = TriDataBase.instance.m_MastDico[Substracter].m_Capacity;
+                SubstractHealthPoint = TriDataBase.instance.m_MastDico[Substracter].m_HealthPoint;
+                break;
+        }
+        
 		m_DescriptionField.text = m_Description; //Display the description of the piece in the special place 
 
-		m_FieldSpeed.text = ""+(m_ScriptShip.m_Speed + m_Speed);// Display what will be the caracteristics of the ship with this piece, it's the addition of the caracteristics already there and the piece's ones
-		m_FieldDamage.text = "" +(m_ScriptShip.m_Damage + m_Damage);
-		m_FieldCapacity.text = ""+(m_ScriptShip.m_Capacity + m_Capacity);
-		m_FieldHP.text =""+ (m_ScriptShip.m_HealthPoint + m_HealthPoint);
+		m_FieldSpeed.text = ""+(m_ScriptShip.m_Speed + m_Speed-SubstractSpeed);// Display what will be the caracteristics of the ship with this piece, it's the addition of the caracteristics already there and the piece's ones
+		m_FieldDamage.text = "" +(m_ScriptShip.m_Damage + m_Damage-SubstractDamage);
+		m_FieldCapacity.text = ""+(m_ScriptShip.m_Capacity + m_Capacity-SubstractCapacity);
+		m_FieldHP.text =""+ (m_ScriptShip.m_HealthPoint + m_HealthPoint-SubstractHealthPoint);
 	
 		m_PieceIconField.sprite = m_PieceIcon;// Display the piece's icon
 	}

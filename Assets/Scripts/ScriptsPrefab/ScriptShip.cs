@@ -35,10 +35,10 @@ public class ScriptShip : MonoBehaviour
 	//Different parts of the ship
 	public string [] m_ArrayofElements = new string[4]; 
 
-	string m_CurrentBow;
-	string m_CurrentStern;
-	string m_CurrentMast;
-	string m_CurrentKeel;
+	public string m_CurrentBow;
+	public string m_CurrentStern;
+	public string m_CurrentMast;
+	public string m_CurrentKeel;
 
 	public GameObject m_BoathousePanel;
 	ScriptBoathouseManager m_ScriptBoathouseManager;
