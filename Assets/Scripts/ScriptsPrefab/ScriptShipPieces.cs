@@ -189,7 +189,7 @@ public class ScriptShipPieces : MonoBehaviour {
 			m_ScriptShip.m_ArrayofElements[3] = m_PieceName;
 			break;
 
-		}
+     }
 	}
 
 

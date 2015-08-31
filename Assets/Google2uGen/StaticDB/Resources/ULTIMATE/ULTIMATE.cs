@@ -12,7 +12,7 @@ using System.Globalization;
 namespace Google2u
 {
 	[System.Serializable]
-	public class WEAPONRow : IGoogle2uRow
+	public class ULTIMATERow : IGoogle2uRow
 	{
 		public int _Level;
 		public int _LevelUp;
@@ -30,7 +30,7 @@ namespace Google2u
 		public string _Rank;
 		public string _State1;
 		public string _State2;
-		public WEAPONRow(string __ID, string __Level, string __LevelUp, string __Name, string __Damage, string __DamageUpgrade, string __Range, string __RangeUpgrade, string __Cooldown, string __CooldownUpgrade, string __ShootType, string __ShootTypeUpgrade, string __Cost, string __Grade, string __Rank, string __State1, string __State2) 
+		public ULTIMATERow(string __ID, string __Level, string __LevelUp, string __Name, string __Damage, string __DamageUpgrade, string __Range, string __RangeUpgrade, string __Cooldown, string __CooldownUpgrade, string __ShootType, string __ShootTypeUpgrade, string __Cost, string __Grade, string __Rank, string __State1, string __State2) 
 		{
 			{
 			int res;
@@ -263,30 +263,29 @@ namespace Google2u
 			return ret;
 		}
 	}
-	public sealed class WEAPON : IGoogle2uDB
+	public sealed class ULTIMATE : IGoogle2uDB
 	{
 		public enum rowIds {
-			Weapon1
+	
 		};
 		public string [] rowNames = {
-			"Weapon1"
+	
 		};
-		public System.Collections.Generic.List<WEAPONRow> Rows = new System.Collections.Generic.List<WEAPONRow>();
+		public System.Collections.Generic.List<ULTIMATERow> Rows = new System.Collections.Generic.List<ULTIMATERow>();
 
-		public static WEAPON Instance
+		public static ULTIMATE Instance
 		{
-			get { return NestedWEAPON.instance; }
+			get { return NestedULTIMATE.instance; }
 		}
 
-		private class NestedWEAPON
+		private class NestedULTIMATE
 		{
-			static NestedWEAPON() { }
-			internal static readonly WEAPON instance = new WEAPON();
+			static NestedULTIMATE() { }
+			internal static readonly ULTIMATE instance = new ULTIMATE();
 		}
 
-		private WEAPON()
+		private ULTIMATE()
 		{
-			Rows.Add( new WEAPONRow("Weapon1", "1", "1", "Weapon1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "", "", "", ""));
 		}
 		public IGoogle2uRow GetGenRow(string in_RowString)
 		{
@@ -313,9 +312,9 @@ namespace Google2u
 			}
 			return ret;
 		}
-		public WEAPONRow GetRow(rowIds in_RowID)
+		public ULTIMATERow GetRow(rowIds in_RowID)
 		{
-			WEAPONRow ret = null;
+			ULTIMATERow ret = null;
 			try
 			{
 				ret = Rows[(int)in_RowID];
@@ -326,9 +325,9 @@ namespace Google2u
 			}
 			return ret;
 		}
-		public WEAPONRow GetRow(string in_RowString)
+		public ULTIMATERow GetRow(string in_RowString)
 		{
-			WEAPONRow ret = null;
+			ULTIMATERow ret = null;
 			try
 			{
 				ret = Rows[(int)System.Enum.Parse(typeof(rowIds), in_RowString)];

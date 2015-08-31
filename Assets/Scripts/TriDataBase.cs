@@ -11,8 +11,9 @@ public class TriDataBase : MonoBehaviour
 
 
     public Dictionary<string, Equipment> m_WeaponDico = new Dictionary<string, Equipment>();
-    public Dictionary<string, Equipment> m_SpecialistDico = new Dictionary<string, Equipment>();
-
+    public Dictionary<string, Specialist> m_SpecialistDico = new Dictionary<string, Specialist>();
+    public Dictionary<string, Equipment> m_UltimateDico = new Dictionary<string, Equipment>();
+    public Dictionary<string, Equipment> m_GadgetDico = new Dictionary<string, Equipment>();
 
     #region Singleton
     static private TriDataBase s_Instance;
@@ -166,8 +167,69 @@ public class TriDataBase : MonoBehaviour
             m_WeaponDico.Add(m_Equipement.m_Name, m_Equipement);
         }
 
+        foreach (Google2u.ULTIMATERow row in Google2u.ULTIMATE.Instance.Rows)
+        {
+            Equipment m_Equipement = new Equipment();
+
+            m_Equipement.m_Level = row._Level;
+            m_Equipement.m_LevelUp = row._LevelUp;
+            m_Equipement.m_Range = row._Range;
+            m_Equipement.m_RangeUpgrade = row._RangeUpgrade;
+            m_Equipement.m_Cooldown = row._Cooldown;
+            m_Equipement.m_CooldownUpgrade = row._CooldownUpgrade;
+            m_Equipement.m_ShootType = row._ShootType;
+            m_Equipement.m_ShootTypeUpgrade = row._ShootTypeUpgrade;
+            m_Equipement.m_Cost = row._Cost;
+            m_Equipement.m_Grade = row._Grade;
+            m_Equipement.m_Rank = row._Rank;
+            m_Equipement.m_State1 = row._State1;
+            m_Equipement.m_State2 = row._State2;
+            m_Equipement.m_Damage = row._Damage;
+            m_Equipement.m_DamageUpgrade = row._DamageUpgrade;
+
+            m_Equipement.m_Name = row._Name;
+
+            m_UltimateDico.Add(m_Equipement.m_Name, m_Equipement);
+        }
+
+        foreach (Google2u.GADGETRow row in Google2u.GADGET.Instance.Rows)
+        {
+            Equipment m_Equipement = new Equipment();
+
+            m_Equipement.m_Level = row._Level;
+            m_Equipement.m_LevelUp = row._LevelUp;
+            m_Equipement.m_Range = row._Range;
+            m_Equipement.m_RangeUpgrade = row._RangeUpgrade;
+            m_Equipement.m_Cooldown = row._Cooldown;
+            m_Equipement.m_CooldownUpgrade = row._CooldownUpgrade;
+            m_Equipement.m_ShootType = row._ShootType;
+            m_Equipement.m_ShootTypeUpgrade = row._ShootTypeUpgrade;
+            m_Equipement.m_Cost = row._Cost;
+            m_Equipement.m_Grade = row._Grade;
+            m_Equipement.m_Rank = row._Rank;
+            m_Equipement.m_State1 = row._State1;
+            m_Equipement.m_State2 = row._State2;
+            m_Equipement.m_Damage = row._Damage;
+            m_Equipement.m_DamageUpgrade = row._DamageUpgrade;
+
+            m_Equipement.m_Name = row._Name;
+
+            m_GadgetDico.Add(m_Equipement.m_Name, m_Equipement);
+        }
 
 
+        foreach (Google2u.SPECIALISTRow row in Google2u.SPECIALIST.Instance.Rows)
+        {
+            Specialist m_Specialist = new Specialist();
+
+           
+            m_Specialist.m_Speciality = row._Speciality;
+            m_Specialist.m_Value = row._Value;
+
+            m_Specialist.m_Name = row._Name;
+
+            m_SpecialistDico.Add(m_Specialist.m_Name, m_Specialist);
+        }
         #endregion
 
     }

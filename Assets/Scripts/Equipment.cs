@@ -11,8 +11,8 @@ public class Equipment : Object {
     public int m_DamageUpgrade;
     public int m_Range;
     public int m_RangeUpgrade;
-    public int m_Cooldown;
-    public int m_CooldownUpgrade;
+    public float m_Cooldown;
+    public float m_CooldownUpgrade;
     public int m_ShootType;
     public int m_ShootTypeUpgrade;
     public int m_Cost;

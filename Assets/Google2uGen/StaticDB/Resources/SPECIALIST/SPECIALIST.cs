@@ -89,10 +89,10 @@ namespace Google2u
 	public sealed class SPECIALIST : IGoogle2uDB
 	{
 		public enum rowIds {
-	
+			Specialist1
 		};
 		public string [] rowNames = {
-	
+			"Specialist1"
 		};
 		public System.Collections.Generic.List<SPECIALISTRow> Rows = new System.Collections.Generic.List<SPECIALISTRow>();
 
@@ -109,6 +109,7 @@ namespace Google2u
 
 		private SPECIALIST()
 		{
+			Rows.Add( new SPECIALISTRow("Specialist1", "Specialist1", "Damage", "5"));
 		}
 		public IGoogle2uRow GetGenRow(string in_RowString)
 		{

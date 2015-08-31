@@ -10,7 +10,13 @@ public class ScriptBoathouseManager : MonoBehaviour {
 
 	public GameObject m_SelectedShip;
 
-	public int m_NumberofShip;
+    public GameObject m_ButtonEquip;
+    public GameObject m_ButtonEquip1;
+    public GameObject m_ButtonEquip2;
+    public GameObject m_ButtonEquip3;
+    public GameObject m_ButtonEquip4;
+
+    public int m_NumberofShip;
 
     
 
@@ -37,8 +43,14 @@ public class ScriptBoathouseManager : MonoBehaviour {
 		
 	}
 
-	
-
+	public void MultiStorage (bool Enable)
+    {
+        m_ButtonEquip.SetActive (!Enable);
+        m_ButtonEquip1.SetActive(Enable);
+        m_ButtonEquip2.SetActive(Enable);
+        m_ButtonEquip3.SetActive(Enable);
+        m_ButtonEquip4.SetActive(Enable);
+    }
 	
 
 

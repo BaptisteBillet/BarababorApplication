@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class ScriptShip : MonoBehaviour
 {
+    #region MembersDeclaration
     // Ship's main infos :name and archetype
     public string m_ShipName;
 
@@ -84,11 +85,21 @@ public class ScriptShip : MonoBehaviour
     public string m_EquipedEquipement2;
     public string m_EquipedEquipement3;
     public string m_EquipedEquipement4;
-    public string m_EquipedUltime;
+    public string m_EquipedUltimate;
+
+    GameObject m_SelectedEquipement;
+    ScriptShipEquipement m_ScriptShipEquipement;
+
+    bool m_UltimateEquiped;
+    //____________________________________________________________________________________________
+    //Where the different Equipements of the ship are displayed 
 
 
-
-
+    public Text m_TextFieldPassif;
+    public Text m_TextFieldEquipement1;
+    public Text m_TextFieldEquipement2;
+    public Text m_TextFieldEquipement3;
+    public Text m_TextFieldUltimateEquipement;
 
     //____________________________________________________________________________________________
 
@@ -111,76 +122,77 @@ public class ScriptShip : MonoBehaviour
 
     //_____________________________________________________________________________________________
 
+
+    #endregion
+
+    #region Functions
     // Use this for initialization
-    void Start()
+    void Awake()
     {
-        m_ScriptBoathouseManager = m_BoathousePanel.GetComponent<ScriptBoathouseManager>();
+        m_ScriptBoathouseManager = m_BoathousePanel.GetComponent<ScriptBoathouseManager>();// Get the script from the boathouse panel
 
 
-        /* m_CurrentBow =  m_ScriptBoathouseManager.m_CurrentBow;
-         m_CurrentKeel = m_ScriptBoathouseManager.m_CurrentKeel;
-         m_CurrentMast = m_ScriptBoathouseManager.m_CurrentMast;
-         m_CurrentStern =m_ScriptBoathouseManager.m_CurrentStern;
-        */
-
-        if (m_FirstTime == true)
+       
+        if (m_FirstTime == true)// if it's the first time the player customize his ship, it's equipment is set to default
         {
-            PlayerPrefs.SetString("m_MemorizedKeel", "QuilleDefault");
+            PlayerPrefs.SetString("m_MemorizedKeel", "QuilleDefault");//the keel that's saved in the memory is set to QuilleDefault. We use only the name of an object (string) to look for it in a dictionary containing all the different kind of object of a same type (keel, bow, stern, mast...)
             PlayerPrefs.SetString("m_MemorizedBow", "ProueDefault");
             PlayerPrefs.SetString("m_MemorizedStern", "PoupeDefault");
             PlayerPrefs.SetString("m_MemorizedMast", "VoileDefault");
         }
 
-        m_CurrentBow = PlayerPrefs.GetString("m_MemorizedBow");
+        m_CurrentBow = PlayerPrefs.GetString("m_MemorizedBow");// if it's not the first time the player customize his ship, the system go in the memory to look what's the name of the piece on board
         m_CurrentKeel = PlayerPrefs.GetString("m_MemorizedKeel");
         m_CurrentStern = PlayerPrefs.GetString("m_MemorizedStern");
         m_CurrentMast = PlayerPrefs.GetString("m_MemorizedMast");
 
 
 
-        m_ArrayofElements[0] = m_CurrentKeel;
+        m_ArrayofElements[0] = m_CurrentKeel;//stock the different parts of a ship in an array
         m_ArrayofElements[1] = m_CurrentBow;
         m_ArrayofElements[2] = m_CurrentStern;
         m_ArrayofElements[3] = m_CurrentMast;
 
-        CharacteristicsCalculation();
+        CharacteristicsCalculation(); // launch CharacteristicsCalculation
 
-        Debug.Log(m_CurrentBow);
+       
 
-        int m_ConvertedDamage = Mathf.CeilToInt(m_Damage);
+        int m_ConvertedDamage = Mathf.CeilToInt(m_Damage); // Convert the float of damages into a int (necessary for now)
 
         //Initialize all the members
-        m_FirstValue = 0;
+        m_FirstValue = 0; // Set FirstValue and Second Value (ArchetypeAttribution) to 0
         m_SecondValue = 0;
 
-        m_CharacteristicsArray[0] = m_Speed;
+        m_CharacteristicsArray[0] = m_Speed;//Fill the array with the different values of the ship's characteristics 
         m_CharacteristicsArray[1] = m_ConvertedDamage;
         m_CharacteristicsArray[2] = m_HealthPoint;
         m_CharacteristicsArray[3] = m_Capacity;
         m_CharacteristicsArray[4] = m_Regeneration;
         m_CharacteristicsArray[5] = m_Vision;
 
-        m_SpeedField.text = " " + m_Speed;
+        m_SpeedField.text = " " + m_Speed;//Display the values of the ship's characteristics
         m_DamageField.text = " " + m_Damage;
         m_CapacityField.text = "" + m_Capacity;
         m_HealthPointField.text = " " + m_HealthPoint;
         m_RegenerationField.text = " " + m_Regeneration;
         m_VisionField.text = " " + m_Vision;
 
-      /*  m_ArrayofEquipement[0] = PlayerPrefs.GetString("m_EquipedSpecialist");
+        m_ArrayofEquipement[0] = PlayerPrefs.GetString("m_EquipedSpecialist");
         m_ArrayofEquipement[1] = PlayerPrefs.GetString("m_EquipedEquipement1");
         m_ArrayofEquipement[2] = PlayerPrefs.GetString("m_EquipedEquipement2");
         m_ArrayofEquipement[3] = PlayerPrefs.GetString("m_EquipedEquipement3");
 
-        if (m_EquipedUltime == null)
+        if (m_UltimateEquiped==false)
         {
             m_ArrayofEquipement[4] = PlayerPrefs.GetString("m_EquipedEquipement4");
         }
-        else
+        else if (m_UltimateEquiped==true)
         {
-            m_ArrayofEquipement[5] = PlayerPrefs.GetString("m_EquipedUltime");
+            m_ArrayofEquipement[4] = PlayerPrefs.GetString("m_EquipedUltime");
         }
-        */
+
+        Debug.Log(m_ArrayofEquipement[0]);
+        Debug.Log(m_ArrayofEquipement[1]);
         ArchetypeAttribution();// Launch ArchetypeAttribution.
 
     }
@@ -239,7 +251,7 @@ public class ScriptShip : MonoBehaviour
     public void CharacteristicsCalculation()
     {
 
-        m_Speed = TriDataBase.instance.m_BowDico[m_CurrentBow].m_Speed + TriDataBase.instance.m_SternDico[m_CurrentStern].m_Speed + TriDataBase.instance.m_KeelDico[m_CurrentKeel].m_Speed + TriDataBase.instance.m_MastDico[m_CurrentMast].m_Speed;
+        m_Speed = TriDataBase.instance.m_BowDico[m_CurrentBow].m_Speed + TriDataBase.instance.m_SternDico[m_CurrentStern].m_Speed + TriDataBase.instance.m_KeelDico[m_CurrentKeel].m_Speed + TriDataBase.instance.m_MastDico[m_CurrentMast].m_Speed;//Get the differents characteristics of the different pieces of the ship and add them to calculate it's characteristics
         m_Damage = TriDataBase.instance.m_BowDico[m_CurrentBow].m_Damage + TriDataBase.instance.m_SternDico[m_CurrentStern].m_Damage + TriDataBase.instance.m_KeelDico[m_CurrentKeel].m_Damage + TriDataBase.instance.m_MastDico[m_CurrentMast].m_Damage;
         m_HealthPoint = TriDataBase.instance.m_BowDico[m_CurrentBow].m_HealthPoint + TriDataBase.instance.m_SternDico[m_CurrentStern].m_HealthPoint + TriDataBase.instance.m_KeelDico[m_CurrentKeel].m_HealthPoint + TriDataBase.instance.m_MastDico[m_CurrentMast].m_HealthPoint;
         m_Capacity = TriDataBase.instance.m_BowDico[m_CurrentBow].m_Capacity + TriDataBase.instance.m_SternDico[m_CurrentStern].m_Capacity + TriDataBase.instance.m_KeelDico[m_CurrentKeel].m_Capacity + TriDataBase.instance.m_MastDico[m_CurrentMast].m_Capacity;
@@ -247,48 +259,65 @@ public class ScriptShip : MonoBehaviour
         m_Vision = TriDataBase.instance.m_BowDico[m_CurrentBow].m_Vision + TriDataBase.instance.m_SternDico[m_CurrentStern].m_Vision + TriDataBase.instance.m_KeelDico[m_CurrentKeel].m_Vision + TriDataBase.instance.m_MastDico[m_CurrentMast].m_Vision;
     }
 
-    public void GetEquipement()
-    { }
-
-    public void SaveEquipement()
+    public void GetEquipement(GameObject EquipementSelected)
     {
-        switch (m_ScriptShipPieces.m_PieceType)
-        {
-            case "Keel":
-                PlayerPrefs.SetString("CurrentKeel", m_ScriptShipPieces.m_PieceName);
-                break;
+        m_SelectedEquipement = EquipementSelected;
+        m_ScriptShipEquipement = m_SelectedEquipement.GetComponent<ScriptShipEquipement>();
 
-            case "Bow":
-                PlayerPrefs.SetString("CurrentBow", m_ScriptShipPieces.m_PieceName);
-                break;
-
-            case "Stern":
-                PlayerPrefs.SetString("CurrentStern", m_ScriptShipPieces.m_PieceName);
-                break;
-
-            case "Mast":
-                PlayerPrefs.SetString("CurrentMast", m_ScriptShipPieces.m_PieceName);
-                break;
-        }
 
     }
 
+    public void SaveEquipement()
+    {
+        switch (m_ScriptShipEquipement.m_EquipementType)
+        {
+            case "Specialist":
+                PlayerPrefs.SetString("m_EquipedSpecialist", m_ScriptShipEquipement.m_EquipementName);
+                break;
 
-    public void GetPiece(GameObject PieceSelected)
+            case "Ultimate":
+                PlayerPrefs.SetString("m_EquipedUltimate", m_ScriptShipEquipement.m_EquipementName);
+                m_UltimateEquiped = true;
+                break;
+        }
+    }
+
+    public void SaveEquipement2 (int StorageIndex)
+    {
+        switch (StorageIndex)
+        {
+            case 1:
+                PlayerPrefs.SetString("m_EquipedEquipement1", m_ScriptShipEquipement.m_EquipementName);
+                break;
+
+            case 2:
+                PlayerPrefs.SetString("m_EquipedEquipement2", m_ScriptShipEquipement.m_EquipementName);
+                break;
+
+            case 3:
+                PlayerPrefs.SetString("m_EquipedEquipement3", m_ScriptShipEquipement.m_EquipementName);
+                break;
+
+            case 4:
+                PlayerPrefs.SetString("m_EquipedEquipement4", m_ScriptShipEquipement.m_EquipementName);
+                m_UltimateEquiped = false;
+                break;
+        }
+    }
+
+    public void GetPiece(GameObject PieceSelected)//Get the script of the piece selected
     {
         m_SelectedPiece = PieceSelected;
         m_ScriptShipPieces = m_SelectedPiece.GetComponent<ScriptShipPieces>();
 
-        Debug.Log(m_ScriptShipPieces.m_PieceName);
-
-        Debug.Log(m_ScriptShipPieces.m_PieceType);
+       
     }
 
 
-    public void SavePiece()
+    public void SavePiece() // Save the name of the selected piece in the memory
     {
 
-        Debug.Log(m_ScriptShipPieces.m_PieceType);
+       
 
         switch (m_ScriptShipPieces.m_PieceType)
         {
@@ -309,8 +338,18 @@ public class ScriptShip : MonoBehaviour
             case "Mast":
                 PlayerPrefs.SetString("m_MemorizedMast", m_ScriptShipPieces.m_PieceName);
                 break;
+
+            case "Specialist":
+                PlayerPrefs.SetString("m_EquipedSpecialist", m_ScriptShipPieces.m_PieceName);
+                break;
+
+            case "Ultimate":
+                PlayerPrefs.SetString("m_EquipedUltimate", m_ScriptShipPieces.m_PieceName);
+                break;
         }
     }
+
+    #endregion
 
 }
 

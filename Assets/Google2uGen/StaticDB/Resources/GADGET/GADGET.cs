@@ -12,7 +12,7 @@ using System.Globalization;
 namespace Google2u
 {
 	[System.Serializable]
-	public class WEAPONRow : IGoogle2uRow
+	public class GADGETRow : IGoogle2uRow
 	{
 		public int _Level;
 		public int _LevelUp;
@@ -30,7 +30,7 @@ namespace Google2u
 		public string _Rank;
 		public string _State1;
 		public string _State2;
-		public WEAPONRow(string __ID, string __Level, string __LevelUp, string __Name, string __Damage, string __DamageUpgrade, string __Range, string __RangeUpgrade, string __Cooldown, string __CooldownUpgrade, string __ShootType, string __ShootTypeUpgrade, string __Cost, string __Grade, string __Rank, string __State1, string __State2) 
+		public GADGETRow(string __ID, string __Level, string __LevelUp, string __Name, string __Damage, string __DamageUpgrade, string __Range, string __RangeUpgrade, string __Cooldown, string __CooldownUpgrade, string __ShootType, string __ShootTypeUpgrade, string __Cost, string __Grade, string __Rank, string __State1, string __State2) 
 		{
 			{
 			int res;
@@ -263,30 +263,29 @@ namespace Google2u
 			return ret;
 		}
 	}
-	public sealed class WEAPON : IGoogle2uDB
+	public sealed class GADGET : IGoogle2uDB
 	{
 		public enum rowIds {
-			Weapon1
+	
 		};
 		public string [] rowNames = {
-			"Weapon1"
+	
 		};
-		public System.Collections.Generic.List<WEAPONRow> Rows = new System.Collections.Generic.List<WEAPONRow>();
+		public System.Collections.Generic.List<GADGETRow> Rows = new System.Collections.Generic.List<GADGETRow>();
 
-		public static WEAPON Instance
+		public static GADGET Instance
 		{
-			get { return NestedWEAPON.instance; }
+			get { return NestedGADGET.instance; }
 		}
 
-		private class NestedWEAPON
+		private class NestedGADGET
 		{
-			static NestedWEAPON() { }
-			internal static readonly WEAPON instance = new WEAPON();
+			static NestedGADGET() { }
+			internal static readonly GADGET instance = new GADGET();
 		}
 
-		private WEAPON()
+		private GADGET()
 		{
-			Rows.Add( new WEAPONRow("Weapon1", "1", "1", "Weapon1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "", "", "", ""));
 		}
 		public IGoogle2uRow GetGenRow(string in_RowString)
 		{
@@ -313,9 +312,9 @@ namespace Google2u
 			}
 			return ret;
 		}
-		public WEAPONRow GetRow(rowIds in_RowID)
+		public GADGETRow GetRow(rowIds in_RowID)
 		{
-			WEAPONRow ret = null;
+			GADGETRow ret = null;
 			try
 			{
 				ret = Rows[(int)in_RowID];
@@ -326,9 +325,9 @@ namespace Google2u
 			}
 			return ret;
 		}
-		public WEAPONRow GetRow(string in_RowString)
+		public GADGETRow GetRow(string in_RowString)
 		{
-			WEAPONRow ret = null;
+			GADGETRow ret = null;
 			try
 			{
 				ret = Rows[(int)System.Enum.Parse(typeof(rowIds), in_RowString)];
