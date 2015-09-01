@@ -26,15 +26,18 @@ public class BoathouseShipEquipementButton : MonoBehaviour {
     public string m_NameofEquipement;
 
     public GameObject m_BlackPanel;//A black Panel used to overlay the rest of the screen except the description of the equipement
+    public Button m_BlackPanelButton;
+    public GameObject m_DescriptionFrame;
+    
 
-    public Button m_EquipButton;
-    public Button m_EquipButton1;
-    public Button m_EquipButton2;
-    public Button m_EquipButton3;
-    public Button m_EquipButton4;
-    public Button m_ShopButton;
-    public Button m_BackButton;
-    public Button m_ElementButton;
+    public GameObject m_EquipButton;
+    public GameObject m_EquipButton1;
+    public GameObject m_EquipButton2;
+    public GameObject m_EquipButton3;
+    public GameObject m_EquipButton4;
+    public GameObject m_ShopButton;
+    public GameObject m_BackButton;
+    public GameObject m_ElementButton;
 
 
     public Text m_DescriptionField;
@@ -89,24 +92,30 @@ public class BoathouseShipEquipementButton : MonoBehaviour {
 	
     public void DescriptionDisplay ()
     {
-        if (m_ScriptBoathouseManager.m_Enabled==false)
+        if (m_ScriptBoathouseManager.m_MultiStorageEnabled==false)
         {
-               m_EquipButton.enabled = false;
+               m_EquipButton.SetActive (false);
         }
         
-        else if (m_ScriptBoathouseManager.m_Enabled == true)
+        else if (m_ScriptBoathouseManager.m_MultiStorageEnabled == true)
         {
-            m_EquipButton1.enabled = false;
-            m_EquipButton2.enabled = false;
-            m_EquipButton3.enabled = false;
-            m_EquipButton4.enabled = false;
+            m_EquipButton1.SetActive (false);
+            m_EquipButton2.SetActive (false);
+            m_EquipButton3.SetActive (false);
+            m_EquipButton4.SetActive(false);
         }
 
-        m_ShopButton.enabled = false;
-        m_BackButton.enabled = false;
-        m_ElementButton.enabled = false;
+        m_ShopButton.SetActive(false);
+        m_BackButton.SetActive(false);
+        m_ElementButton.SetActive(false);
+        m_Ship.SetActive(false);
 
         m_BlackPanel.SetActive(true);
+        m_BlackPanelButton.enabled = true;
+
+        m_DescriptionFrame.SetActive(true);
+        m_DescriptionField.enabled = true;
+        
 
         switch (m_Index)
         {
@@ -177,5 +186,10 @@ public class BoathouseShipEquipementButton : MonoBehaviour {
         }
     }
 
+    public void DescritpionErase()
+    {
+        m_DescriptionFrame.SetActive(false);
+        m_DescriptionField.enabled = false;
+    }
 
 }

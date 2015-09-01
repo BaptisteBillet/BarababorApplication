@@ -118,7 +118,7 @@ namespace Google2u
 
 		private SPECIALIST()
 		{
-			Rows.Add( new SPECIALISTRow("Specialist1", "Specialist1", "Damage", "5", ""));
+			Rows.Add( new SPECIALISTRow("Specialist1", "Specialist1", "Damage", "5", "A specialist"));
 		}
 		public IGoogle2uRow GetGenRow(string in_RowString)
 		{
