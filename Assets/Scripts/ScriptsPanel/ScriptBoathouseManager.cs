@@ -18,7 +18,7 @@ public class ScriptBoathouseManager : MonoBehaviour {
 
     public int m_NumberofShip;
 
-    
+    public bool m_Enabled;
 
 	// Use this for initialization
 	
@@ -45,6 +45,8 @@ public class ScriptBoathouseManager : MonoBehaviour {
 
 	public void MultiStorage (bool Enable)
     {
+        m_Enabled = Enable;
+
         m_ButtonEquip.SetActive (!Enable);
         m_ButtonEquip1.SetActive(Enable);
         m_ButtonEquip2.SetActive(Enable);

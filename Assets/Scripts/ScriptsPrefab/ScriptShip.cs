@@ -87,10 +87,19 @@ public class ScriptShip : MonoBehaviour
     public string m_EquipedEquipement4;
     public string m_EquipedUltimate;
 
+
+    public string[] m_ArrayofEquipementType = new string[4];
+
+    public string m_RegisteredEquipementType1;
+    public string m_RegisteredEquipementType2;
+    public string m_RegisteredEquipementType3;
+    public string m_RegisteredEquipementType4;
+
+
     GameObject m_SelectedEquipement;
     ScriptShipEquipement m_ScriptShipEquipement;
 
-    bool m_UltimateEquiped;
+    public bool m_UltimateEquiped;
     //____________________________________________________________________________________________
     //Where the different Equipements of the ship are displayed 
 
@@ -182,14 +191,20 @@ public class ScriptShip : MonoBehaviour
         m_ArrayofEquipement[2] = PlayerPrefs.GetString("m_EquipedEquipement2");
         m_ArrayofEquipement[3] = PlayerPrefs.GetString("m_EquipedEquipement3");
 
-        if (m_UltimateEquiped==false)
+        if (m_ArrayofEquipementType[3]=="Weapon" || m_ArrayofEquipementType[3] == "Gadget")
         {
             m_ArrayofEquipement[4] = PlayerPrefs.GetString("m_EquipedEquipement4");
         }
-        else if (m_UltimateEquiped==true)
+        else if (m_ArrayofEquipementType[3] == "Ultimate")
         {
             m_ArrayofEquipement[4] = PlayerPrefs.GetString("m_EquipedUltime");
         }
+
+        m_ArrayofEquipementType[0] = PlayerPrefs.GetString(m_RegisteredEquipementType1);
+        m_ArrayofEquipementType[1] = PlayerPrefs.GetString(m_RegisteredEquipementType2);
+        m_ArrayofEquipementType[2] = PlayerPrefs.GetString(m_RegisteredEquipementType3);
+        m_ArrayofEquipementType[3] = PlayerPrefs.GetString(m_RegisteredEquipementType4);
+
 
         Debug.Log(m_ArrayofEquipement[0]);
         Debug.Log(m_ArrayofEquipement[1]);
@@ -277,6 +292,7 @@ public class ScriptShip : MonoBehaviour
 
             case "Ultimate":
                 PlayerPrefs.SetString("m_EquipedUltimate", m_ScriptShipEquipement.m_EquipementName);
+                m_RegisteredEquipementType4 = "Ultimate";
                 m_UltimateEquiped = true;
                 break;
         }
@@ -288,19 +304,22 @@ public class ScriptShip : MonoBehaviour
         {
             case 1:
                 PlayerPrefs.SetString("m_EquipedEquipement1", m_ScriptShipEquipement.m_EquipementName);
+                PlayerPrefs.SetString(m_RegisteredEquipementType1, m_ScriptShipEquipement.m_EquipementType);
                 break;
 
             case 2:
                 PlayerPrefs.SetString("m_EquipedEquipement2", m_ScriptShipEquipement.m_EquipementName);
+                PlayerPrefs.SetString(m_RegisteredEquipementType2, m_ScriptShipEquipement.m_EquipementType);
                 break;
 
             case 3:
                 PlayerPrefs.SetString("m_EquipedEquipement3", m_ScriptShipEquipement.m_EquipementName);
+                PlayerPrefs.SetString(m_RegisteredEquipementType3, m_ScriptShipEquipement.m_EquipementType);
                 break;
 
             case 4:
                 PlayerPrefs.SetString("m_EquipedEquipement4", m_ScriptShipEquipement.m_EquipementName);
-                m_UltimateEquiped = false;
+                PlayerPrefs.SetString(m_RegisteredEquipementType4, m_ScriptShipEquipement.m_EquipementType);
                 break;
         }
     }

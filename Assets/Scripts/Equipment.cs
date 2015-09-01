@@ -20,8 +20,9 @@ public class Equipment : Object {
     public string m_Rank;
     public string m_State1;
     public string m_State2;
+    public string m_Description;
 
-  
+    
 
     public Equipment()
     {

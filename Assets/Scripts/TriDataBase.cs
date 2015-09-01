@@ -161,6 +161,8 @@ public class TriDataBase : MonoBehaviour
             m_Equipement.m_State2 = row._State2;
             m_Equipement.m_Damage = row._Damage;
             m_Equipement.m_DamageUpgrade = row._DamageUpgrade;
+            m_Equipement.m_Description = row._Description;
+            
 
             m_Equipement.m_Name = row._Name;
 
@@ -186,6 +188,8 @@ public class TriDataBase : MonoBehaviour
             m_Equipement.m_State2 = row._State2;
             m_Equipement.m_Damage = row._Damage;
             m_Equipement.m_DamageUpgrade = row._DamageUpgrade;
+            m_Equipement.m_Description = row._Description;
+           
 
             m_Equipement.m_Name = row._Name;
 
@@ -211,6 +215,8 @@ public class TriDataBase : MonoBehaviour
             m_Equipement.m_State2 = row._State2;
             m_Equipement.m_Damage = row._Damage;
             m_Equipement.m_DamageUpgrade = row._DamageUpgrade;
+            m_Equipement.m_Description = row._Description;
+            
 
             m_Equipement.m_Name = row._Name;
 
@@ -225,6 +231,8 @@ public class TriDataBase : MonoBehaviour
            
             m_Specialist.m_Speciality = row._Speciality;
             m_Specialist.m_Value = row._Value;
+            m_Specialist.m_Description = row._Description;
+
 
             m_Specialist.m_Name = row._Name;
 
