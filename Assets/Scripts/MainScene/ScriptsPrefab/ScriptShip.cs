@@ -59,9 +59,7 @@ public class ScriptShip : MonoBehaviour
     public string m_CurrentMast;
     public string m_CurrentKeel;
 
-    public GameObject m_BoathousePanel;// The boathouse panel, where the playerprefs are stored
-    ScriptBoathouseManager m_ScriptBoathouseManager;
-
+   
 
 
     public Text m_SpeedField;//Different Fields where the ship's characteristics are displayed 
@@ -138,7 +136,7 @@ public class ScriptShip : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
-        m_ScriptBoathouseManager = m_BoathousePanel.GetComponent<ScriptBoathouseManager>();// Get the script from the boathouse panel
+       
 
 
        
