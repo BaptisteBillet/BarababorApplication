@@ -7,7 +7,7 @@ public class ScriptShopPanelManager : MonoBehaviour {
     public GameObject m_Ship;
     ScriptShip m_ScriptShip;
 
-    List<string> m_PossessedWeapons = new List<string>;
+    List<string> m_PossessedWeapons = new List<string>();
 
 	// Use this for initialization
 	void Start ()
