@@ -7,14 +7,14 @@ public class Element : Object {
 
 
     //Caracteristiques
-    public float m_Damage;
+    public int m_Damage;
     public int m_Capacity;
     public int m_HealthPoint;
     public int m_Speed;
     public int m_Vision;
     public int m_Regeneration;
 
-    public float m_DamageUpgrade;
+    public int m_DamageUpgrade;
     public int m_CapacityUpgrade;
     public int m_HealthPointUpgrade;
     public int m_SpeedUpgrade;
