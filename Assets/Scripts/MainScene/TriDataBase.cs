@@ -232,7 +232,7 @@ public class TriDataBase : MonoBehaviour
             m_Specialist.m_Speciality = row._Speciality;
             m_Specialist.m_Value = row._Value;
             m_Specialist.m_Description = row._Description;
-
+            m_Specialist.m_Cost = row._Cost;
 
             m_Specialist.m_Name = row._Name;
 

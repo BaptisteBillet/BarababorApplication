@@ -13,7 +13,9 @@ public class ScriptBuyableItems : MonoBehaviour
 
     public int[] m_ArrayofCharacteristics = new int[12];
 
-    public int[] m_ArrayofEquipmentCharacteristics = new int[12];
+    public int[] m_ArrayofEquipmentCharacteristics = new int[9];
+
+    public string m_SpecialistSpeciality;
 
     public Mesh m_ItemAppearance;
 
@@ -93,6 +95,35 @@ public class ScriptBuyableItems : MonoBehaviour
                     m_Cost = TriDataBase.instance.m_MastDico[m_ItemName].m_Cost;
                     break;
                 
+            }
+        }
+
+        else if (m_IsElement==false)
+        {
+            switch (m_ItemType)
+            {
+                case "Specialist":
+                    m_SpecialistSpeciality = TriDataBase.instance.m_SpecialistDico[m_ItemName].m_Speciality;
+
+                    m_ArrayofEquipmentCharacteristics[0] = TriDataBase.instance.m_SpecialistDico[m_ItemName].m_Value;
+
+                    m_Cost = TriDataBase.instance.m_SpecialistDico[m_ItemName].m_Cost;
+                    break;
+
+                case "Weapon":
+                    m_ArrayofEquipmentCharacteristics[0] = TriDataBase.instance.m_WeaponDico[m_ItemName].m_Level;
+                    m_ArrayofEquipmentCharacteristics[1] = TriDataBase.instance.m_WeaponDico[m_ItemName].m_LevelUp;
+                    m_ArrayofEquipmentCharacteristics[2] = TriDataBase.instance.m_WeaponDico[m_ItemName].m_Damage;
+                    m_ArrayofEquipmentCharacteristics[3] = TriDataBase.instance.m_WeaponDico[m_ItemName].m_DamageUpgrade;
+                    m_ArrayofEquipmentCharacteristics[4] = TriDataBase.instance.m_WeaponDico[m_ItemName].m_Range;
+                    m_ArrayofEquipmentCharacteristics[5] = TriDataBase.instance.m_WeaponDico[m_ItemName].m_RangeUpgrade;
+                    m_ArrayofEquipmentCharacteristics[6] = Mathf.CeilToInt(TriDataBase.instance.m_WeaponDico[m_ItemName].m_Cooldown);
+                    m_ArrayofEquipmentCharacteristics[7] = Mathf.CeilToInt(TriDataBase.instance.m_WeaponDico[m_ItemName].m_CooldownUpgrade);
+                    m_ArrayofEquipmentCharacteristics[8] = TriDataBase.instance.m_WeaponDico[m_ItemName].m_ShootType;
+                    
+
+                    m_Cost = TriDataBase.instance.m_SpecialistDico[m_ItemName].m_Cost;
+
             }
         }
 	}

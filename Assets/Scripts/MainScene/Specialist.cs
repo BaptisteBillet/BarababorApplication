@@ -8,6 +8,8 @@ public class Specialist :Object {
     public int m_Value;
     public string m_Description;
 
+    public int m_Cost;
+
 	// Use this for initialization
 	public Specialist () {
 	

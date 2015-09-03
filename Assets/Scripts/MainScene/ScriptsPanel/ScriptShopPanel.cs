@@ -12,11 +12,12 @@ public class ScriptShopPanel : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-
-        m_CoinsMetersField.text = "" + PlayerPrefs.GetInt("m_Coins");
-        m_DiamondsMetersField.text = "" + PlayerPrefs.GetInt("m_Diamonds");
-	
+        CurrencyMetersUpdate();
 	}
 	
-	
+	public void CurrencyMetersUpdate()
+    {
+        m_CoinsMetersField.text = "" + PlayerPrefs.GetInt("m_Coins");
+        m_DiamondsMetersField.text = "" + PlayerPrefs.GetInt("m_Diamonds");
+    }
 }
