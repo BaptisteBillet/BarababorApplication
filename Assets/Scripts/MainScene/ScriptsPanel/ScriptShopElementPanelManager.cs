@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
-public class ScriptShopPanelManager : MonoBehaviour {
+public class ScriptShopElementPanelManager : MonoBehaviour {
 
     public GameObject m_Ship;
     ScriptShip m_ScriptShip;
@@ -17,10 +17,12 @@ public class ScriptShopPanelManager : MonoBehaviour {
     public Text m_VisionField;
     public Text m_RegenerationField;
 
+    public Text m_CostField;
+
 	// Use this for initialization
 	void Start ()
     {
-        m_ScriptShip = m_Ship.GetComponent<ScriptShip>();
+       // m_ScriptShip = m_Ship.GetComponent<ScriptShip>();
 	}
 	
 	public void DisplayInfos(GameObject SelectedItem)
@@ -35,6 +37,9 @@ public class ScriptShopPanelManager : MonoBehaviour {
             m_HealthPointField.text = "" + m_ScriptBuyableItem.m_ArrayofCharacteristics[6] + "/" + m_ScriptBuyableItem.m_ArrayofCharacteristics[7];
             m_VisionField.text = "" + m_ScriptBuyableItem.m_ArrayofCharacteristics[8] + "/" + m_ScriptBuyableItem.m_ArrayofCharacteristics[9];
             m_RegenerationField.text = "" + m_ScriptBuyableItem.m_ArrayofCharacteristics[10] + "/" + m_ScriptBuyableItem.m_ArrayofCharacteristics[11];
+
+            m_CostField.text = "" + m_ScriptBuyableItem.m_Cost;
         }
+
     }
 }
