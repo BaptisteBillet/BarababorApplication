@@ -18,7 +18,8 @@ namespace Google2u
 		public string _Speciality;
 		public int _Value;
 		public string _Description;
-		public SPECIALISTRow(string __ID, string __Name, string __Speciality, string __Value, string __Description) 
+		public int _Cost;
+		public SPECIALISTRow(string __ID, string __Name, string __Speciality, string __Value, string __Description, string __Cost) 
 		{
 			_Name = __Name.Trim();
 			_Speciality = __Speciality.Trim();
@@ -30,9 +31,16 @@ namespace Google2u
 					Debug.LogError("Failed To Convert _Value string: "+ __Value +" to int");
 			}
 			_Description = __Description.Trim();
+			{
+			int res;
+				if(int.TryParse(__Cost, NumberStyles.Any, CultureInfo.InvariantCulture, out res))
+					_Cost = res;
+				else
+					Debug.LogError("Failed To Convert _Cost string: "+ __Cost +" to int");
+			}
 		}
 
-		public int Length { get { return 4; } }
+		public int Length { get { return 5; } }
 
 		public string this[int i]
 		{
@@ -59,6 +67,9 @@ namespace Google2u
 				case 3:
 					ret = _Description.ToString();
 					break;
+				case 4:
+					ret = _Cost.ToString();
+					break;
 			}
 
 			return ret;
@@ -81,6 +92,9 @@ namespace Google2u
 				case "Description":
 					ret = _Description.ToString();
 					break;
+				case "Cost":
+					ret = _Cost.ToString();
+					break;
 			}
 
 			return ret;
@@ -92,6 +106,7 @@ namespace Google2u
 			ret += "{" + "Speciality" + " : " + _Speciality.ToString() + "} ";
 			ret += "{" + "Value" + " : " + _Value.ToString() + "} ";
 			ret += "{" + "Description" + " : " + _Description.ToString() + "} ";
+			ret += "{" + "Cost" + " : " + _Cost.ToString() + "} ";
 			return ret;
 		}
 	}
@@ -118,7 +133,7 @@ namespace Google2u
 
 		private SPECIALIST()
 		{
-			Rows.Add( new SPECIALISTRow("Specialist1", "Specialist1", "Damage", "5", "A specialist"));
+			Rows.Add( new SPECIALISTRow("Specialist1", "Specialist1", "Damage", "5", "A specialist", "12"));
 		}
 		public IGoogle2uRow GetGenRow(string in_RowString)
 		{

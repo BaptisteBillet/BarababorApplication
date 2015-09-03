@@ -18,13 +18,13 @@ namespace Google2u
 		public int _HealthPoint;
 		public int _Capacity;
 		public int _Speed;
-		public float _Damage;
+		public int _Damage;
 		public int _Vision;
 		public int _Regeneration;
 		public int _HealthPointUpgrade;
 		public int _CapacityUpgrade;
 		public int _SpeedUpgrade;
-		public float _DamageUpgrade;
+		public int _DamageUpgrade;
 		public int _VisionUpgrade;
 		public int _RegenerationUpgrade;
 		public int _Cost;
@@ -55,8 +55,8 @@ namespace Google2u
 					Debug.LogError("Failed To Convert _Speed string: "+ __Speed +" to int");
 			}
 			{
-			float res;
-				if(float.TryParse(__Damage, NumberStyles.Any, CultureInfo.InvariantCulture, out res))
+			int res;
+				if(int.TryParse(__Damage, NumberStyles.Any, CultureInfo.InvariantCulture, out res))
 					_Damage = res;
 				else
 					Debug.LogError("Failed To Convert _Damage string: "+ __Damage +" to float");
@@ -97,8 +97,8 @@ namespace Google2u
 					Debug.LogError("Failed To Convert _SpeedUpgrade string: "+ __SpeedUpgrade +" to int");
 			}
 			{
-			float res;
-				if(float.TryParse(__DamageUpgrade, NumberStyles.Any, CultureInfo.InvariantCulture, out res))
+			int res;
+				if(int.TryParse(__DamageUpgrade, NumberStyles.Any, CultureInfo.InvariantCulture, out res))
 					_DamageUpgrade = res;
 				else
 					Debug.LogError("Failed To Convert _DamageUpgrade string: "+ __DamageUpgrade +" to float");
