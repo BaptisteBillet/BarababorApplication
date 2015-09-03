@@ -23,7 +23,7 @@ public class ScriptShopEquipmentPanel : MonoBehaviour {
 
     }
 
-    public void (GameObject SelectedItem)
+    public void DisplayInfo (GameObject SelectedItem)
     {
 
     }
