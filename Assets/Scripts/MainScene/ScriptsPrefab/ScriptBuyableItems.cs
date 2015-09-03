@@ -111,6 +111,7 @@ public class ScriptBuyableItems : MonoBehaviour
                     break;
 
                 case "Weapon":
+
                     m_ArrayofEquipmentCharacteristics[0] = TriDataBase.instance.m_WeaponDico[m_ItemName].m_Level;
                     m_ArrayofEquipmentCharacteristics[1] = TriDataBase.instance.m_WeaponDico[m_ItemName].m_LevelUp;
                     m_ArrayofEquipmentCharacteristics[2] = TriDataBase.instance.m_WeaponDico[m_ItemName].m_Damage;
