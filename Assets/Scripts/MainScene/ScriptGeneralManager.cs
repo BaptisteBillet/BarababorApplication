@@ -122,13 +122,15 @@ public class ScriptGeneralManager : MonoBehaviour
 	#endregion
 
 	// Use this for initialization
-	void Start () 
+	void Awake () 
 	{
 		m_CurrentYear = System.DateTime.Now.Year; //Set today's year to m_CurrentYear (today = the day when the player starts the application)
 		m_CurrentMonth = System.DateTime.Now.Month;// Set today's month to m_CurrentMonth 
 		m_CurrentDay = System.DateTime.Now.Day;
 		m_CurrentHour = System.DateTime.Now.Hour;
-	
+
+        PlayerPrefs.SetInt("m_Coins", 100);
+        PlayerPrefs.SetInt("m_Diamonds", 5);
 
 		HungerMeter(); // Start the functions HungerMeter, ThirstMeter...
 		ThirstMeter(); 
@@ -298,7 +300,7 @@ public class ScriptGeneralManager : MonoBehaviour
 			}
 		}		
 		
-		float ImageMove = m_Health * -4.8f;
+	float ImageMove = m_Health * -4.8f;
 		
 		
 		m_HealthMeterImage.transform.position+=new Vector3 (0,ImageMove,0);
@@ -404,7 +406,7 @@ public class ScriptGeneralManager : MonoBehaviour
 	}
 
 #endregion
-
+   
 #region StorageFunction
 	public void Hunger ()
 	{
