@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class ScriptBuyableItems : MonoBehaviour
 {
 
-    public bool m_IsElement;
-
+   
     public string m_ItemName;
     public string m_ItemType;
 
@@ -19,14 +19,15 @@ public class ScriptBuyableItems : MonoBehaviour
 
     public string m_SpecialistSpeciality;
 
+    public Text m_NameField;
+    public string m_ShownItemName;
+
     public Mesh m_ItemAppearance;
 
 	// Use this for initialization
 	void Start ()
     {
-	    if (m_IsElement==true)
-        {
-            switch (m_ItemType)
+	    switch (m_ItemType)
             {
                 case "Bow":
                      m_ArrayofCharacteristics[0] = TriDataBase.instance.m_BowDico[m_ItemName].m_Speed;
@@ -98,10 +99,9 @@ public class ScriptBuyableItems : MonoBehaviour
                     break;
                 
             }
-        }
+        
 
-        else if (m_IsElement==false)
-        {
+        
             switch (m_ItemType)
             {
                 case "Specialist":
@@ -110,6 +110,8 @@ public class ScriptBuyableItems : MonoBehaviour
                     m_ArrayofEquipmentCharacteristics[0] = TriDataBase.instance.m_SpecialistDico[m_ItemName].m_Value;
 
                     m_Cost = TriDataBase.instance.m_SpecialistDico[m_ItemName].m_Cost;
+
+                    
                     break;
 
                 case "Weapon":
@@ -168,7 +170,9 @@ public class ScriptBuyableItems : MonoBehaviour
 
 
             }
-        }
+        
+
+        m_NameField.text = m_ShownItemName;
 	}
 	
 	

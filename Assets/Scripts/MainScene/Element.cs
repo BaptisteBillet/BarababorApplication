@@ -23,7 +23,9 @@ public class Element : Object {
 
     public int m_Cost;
     public string m_Grade;
-    public string m_Rank; 
+    public string m_Rank;
+
+    public string m_Description;
 
     public string m_Name;
 

@@ -29,8 +29,7 @@ public class ScriptShopElementPanelManager : MonoBehaviour {
     {
         m_ScriptBuyableItem = SelectedItem.GetComponent<ScriptBuyableItems>();
 
-        if (m_ScriptBuyableItem.m_IsElement == true)
-        {
+        
             m_SpeedField.text = "" + m_ScriptBuyableItem.m_ArrayofCharacteristics[0] + "/" + m_ScriptBuyableItem.m_ArrayofCharacteristics[1];
             m_DamageField.text = "" + m_ScriptBuyableItem.m_ArrayofCharacteristics[2] + "/" + m_ScriptBuyableItem.m_ArrayofCharacteristics[3];
             m_CapacityField.text = "" + m_ScriptBuyableItem.m_ArrayofCharacteristics[4] + "/" + m_ScriptBuyableItem.m_ArrayofCharacteristics[5];
@@ -39,7 +38,7 @@ public class ScriptShopElementPanelManager : MonoBehaviour {
             m_RegenerationField.text = "" + m_ScriptBuyableItem.m_ArrayofCharacteristics[10] + "/" + m_ScriptBuyableItem.m_ArrayofCharacteristics[11];
 
             m_CostField.text = "" + m_ScriptBuyableItem.m_Cost;
-        }
+        
 
     }
 }
