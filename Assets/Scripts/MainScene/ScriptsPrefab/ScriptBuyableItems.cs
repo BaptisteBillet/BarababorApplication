@@ -22,6 +22,8 @@ public class ScriptBuyableItems : MonoBehaviour
     public Text m_NameField;
     public string m_ShownItemName;
 
+    public string m_Description;
+
     public Mesh m_ItemAppearance;
 
 	// Use this for initialization
@@ -43,7 +45,9 @@ public class ScriptBuyableItems : MonoBehaviour
                     m_ArrayofCharacteristics[10] = TriDataBase.instance.m_BowDico[m_ItemName].m_Vision;
                     m_ArrayofCharacteristics[11] = TriDataBase.instance.m_BowDico[m_ItemName].m_VisionUpgrade;
 
-                    m_Cost = TriDataBase.instance.m_BowDico[m_ItemName].m_Cost;
+                    m_Description = TriDataBase.instance.m_BowDico[m_ItemName].m_Description;
+
+                m_Cost = TriDataBase.instance.m_BowDico[m_ItemName].m_Cost;
                     break;
 
                 case "Stern":
@@ -60,7 +64,9 @@ public class ScriptBuyableItems : MonoBehaviour
                    m_ArrayofCharacteristics[10] = TriDataBase.instance.m_SternDico[m_ItemName].m_Vision;
                    m_ArrayofCharacteristics[11] = TriDataBase.instance.m_SternDico[m_ItemName].m_VisionUpgrade;
 
-                   m_Cost = TriDataBase.instance.m_SternDico[m_ItemName].m_Cost;
+                m_Description = TriDataBase.instance.m_SternDico[m_ItemName].m_Description;
+
+                m_Cost = TriDataBase.instance.m_SternDico[m_ItemName].m_Cost;
                     break;
 
                 case "Keel":
@@ -76,8 +82,10 @@ public class ScriptBuyableItems : MonoBehaviour
                     m_ArrayofCharacteristics[9] = TriDataBase.instance.m_KeelDico[m_ItemName].m_RegenerationUpgrade;
                    m_ArrayofCharacteristics[10] = TriDataBase.instance.m_KeelDico[m_ItemName].m_Vision;
                    m_ArrayofCharacteristics[11] = TriDataBase.instance.m_KeelDico[m_ItemName].m_VisionUpgrade;
-                                                                         
-                   m_Cost = TriDataBase.instance.m_KeelDico[m_ItemName].m_Cost;
+
+                m_Description = TriDataBase.instance.m_KeelDico[m_ItemName].m_Description;
+
+                m_Cost = TriDataBase.instance.m_KeelDico[m_ItemName].m_Cost;
                     break;
 
                 case "Mast":
@@ -95,7 +103,9 @@ public class ScriptBuyableItems : MonoBehaviour
                    m_ArrayofCharacteristics[10] = TriDataBase.instance.m_MastDico[m_ItemName].m_Vision;
                    m_ArrayofCharacteristics[11] = TriDataBase.instance.m_MastDico[m_ItemName].m_VisionUpgrade;
 
-                    m_Cost = TriDataBase.instance.m_MastDico[m_ItemName].m_Cost;
+                m_Description = TriDataBase.instance.m_MastDico[m_ItemName].m_Description;
+
+                m_Cost = TriDataBase.instance.m_MastDico[m_ItemName].m_Cost;
                     break;
                 
             }
@@ -111,8 +121,9 @@ public class ScriptBuyableItems : MonoBehaviour
 
                     m_Cost = TriDataBase.instance.m_SpecialistDico[m_ItemName].m_Cost;
 
-                    
-                    break;
+                m_Description = TriDataBase.instance.m_SpecialistDico[m_ItemName].m_Description;
+
+                break;
 
                 case "Weapon":
 
@@ -129,7 +140,9 @@ public class ScriptBuyableItems : MonoBehaviour
                     m_State1 = TriDataBase.instance.m_WeaponDico[m_ItemName].m_State1;
                     m_State2 = TriDataBase.instance.m_WeaponDico[m_ItemName].m_State2;
 
-                    m_Cost = TriDataBase.instance.m_WeaponDico[m_ItemName].m_Cost;
+                m_Description = TriDataBase.instance.m_WeaponDico[m_ItemName].m_Description;
+
+                m_Cost = TriDataBase.instance.m_WeaponDico[m_ItemName].m_Cost;
                     break;
 
                 case "Gadget":
@@ -147,7 +160,9 @@ public class ScriptBuyableItems : MonoBehaviour
                     m_State1 = TriDataBase.instance.m_GadgetDico[m_ItemName].m_State1;
                     m_State2 = TriDataBase.instance.m_GadgetDico[m_ItemName].m_State2;
 
-                    m_Cost = TriDataBase.instance.m_GadgetDico[m_ItemName].m_Cost;
+                m_Description = TriDataBase.instance.m_GadgetDico[m_ItemName].m_Description;
+
+                m_Cost = TriDataBase.instance.m_GadgetDico[m_ItemName].m_Cost;
                     break;
 
                 case "Ultimate":
@@ -165,7 +180,9 @@ public class ScriptBuyableItems : MonoBehaviour
                     m_State1 = TriDataBase.instance.m_UltimateDico[m_ItemName].m_State1;
                     m_State2 = TriDataBase.instance.m_UltimateDico[m_ItemName].m_State2;
 
-                    m_Cost = TriDataBase.instance.m_UltimateDico[m_ItemName].m_Cost;
+                m_Description = TriDataBase.instance.m_UltimateDico[m_ItemName].m_Description;
+
+                m_Cost = TriDataBase.instance.m_UltimateDico[m_ItemName].m_Cost;
                     break;
 
 

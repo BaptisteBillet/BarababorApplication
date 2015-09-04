@@ -50,6 +50,8 @@ public class TriDataBase : MonoBehaviour
             m_Element.m_SpeedUpgrade = row._SpeedUpgrade;
             m_Element.m_VisionUpgrade = row._VisionUpgrade;
 
+            //m_Element.m_Description = row._Description;
+
             m_Element.m_Cost = row._Cost;
             m_Element.m_Grade = row._Grade;
             m_Element.m_Rank = row._Rank;
@@ -76,6 +78,8 @@ public class TriDataBase : MonoBehaviour
             m_Element.m_RegenerationUpgrade = row._RegenerationUpgrade;
             m_Element.m_SpeedUpgrade = row._SpeedUpgrade;
             m_Element.m_VisionUpgrade = row._VisionUpgrade;
+
+            //m_Element.m_Description = row._Description;
 
             m_Element.m_Cost = row._Cost;
             m_Element.m_Grade = row._Grade;
@@ -104,6 +108,8 @@ public class TriDataBase : MonoBehaviour
             m_Element.m_SpeedUpgrade = row._SpeedUpgrade;
             m_Element.m_VisionUpgrade = row._VisionUpgrade;
 
+           // m_Element.m_Description = row._Description;
+
             m_Element.m_Cost = row._Cost;
             m_Element.m_Grade = row._Grade;
             m_Element.m_Rank = row._Rank;
@@ -130,6 +136,8 @@ public class TriDataBase : MonoBehaviour
             m_Element.m_RegenerationUpgrade = row._RegenerationUpgrade;
             m_Element.m_SpeedUpgrade = row._SpeedUpgrade;
             m_Element.m_VisionUpgrade = row._VisionUpgrade;
+
+            //m_Element.m_Description = row._Description;
 
             m_Element.m_Cost = row._Cost;
             m_Element.m_Grade = row._Grade;

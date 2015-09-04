@@ -322,7 +322,7 @@ namespace Google2u
 
             if (!string.IsNullOrEmpty(UpdateMessage))
             {
-                //Debug.Log(UpdateMessage);
+                Debug.Log(UpdateMessage);
                 UpdateMessage = string.Empty;
             }
 
