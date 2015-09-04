@@ -14,6 +14,8 @@ public class ScriptBuyableItems : MonoBehaviour
     public int[] m_ArrayofCharacteristics = new int[12];
 
     public int[] m_ArrayofEquipmentCharacteristics = new int[9];
+    public string m_State1;
+    public string m_State2;
 
     public string m_SpecialistSpeciality;
 
@@ -121,7 +123,9 @@ public class ScriptBuyableItems : MonoBehaviour
                     m_ArrayofEquipmentCharacteristics[6] = Mathf.CeilToInt(TriDataBase.instance.m_WeaponDico[m_ItemName].m_Cooldown);
                     m_ArrayofEquipmentCharacteristics[7] = Mathf.CeilToInt(TriDataBase.instance.m_WeaponDico[m_ItemName].m_CooldownUpgrade);
                     m_ArrayofEquipmentCharacteristics[8] = TriDataBase.instance.m_WeaponDico[m_ItemName].m_ShootType;
-                    
+
+                    m_State1 = TriDataBase.instance.m_WeaponDico[m_ItemName].m_State1;
+                    m_State2 = TriDataBase.instance.m_WeaponDico[m_ItemName].m_State2;
 
                     m_Cost = TriDataBase.instance.m_WeaponDico[m_ItemName].m_Cost;
                     break;
@@ -138,8 +142,10 @@ public class ScriptBuyableItems : MonoBehaviour
                     m_ArrayofEquipmentCharacteristics[7] = Mathf.CeilToInt(TriDataBase.instance.m_GadgetDico[m_ItemName].m_CooldownUpgrade);
                     m_ArrayofEquipmentCharacteristics[8] = TriDataBase.instance.m_GadgetDico[m_ItemName].m_ShootType;
 
+                    m_State1 = TriDataBase.instance.m_GadgetDico[m_ItemName].m_State1;
+                    m_State2 = TriDataBase.instance.m_GadgetDico[m_ItemName].m_State2;
 
-                    m_Cost = TriDataBase.instance.m_WeaponDico[m_ItemName].m_Cost;
+                    m_Cost = TriDataBase.instance.m_GadgetDico[m_ItemName].m_Cost;
                     break;
 
                 case "Ultimate":
@@ -152,10 +158,12 @@ public class ScriptBuyableItems : MonoBehaviour
                     m_ArrayofEquipmentCharacteristics[5] = TriDataBase.instance.m_UltimateDico[m_ItemName].m_RangeUpgrade;
                     m_ArrayofEquipmentCharacteristics[6] = Mathf.CeilToInt(TriDataBase.instance.m_UltimateDico[m_ItemName].m_Cooldown);
                     m_ArrayofEquipmentCharacteristics[7] = Mathf.CeilToInt(TriDataBase.instance.m_UltimateDico[m_ItemName].m_CooldownUpgrade);
-                    m_ArrayofEquipmentCharacteristics[8] = TriDataBase.instance.m_GadgetDico[m_ItemName].m_ShootType;
+                    m_ArrayofEquipmentCharacteristics[8] = TriDataBase.instance.m_UltimateDico[m_ItemName].m_ShootType;
 
+                    m_State1 = TriDataBase.instance.m_UltimateDico[m_ItemName].m_State1;
+                    m_State2 = TriDataBase.instance.m_UltimateDico[m_ItemName].m_State2;
 
-                    m_Cost = TriDataBase.instance.m_WeaponDico[m_ItemName].m_Cost;
+                    m_Cost = TriDataBase.instance.m_UltimateDico[m_ItemName].m_Cost;
                     break;
 
 
