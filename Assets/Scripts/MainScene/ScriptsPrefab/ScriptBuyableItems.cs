@@ -4,8 +4,6 @@ using UnityEngine.UI;
 
 public class ScriptBuyableItems : MonoBehaviour
 {
-
-   
     public string m_ItemName;
     public string m_ItemType;
 

@@ -30,7 +30,8 @@ namespace Google2u
 		public int _Cost;
 		public string _Grade;
 		public string _Rank;
-		public MASTRow(string __ID, string __Name, string __HealthPoint, string __Capacity, string __Speed, string __Damage, string __Vision, string __Regeneration, string __HealthPointUpgrade, string __CapacityUpgrade, string __SpeedUpgrade, string __DamageUpgrade, string __VisionUpgrade, string __RegenerationUpgrade, string __Cost, string __Grade, string __Rank) 
+		public string _Description;
+		public MASTRow(string __ID, string __Name, string __HealthPoint, string __Capacity, string __Speed, string __Damage, string __Vision, string __Regeneration, string __HealthPointUpgrade, string __CapacityUpgrade, string __SpeedUpgrade, string __DamageUpgrade, string __VisionUpgrade, string __RegenerationUpgrade, string __Cost, string __Grade, string __Rank, string __Description) 
 		{
 			_Name = __Name.Trim();
 			{
@@ -59,7 +60,7 @@ namespace Google2u
 				if(int.TryParse(__Damage, NumberStyles.Any, CultureInfo.InvariantCulture, out res))
 					_Damage = res;
 				else
-					Debug.LogError("Failed To Convert _Damage string: "+ __Damage +" to float");
+					Debug.LogError("Failed To Convert _Damage string: "+ __Damage +" to int");
 			}
 			{
 			int res;
@@ -101,7 +102,7 @@ namespace Google2u
 				if(int.TryParse(__DamageUpgrade, NumberStyles.Any, CultureInfo.InvariantCulture, out res))
 					_DamageUpgrade = res;
 				else
-					Debug.LogError("Failed To Convert _DamageUpgrade string: "+ __DamageUpgrade +" to float");
+					Debug.LogError("Failed To Convert _DamageUpgrade string: "+ __DamageUpgrade +" to int");
 			}
 			{
 			int res;
@@ -126,9 +127,10 @@ namespace Google2u
 			}
 			_Grade = __Grade.Trim();
 			_Rank = __Rank.Trim();
+			_Description = __Description.Trim();
 		}
 
-		public int Length { get { return 16; } }
+		public int Length { get { return 17; } }
 
 		public string this[int i]
 		{
@@ -191,6 +193,9 @@ namespace Google2u
 				case 15:
 					ret = _Rank.ToString();
 					break;
+				case 16:
+					ret = _Description.ToString();
+					break;
 			}
 
 			return ret;
@@ -249,6 +254,9 @@ namespace Google2u
 				case "Rank":
 					ret = _Rank.ToString();
 					break;
+				case "Description":
+					ret = _Description.ToString();
+					break;
 			}
 
 			return ret;
@@ -272,6 +280,7 @@ namespace Google2u
 			ret += "{" + "Cost" + " : " + _Cost.ToString() + "} ";
 			ret += "{" + "Grade" + " : " + _Grade.ToString() + "} ";
 			ret += "{" + "Rank" + " : " + _Rank.ToString() + "} ";
+			ret += "{" + "Description" + " : " + _Description.ToString() + "} ";
 			return ret;
 		}
 	}
@@ -298,8 +307,8 @@ namespace Google2u
 
 		private MAST()
 		{
-			Rows.Add( new MASTRow("Voile", "Voile", "1", "2", "3", "4", "5", "6", "0", "0", "0", "0", "0", "0", "0", "", ""));
-			Rows.Add( new MASTRow("VoileDefault", "VoileDefault", "1", "1", "1", "1", "1", "1", "0", "0", "0", "0", "0", "0", "0", "", ""));
+			Rows.Add( new MASTRow("Voile", "Voile", "1", "2", "3", "4", "5", "6", "0", "0", "0", "0", "0", "0", "0", "", "", ""));
+			Rows.Add( new MASTRow("VoileDefault", "VoileDefault", "1", "1", "1", "1", "1", "1", "0", "0", "0", "0", "0", "0", "0", "", "", ""));
 		}
 		public IGoogle2uRow GetGenRow(string in_RowString)
 		{
