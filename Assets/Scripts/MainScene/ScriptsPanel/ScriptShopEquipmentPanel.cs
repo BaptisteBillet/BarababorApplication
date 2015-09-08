@@ -20,9 +20,14 @@ public class ScriptShopEquipmentPanel : MonoBehaviour {
     public Text m_CharacteristicField6;
     public Text m_CharacteristicField7;
 
+    public ScriptInventory m_ScriptInventory;
+
+    public ScriptGeneralManager m_ScriptGeneralManager;
+
     public Text m_CostField;
 
     ScriptBuyableItems m_ScriptBuyableItems;
+
 
     // Use this for initialization
     void Start() {
@@ -115,6 +120,38 @@ public class ScriptShopEquipmentPanel : MonoBehaviour {
             m_CostField.text = "" + m_ScriptBuyableItems.m_Cost;
 
         }
+
+    }
+
+    public void Buy ()
+    {
+
+        switch (m_ScriptBuyableItems.m_ItemType)
+        {
+            case "Specialist":
+                m_ScriptInventory.m_PossessedSpecialistInventory.Add(m_ScriptBuyableItems.m_ItemName);
+                m_ScriptInventory.SaveInventory(m_ScriptInventory.m_PossessedSpecialistInventory,"SpecialistInventory");
+                break;
+
+            case "Weapon":
+                m_ScriptInventory.m_PossessedWeaponInventory.Add(m_ScriptBuyableItems.m_ItemName);
+                m_ScriptInventory.SaveInventory(m_ScriptInventory.m_PossessedWeaponInventory, "WeaponInventory");
+                break;
+
+            case "Gadget":
+                m_ScriptInventory.m_PossessedGadgetInventory.Add(m_ScriptBuyableItems.m_ItemName);
+                m_ScriptInventory.SaveInventory(m_ScriptInventory.m_PossessedGadgetInventory, "GadgetInventory");
+                break;
+
+            case "Ultimate":
+                m_ScriptInventory.m_PossessedUltimateInventory.Add(m_ScriptBuyableItems.m_ItemName);
+                m_ScriptInventory.SaveInventory(m_ScriptInventory.m_PossessedUltimateInventory, "UltimateInventory");
+                break;
+        }
+
+        m_ScriptGeneralManager.m_Coins -= m_ScriptBuyableItems.m_Cost;
+        
+
 
     }
 }
