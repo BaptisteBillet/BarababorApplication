@@ -51,22 +51,22 @@ public class ScriptShopElementPanelManager : MonoBehaviour {
         switch (m_ScriptBuyableItem.m_ItemType)
         {
             case "Bow":
-                m_ScriptInventory.m_PossessedSpecialistInventory.Add(m_ScriptBuyableItem.m_ItemName);
+                m_ScriptInventory.m_PossessedBowInventory.Add(m_ScriptBuyableItem.m_ItemName);
                 m_ScriptInventory.SaveInventory(m_ScriptInventory.m_PossessedBowInventory, "BowInventory");
                 break;
 
             case "Stern":
-                m_ScriptInventory.m_PossessedWeaponInventory.Add(m_ScriptBuyableItem.m_ItemName);
+                m_ScriptInventory.m_PossessedSternInventory.Add(m_ScriptBuyableItem.m_ItemName);
                 m_ScriptInventory.SaveInventory(m_ScriptInventory.m_PossessedSternInventory, "SternInventory");
                 break;
 
             case "Keel":
-                m_ScriptInventory.m_PossessedGadgetInventory.Add(m_ScriptBuyableItem.m_ItemName);
+                m_ScriptInventory.m_PossessedKeelInventory.Add(m_ScriptBuyableItem.m_ItemName);
                 m_ScriptInventory.SaveInventory(m_ScriptInventory.m_PossessedKeelInventory, "KeelInventory");
                 break;
 
             case "Mast":
-                m_ScriptInventory.m_PossessedUltimateInventory.Add(m_ScriptBuyableItem.m_ItemName);
+                m_ScriptInventory.m_PossessedMastInventory.Add(m_ScriptBuyableItem.m_ItemName);
                 m_ScriptInventory.SaveInventory(m_ScriptInventory.m_PossessedMastInventory, "MastInventory");
                 break;
         }

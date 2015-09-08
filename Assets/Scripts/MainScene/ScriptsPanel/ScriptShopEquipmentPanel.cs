@@ -132,6 +132,7 @@ public class ScriptShopEquipmentPanel : MonoBehaviour {
         {
             case "Specialist":
                 m_ScriptInventory.m_PossessedSpecialistInventory.Add(m_ScriptBuyableItems.m_ItemName);
+               
                 m_ScriptInventory.SaveInventory(m_ScriptInventory.m_PossessedSpecialistInventory,"SpecialistInventory");
                 break;
 

@@ -18,6 +18,8 @@ public class ScriptInventory : MonoBehaviour {
     
     string m_SaveString;
 
+    public List<string> StringTest = new List<string>();
+
     void Awake ()
     {
                
@@ -26,11 +28,13 @@ public class ScriptInventory : MonoBehaviour {
        // Load(m_PossessedKeelInventory, "KeelInventory");
        // Load(m_PossessedMastInventory, "MastInventory");
         Load(m_PossessedSpecialistInventory, "SpecialistInventory");
-      //  Load(m_PossessedWeaponInventory, "WeaponInventory");
-       // Load(m_PossessedGadgetInventory, "GadgetInventory");
-       // Load(m_PossessedUltimateInventory, "UltimateInventory");
-        
+        //  Load(m_PossessedWeaponInventory, "WeaponInventory");
+        // Load(m_PossessedGadgetInventory, "GadgetInventory");
+        // Load(m_PossessedUltimateInventory, "UltimateInventory");
 
+        Debug.Log(m_PossessedSpecialistInventory[0]);
+
+        //test();
     }
 	
    
@@ -39,29 +43,36 @@ public class ScriptInventory : MonoBehaviour {
 
     public void SaveInventory(List<string> m_List, string m_File)
     {
+        StringTest = m_List;
+
             foreach (string data in m_List)
             {
-                m_SaveString += data + "/";
+                m_SaveString += data + "|";
             }
-
-            File.WriteAllText(Application.dataPath + m_File, m_SaveString);
+        
+        
+        File.WriteAllText(Application.dataPath + m_File + ".txt", m_SaveString);
                   
     }
 #endregion
 
     public void Load (List<string> m_List,string m_File)
     {
-        StringReader Reader = new StringReader(File.ReadAllText(Application.dataPath + m_File ));
+        StringReader Reader = new StringReader(File.ReadAllText(Application.dataPath + m_File +".txt"));
 
         string s = Reader.ReadLine();
-
+       
         while (s != null)
         {
-            char[] delimiter = { '/' };
+            char[] delimiter = { '|' };
             string[] result = s.Split(delimiter);
 
-            for (int i=0; i<result.Length; i++)
+            
+
+            for (int i=0; i<result.Length-1; i++)
             {
+                Debug.Log(i);
+                Debug.Log(result[i]);
                 m_List.Add(result[i]);
             }
             
@@ -70,5 +81,14 @@ public class ScriptInventory : MonoBehaviour {
             s = Reader.ReadLine();
         }
 
+    }
+
+    public void test (List<string> m_List)
+    {
+        for (int i=0; i<m_List.Count;i++)
+        {
+            Debug.LogError(i);
+            Debug.Log(m_List[i]);
+        }
     }
 }
