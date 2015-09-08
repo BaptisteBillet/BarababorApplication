@@ -17,6 +17,7 @@ public class ScriptShopPanel : MonoBehaviour {
 	
 	public void CurrencyMetersUpdate()
     {
+        Debug.Log("OY");
         m_CoinsMetersField.text = "" + PlayerPrefs.GetInt("m_Coins");
         m_DiamondsMetersField.text = "" + PlayerPrefs.GetInt("m_Diamonds");
     }

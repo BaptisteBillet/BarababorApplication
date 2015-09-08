@@ -24,6 +24,8 @@ public class ScriptShopEquipmentPanel : MonoBehaviour {
 
     public ScriptGeneralManager m_ScriptGeneralManager;
 
+    public ScriptShopPanel m_ScriptShopPanel;
+
     public Text m_CostField;
 
     ScriptBuyableItems m_ScriptBuyableItems;
@@ -123,7 +125,7 @@ public class ScriptShopEquipmentPanel : MonoBehaviour {
 
     }
 
-    public void Buy ()
+    public void Buy (bool paidwithcoins)
     {
 
         switch (m_ScriptBuyableItems.m_ItemType)
@@ -148,8 +150,24 @@ public class ScriptShopEquipmentPanel : MonoBehaviour {
                 m_ScriptInventory.SaveInventory(m_ScriptInventory.m_PossessedUltimateInventory, "UltimateInventory");
                 break;
         }
+        int Coins;
+        int Diamonds;
 
-        m_ScriptGeneralManager.m_Coins -= m_ScriptBuyableItems.m_Cost;
+        Coins = PlayerPrefs.GetInt("m_Coins");
+        Diamonds = PlayerPrefs.GetInt("m_Diamonds");
+
+       
+           if (paidwithcoins == true)
+        {
+
+           Coins -= m_ScriptBuyableItems.m_Cost;
+           PlayerPrefs.SetInt("m_Coins", Coins);
+           m_ScriptShopPanel.CurrencyMetersUpdate();
+
+        }
+         
+
+        
         
 
 

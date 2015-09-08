@@ -18,21 +18,17 @@ public class ScriptInventory : MonoBehaviour {
     
     string m_SaveString;
 
-    void Start ()
+    void Awake ()
     {
-        //Count();
-        //m_PossessedSpecialistInventory.Add(PlayerPrefs.GetString(m_PossessedSpecialistInventory[0]));
-        //Debug.Log(m_PossessedSpecialistInventory[0]);
-
-        
-        Load(m_PossessedBowInventory, "BowInventory.txt");
-        Load(m_PossessedSternInventory, "SternInventory.txt");
-        Load(m_PossessedKeelInventory, "KeelInventory.txt");
-        Load(m_PossessedMastInventory, "MastInventory.txt");
-        Load(m_PossessedSpecialistInventory, "SpecialistInventory.txt");
-        Load(m_PossessedWeaponInventory, "WeaponInventory.txt");
-        Load(m_PossessedGadgetInventory, "GadgetInventory.txt");
-        Load(m_PossessedUltimateInventory, "UltimateInventory.txt");
+               
+       // Load(m_PossessedBowInventory, "BowInventory");
+       // Load(m_PossessedSternInventory, "SternInventory");
+       // Load(m_PossessedKeelInventory, "KeelInventory");
+       // Load(m_PossessedMastInventory, "MastInventory");
+        Load(m_PossessedSpecialistInventory, "SpecialistInventory");
+      //  Load(m_PossessedWeaponInventory, "WeaponInventory");
+       // Load(m_PossessedGadgetInventory, "GadgetInventory");
+       // Load(m_PossessedUltimateInventory, "UltimateInventory");
         
 
     }
@@ -48,14 +44,14 @@ public class ScriptInventory : MonoBehaviour {
                 m_SaveString += data + "/";
             }
 
-            File.WriteAllText(Application.persistentDataPath + m_File, m_SaveString);
+            File.WriteAllText(Application.dataPath + m_File, m_SaveString);
                   
     }
 #endregion
 
     public void Load (List<string> m_List,string m_File)
     {
-        StringReader Reader = new StringReader(File.ReadAllText(Application.persistentDataPath + m_File + ".txt"));
+        StringReader Reader = new StringReader(File.ReadAllText(Application.dataPath + m_File ));
 
         string s = Reader.ReadLine();
 
