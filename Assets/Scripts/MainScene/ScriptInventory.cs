@@ -32,7 +32,7 @@ public class ScriptInventory : MonoBehaviour {
         // Load(m_PossessedGadgetInventory, "GadgetInventory");
         // Load(m_PossessedUltimateInventory, "UltimateInventory");
 
-        Debug.Log(m_PossessedSpecialistInventory[0]);
+        //Debug.Log(m_PossessedSpecialistInventory[0]);
 
         //test();
     }
@@ -71,8 +71,7 @@ public class ScriptInventory : MonoBehaviour {
 
             for (int i=0; i<result.Length-1; i++)
             {
-                Debug.Log(i);
-                Debug.Log(result[i]);
+               
                 m_List.Add(result[i]);
             }
             
@@ -87,8 +86,7 @@ public class ScriptInventory : MonoBehaviour {
     {
         for (int i=0; i<m_List.Count;i++)
         {
-            Debug.LogError(i);
-            Debug.Log(m_List[i]);
+            
         }
     }
 }
