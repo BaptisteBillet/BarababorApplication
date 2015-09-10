@@ -28,8 +28,9 @@ public class ScriptStockSupportEquipment : MonoBehaviour
     void Start()
     {
         selector = 0;
-        Selection();
         Debug.Log("OY");
+        Selection();
+        
     }
 
     public void Selection()
@@ -38,8 +39,8 @@ public class ScriptStockSupportEquipment : MonoBehaviour
         switch (selector)
         {
             case 0:
-                Construction(m_ScriptInventory.m_PossessedSpecialistInventory);
                 Debug.Log("OY2");
+                Construction(m_ScriptInventory.m_PossessedSpecialistInventory);                
                 break;
 
 
@@ -64,13 +65,13 @@ public class ScriptStockSupportEquipment : MonoBehaviour
     public void Construction(List<string> m_List)
     {
         Debug.Log("OY3");
-        m_Script = m_Prefab.GetComponent<ScriptShipEquipement>();
+       // m_Script = m_Prefab.GetComponent<ScriptShipEquipement>();
         m_Rect = m_Prefab.GetComponent<RectTransform>();
 
-        m_Script.m_EquipementIconField = m_EquipmentIconField;
-        m_Script.m_DescriptionField = m_DescriptionField;
+        //m_Script.m_EquipementIconField = m_EquipmentIconField;
+      // m_Script.m_DescriptionField = m_DescriptionField;
 
-        posy = 900f;
+        posy = -20f;
 
         int i = m_List.Count;
 
@@ -78,7 +79,7 @@ public class ScriptStockSupportEquipment : MonoBehaviour
 
         while (i > 0) 
         {
-
+            Debug.Log("OY4");
 
             for (int j = 0; j < m_LineLength; j++) 
             {
@@ -86,11 +87,11 @@ public class ScriptStockSupportEquipment : MonoBehaviour
                 {
                     decrementvalue = m_List.Count - i;
 
-                    m_Script.m_EquipementName = m_List[decrementvalue];
+                  // m_Script.m_EquipementName = m_List[decrementvalue];
 
                     if (j == 0)
                     {
-                        posx = 100f;
+                        posx = -10f;
                     }
 
                     else  
@@ -98,6 +99,7 @@ public class ScriptStockSupportEquipment : MonoBehaviour
                         posx += (m_Rect.rect.width + 15f); 
                     }
                     m_PrefabInstance = Instantiate(m_Prefab, new Vector3(posx, posy), transform.rotation) as GameObject;
+                    m_Rect.localScale = new Vector3(0.01f,0.01f,1f) ;
                     m_PrefabInstance.transform.SetParent(this.transform);
 
 
