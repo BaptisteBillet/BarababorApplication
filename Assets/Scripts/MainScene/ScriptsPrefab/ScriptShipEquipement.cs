@@ -34,8 +34,8 @@ public class ScriptShipEquipement : MonoBehaviour {
 	
 
 	//The ship we're customizing and the script where all it's infos are kept
-	GameObject m_Ship;
-	ScriptShip m_ScriptShip;
+	//public GameObject m_Ship;
+	public ScriptShip m_ScriptShip;
 
    public ScriptStockSupportEquipment m_ScriptStockSupportEquipment;
 	//_______________________________________________________________
@@ -118,6 +118,17 @@ public class ScriptShipEquipement : MonoBehaviour {
             m_Description = "Domages :" + " " + m_Damage + " " + ", Range :" + " " + m_Range + " " + ", CoolDown :" + " " + m_Cooldown + " " + ", Genre de tir :" + m_ShootType;// Display the piece's description like that
         }
 
+        
+        
+    }
+
+    public void LaunchGetEquipment (GameObject itself)
+    {
+        m_ScriptShip.GetEquipement(itself);
+    }
+
+    
+
     }
 
 
@@ -126,4 +137,3 @@ public class ScriptShipEquipement : MonoBehaviour {
 
 
 
-}

@@ -17,6 +17,7 @@ public class ScriptBoathouseManager : MonoBehaviour {
 	public GameObject m_CurrentSection;
 
 	public GameObject m_SelectedShip;
+    ScriptShip m_ScriptShip;
 
     public GameObject m_ButtonEquip;
     public GameObject m_ButtonEquip1;
@@ -65,6 +66,7 @@ public class ScriptBoathouseManager : MonoBehaviour {
 	public void ShipStorage (GameObject Ship)
 	{
 		m_SelectedShip = Ship;
+       
 		
 	}
 
@@ -78,6 +80,17 @@ public class ScriptBoathouseManager : MonoBehaviour {
         m_ButtonEquip3.SetActive(Enable);
         m_ButtonEquip4.SetActive(Enable);
     }
+
+    public void LaunchSave()
+    {
+        m_ScriptShip.SaveEquipement();
+    }
+
+    public void LaunchSave2(int Saveint)
+    {
+        m_ScriptShip.SaveEquipement2(Saveint);
+    }
+   
 
     public void Back()
     {
