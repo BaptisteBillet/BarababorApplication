@@ -22,19 +22,32 @@ public class ScriptInventory : MonoBehaviour {
 
     void Awake ()
     {
-               
-       // Load(m_PossessedBowInventory, "BowInventory");
-       // Load(m_PossessedSternInventory, "SternInventory");
-       // Load(m_PossessedKeelInventory, "KeelInventory");
-       // Load(m_PossessedMastInventory, "MastInventory");
-        Load(m_PossessedSpecialistInventory, "SpecialistInventory");
-        //  Load(m_PossessedWeaponInventory, "WeaponInventory");
-        // Load(m_PossessedGadgetInventory, "GadgetInventory");
-        // Load(m_PossessedUltimateInventory, "UltimateInventory");
+        if (File.ReadAllText(Application.dataPath + "BowInventory.txt") != null)
+        { Load(m_PossessedBowInventory, "BowInventory"); }
 
-        //Debug.Log(m_PossessedSpecialistInventory[0]);
+        if (File.ReadAllText(Application.dataPath + "SternInventory.txt") != null)
+        { Load(m_PossessedSternInventory, "SternInventory"); }
 
-        //test();
+        if (File.ReadAllText(Application.dataPath + "KeelInventory.txt") != null)
+        { Load(m_PossessedKeelInventory, "KeelInventory"); }
+
+        if (File.ReadAllText(Application.dataPath + "MastInventory.txt") != null)
+        { Load(m_PossessedMastInventory, "MastInventory"); }
+
+        if (File.ReadAllText(Application.dataPath+"SpecialistInventory.txt")!=null)
+        { Load(m_PossessedSpecialistInventory, "SpecialistInventory"); }
+
+        if (File.ReadAllText(Application.dataPath + "WeaponInventory.txt") != null)
+        { Load(m_PossessedWeaponInventory, "WeaponInventory"); }
+
+        if (File.ReadAllText(Application.dataPath + "GadgetInventory.txt") != null)
+        { Load(m_PossessedGadgetInventory, "GadgetInventory"); }
+
+        if (File.ReadAllText(Application.dataPath + "UltimateInventory.txt") != null)
+        { Load(m_PossessedUltimateInventory, "UltimateInventory"); }
+
+        
+            
     }
 	
    
@@ -82,11 +95,5 @@ public class ScriptInventory : MonoBehaviour {
 
     }
 
-    public void test (List<string> m_List)
-    {
-        for (int i=0; i<m_List.Count;i++)
-        {
-            
-        }
-    }
+  
 }

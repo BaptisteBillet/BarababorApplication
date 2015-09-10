@@ -28,7 +28,7 @@ public class ScriptStockSupportEquipment : MonoBehaviour
 
     public int m_LineLength;
 
-    int selector;
+    
 
 
 
@@ -37,13 +37,10 @@ public class ScriptStockSupportEquipment : MonoBehaviour
         m_Ship = m_ScriptBoathouseManager.m_SelectedShip;
         m_ScriptShip = m_Ship.GetComponent<ScriptShip>();
 
-        selector = 0;
-       
-        Selection();
-
+              
     }
 
-    public void Selection()
+    public void Selection(int selector)
     {
 
         switch (selector)
@@ -55,17 +52,20 @@ public class ScriptStockSupportEquipment : MonoBehaviour
                 break;
 
 
-                /*case 1:
-                    m_List = m_ScriptInventory.m_PossessedWeaponInventory;
-                    break;
+                case 1:
+                m_Type = "Weapon";
+                Construction(m_ScriptInventory.m_PossessedWeaponInventory);
+                break;
 
                 case 2:
-                    m_List = m_ScriptInventory.m_PossessedGadgetInventory;
-                    break;
+                m_Type = "Gadget";
+                Construction(m_ScriptInventory.m_PossessedGadgetInventory);
+                break;
 
                 case 3:
-                    m_List = m_ScriptInventory.m_PossessedUltimateInventory;
-                    break;*/
+                m_Type = "Ultimate";
+                Construction(m_ScriptInventory.m_PossessedUltimateInventory);
+                break;
 
         }
 
@@ -110,7 +110,7 @@ public class ScriptStockSupportEquipment : MonoBehaviour
 
                     else
                     {
-                        posx += (m_Rect.rect.width+55f);
+                        posx += (m_Rect.rect.width+35f);
                     }
                     m_PrefabInstance = Instantiate(m_Prefab, new Vector3(0, 0,0), transform.rotation) as GameObject;
                     

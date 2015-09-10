@@ -50,13 +50,15 @@ public class TriDataBase : MonoBehaviour
             m_Element.m_SpeedUpgrade = row._SpeedUpgrade;
             m_Element.m_VisionUpgrade = row._VisionUpgrade;
 
-            //m_Element.m_Description = row._Description;
+            m_Element.m_Description = row._Description;
 
             m_Element.m_Cost = row._Cost;
             m_Element.m_Grade = row._Grade;
             m_Element.m_Rank = row._Rank;
 
             m_Element.m_Name = row._Name;
+
+            m_Element.m_ShownName = row._ShownName;
 
             m_BowDico.Add(m_Element.m_Name, m_Element);
         }
@@ -79,13 +81,15 @@ public class TriDataBase : MonoBehaviour
             m_Element.m_SpeedUpgrade = row._SpeedUpgrade;
             m_Element.m_VisionUpgrade = row._VisionUpgrade;
 
-            //m_Element.m_Description = row._Description;
+            m_Element.m_Description = row._Description;
 
             m_Element.m_Cost = row._Cost;
             m_Element.m_Grade = row._Grade;
             m_Element.m_Rank = row._Rank;
 
             m_Element.m_Name = row._Name;
+
+            m_Element.m_ShownName = row._ShownName;
 
             m_KeelDico.Add(m_Element.m_Name, m_Element);
         }
@@ -108,13 +112,15 @@ public class TriDataBase : MonoBehaviour
             m_Element.m_SpeedUpgrade = row._SpeedUpgrade;
             m_Element.m_VisionUpgrade = row._VisionUpgrade;
 
-           // m_Element.m_Description = row._Description;
+            m_Element.m_Description = row._Description;
 
             m_Element.m_Cost = row._Cost;
             m_Element.m_Grade = row._Grade;
             m_Element.m_Rank = row._Rank;
 
             m_Element.m_Name = row._Name;
+
+            m_Element.m_ShownName = row._ShownName;
 
             m_MastDico.Add(m_Element.m_Name, m_Element);
         }
@@ -137,13 +143,15 @@ public class TriDataBase : MonoBehaviour
             m_Element.m_SpeedUpgrade = row._SpeedUpgrade;
             m_Element.m_VisionUpgrade = row._VisionUpgrade;
 
-            //m_Element.m_Description = row._Description;
+           m_Element.m_Description = row._Description;
 
             m_Element.m_Cost = row._Cost;
             m_Element.m_Grade = row._Grade;
             m_Element.m_Rank = row._Rank;
 
             m_Element.m_Name = row._Name;
+
+            m_Element.m_ShownName = row._ShownName;
 
             m_SternDico.Add(m_Element.m_Name, m_Element);
         }
@@ -172,8 +180,10 @@ public class TriDataBase : MonoBehaviour
             m_Equipement.m_Description = row._Description;
             m_Equipement.m_Type = row._Type;
             
-
             m_Equipement.m_Name = row._Name;
+
+            m_Equipement.m_ShownName = row._ShownName;
+
 
             m_WeaponDico.Add(m_Equipement.m_Name, m_Equipement);
         }
@@ -203,6 +213,8 @@ public class TriDataBase : MonoBehaviour
 
             m_Equipement.m_Name = row._Name;
 
+            m_Equipement.m_ShownName = row._ShownName;
+
             m_UltimateDico.Add(m_Equipement.m_Name, m_Equipement);
         }
 
@@ -231,6 +243,8 @@ public class TriDataBase : MonoBehaviour
 
             m_Equipement.m_Name = row._Name;
 
+            m_Equipement.m_ShownName = row._ShownName;
+
             m_GadgetDico.Add(m_Equipement.m_Name, m_Equipement);
         }
 
@@ -247,6 +261,8 @@ public class TriDataBase : MonoBehaviour
             m_Specialist.m_Type = row._Type;
 
             m_Specialist.m_Name = row._Name;
+
+            m_Specialist.m_ShownName = row._ShownName;
 
             m_SpecialistDico.Add(m_Specialist.m_Name, m_Specialist);
         }

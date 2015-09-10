@@ -31,6 +31,8 @@ public class Element : Object {
 
     public string m_Name;
 
+    public string m_ShownName;
+
 
 
 

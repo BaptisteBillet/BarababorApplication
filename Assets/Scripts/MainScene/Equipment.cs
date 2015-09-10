@@ -23,6 +23,8 @@ public class Equipment : Object {
     public string m_Description;
 
     public string m_Type;
+
+    public string m_ShownName;
     
 
     public Equipment()

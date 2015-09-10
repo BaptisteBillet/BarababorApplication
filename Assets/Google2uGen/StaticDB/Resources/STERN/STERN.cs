@@ -31,7 +31,8 @@ namespace Google2u
 		public string _Grade;
 		public string _Rank;
 		public string _Description;
-		public STERNRow(string __ID, string __Name, string __HealthPoint, string __Capacity, string __Speed, string __Damage, string __Vision, string __Regeneration, string __HealthPointUpgrade, string __CapacityUpgrade, string __SpeedUpgrade, string __DamageUpgrade, string __VisionUpgrade, string __RegenerationUpgrade, string __Cost, string __Grade, string __Rank, string __Description) 
+		public string _ShownName;
+		public STERNRow(string __ID, string __Name, string __HealthPoint, string __Capacity, string __Speed, string __Damage, string __Vision, string __Regeneration, string __HealthPointUpgrade, string __CapacityUpgrade, string __SpeedUpgrade, string __DamageUpgrade, string __VisionUpgrade, string __RegenerationUpgrade, string __Cost, string __Grade, string __Rank, string __Description, string __ShownName) 
 		{
 			_Name = __Name.Trim();
 			{
@@ -128,9 +129,10 @@ namespace Google2u
 			_Grade = __Grade.Trim();
 			_Rank = __Rank.Trim();
 			_Description = __Description.Trim();
+			_ShownName = __ShownName.Trim();
 		}
 
-		public int Length { get { return 17; } }
+		public int Length { get { return 18; } }
 
 		public string this[int i]
 		{
@@ -196,6 +198,9 @@ namespace Google2u
 				case 16:
 					ret = _Description.ToString();
 					break;
+				case 17:
+					ret = _ShownName.ToString();
+					break;
 			}
 
 			return ret;
@@ -257,6 +262,9 @@ namespace Google2u
 				case "Description":
 					ret = _Description.ToString();
 					break;
+				case "ShownName":
+					ret = _ShownName.ToString();
+					break;
 			}
 
 			return ret;
@@ -281,6 +289,7 @@ namespace Google2u
 			ret += "{" + "Grade" + " : " + _Grade.ToString() + "} ";
 			ret += "{" + "Rank" + " : " + _Rank.ToString() + "} ";
 			ret += "{" + "Description" + " : " + _Description.ToString() + "} ";
+			ret += "{" + "ShownName" + " : " + _ShownName.ToString() + "} ";
 			return ret;
 		}
 	}
@@ -307,8 +316,8 @@ namespace Google2u
 
 		private STERN()
 		{
-			Rows.Add( new STERNRow("Poupe", "Poupe", "1", "2", "3", "4", "5", "6", "0", "0", "0", "0", "0", "0", "0", "", "", ""));
-			Rows.Add( new STERNRow("PoupeDefault", "PoupeDefault", "1", "1", "1", "1", "1", "1", "0", "0", "0", "0", "0", "0", "0", "", "", ""));
+			Rows.Add( new STERNRow("Poupe", "Poupe", "1", "2", "3", "4", "5", "6", "0", "0", "0", "0", "0", "0", "0", "", "", "", ""));
+			Rows.Add( new STERNRow("PoupeDefault", "PoupeDefault", "1", "1", "1", "1", "1", "1", "0", "0", "0", "0", "0", "0", "0", "", "", "", ""));
 		}
 		public IGoogle2uRow GetGenRow(string in_RowString)
 		{
