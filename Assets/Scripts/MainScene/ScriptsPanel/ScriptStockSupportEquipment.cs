@@ -1,67 +1,113 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
-public class ScriptStockSupport : MonoBehaviour
+public class ScriptStockSupportEquipment : MonoBehaviour
 {
+    public ScriptInventory m_ScriptInventory;
 
-    public GameObject m_Prefab;//l'objet à instancier
+    public Text m_DescriptionField;
+    public Image m_EquipmentIconField;
 
-    GameObject m_PrefabInstance;// instance de l'objet à instancier
+
+    public GameObject m_Prefab;
+    GameObject m_PrefabInstance;
+    ScriptShipEquipement m_Script;
+    RectTransform m_Rect;
+
+    float posx;
+    float posy;
+
+    public int m_LineLength;
+
+    int selector;
 
 
-    ScriptShipEquipement m_Script;// son script
-    RectTransform m_Rect;// ici son recttransform, permet d'avoir ses dimensions
 
-    float posx;// position d'instanciation en x
-    float posy;// position d'instanciation en y
+    void Start()
+    {
+        selector = 0;
+        Debug.Log("OY");
+        Selection();
 
-    public int m_LineLength;//longueur des lignes 
+    }
 
-    // Use this for initialization
+    public void Selection()
+    {
+
+        switch (selector)
+        {
+            case 0:
+                Debug.Log("OY2");
+                Construction(m_ScriptInventory.m_PossessedSpecialistInventory);
+                break;
+
+
+                /*case 1:
+                    m_List = m_ScriptInventory.m_PossessedWeaponInventory;
+                    break;
+
+                case 2:
+                    m_List = m_ScriptInventory.m_PossessedGadgetInventory;
+                    break;
+
+                case 3:
+                    m_List = m_ScriptInventory.m_PossessedUltimateInventory;
+                    break;*/
+
+        }
+
+
+    }
+
+
     public void Construction(List<string> m_List)
     {
-        
+        Debug.Log("OY3");
+         m_Script = m_Prefab.GetComponent<ScriptShipEquipement>();
+        m_Rect = m_Prefab.GetComponent<RectTransform>();
 
+        m_Script.m_EquipementIconField = m_EquipmentIconField;
+        m_Script.m_DescriptionField = m_DescriptionField;
 
-        m_Script = m_Prefab.GetComponent<ScriptShipEquipement>();//récupération du script de l'objet
-        m_Rect = m_Prefab.GetComponent<RectTransform>();//récupération de son recttransform
+        posy = -22f;
 
-        posy = 900f;// définition de la première position en y, se souvenir que le repère va vers le haut.
+        int i = m_List.Count;
 
-        int i = m_List.Count;// une valeur qui fait la longueur de la liste au départ, elle sera décrémentée par la suite 
+        int decrementvalue = m_List.Count - i;
 
-        int decrementvalue = m_List.Count - i; // une seconde valeur qui est égale à la longueur de la liste - la valeur décrémentée, elle sert de valeur d'index pour la liste 
-
-        while (i > 0) // tant que la valeur décrémentante est supérieur à 0, en gros tant qu'on a pas parcouru l'intégralité de la liste 
+        while (i > 0)
         {
+            Debug.Log("OY4");
 
-
-            for (int j = 0; j < m_LineLength; j++) //une boucle qui permet de lancer plusieurs fois l'action de poser un objet et donc de construire la grille, la valeur de j doit être égale au nombre de gameobject que l'on souhaite avoir de largeur
+            for (int j = 0; j < m_LineLength; j++)
             {
-                if (i > 0)//si la valeur décrémentante est supérieure à 0, nécessaire puisque la vérification de la valeur de i ne se fait qu'en sortie de boucle et que la décrémentation de i se fait à l'intérieur de la boucle. 
+                if (i > 0)
                 {
-                    decrementvalue = m_List.Count - i;//actualisation de la valeur d'index. Dans ce format-là, la liste est parcourue du [0] vers le [max] 
+                    decrementvalue = m_List.Count - i;
 
-                    m_Script.m_EquipementName = m_List[decrementvalue];//on change la valeur de définition du game object qui sera instancié durant cette boucle
-                    if (j == 0)// dans le cas où j est égale à 0, c'est à dire si l'objet à instancier est le premier de la ligne
+                    m_Script.m_EquipementName = m_List[decrementvalue];
+
+                    if (j == 0)
                     {
-                        posx = 100f;//définir sa position en x par rapport à son parent
+                        posx = -27f;
                     }
 
-                    else // si ce n'est pas le premier objet de la ligne 
+                    else
                     {
-                        posx += (m_Rect.rect.width + 15f); // on définit sa position d'instanciation par rapport à celle de l'objet précédent et on lui accorde un léger écart
+                        posx += (m_Rect.rect.width/4.5f);
                     }
-                    m_PrefabInstance = Instantiate(m_Prefab, new Vector3(posx, posy), transform.rotation) as GameObject;//on instancie le l'objet selon les positions précédemment définies
-                    m_PrefabInstance.transform.SetParent(this.transform);//On définie comme parent de l'objet le truc entre parenthèse (ici l'endroit où est posé le script)
+                    m_PrefabInstance = Instantiate(m_Prefab, new Vector3(posx, posy), transform.rotation) as GameObject;
+                    m_Rect.localScale = new Vector3(0.15f, 0.15f, 1f);
+                    m_PrefabInstance.transform.SetParent(this.transform);
 
 
-                    i--;// on décrémente la valeur décrémentante 
+                    i--;
 
                 }
             }
-            posy += -50f;//on définit la position d'instanciation en y de l'objet, en sortie de boucle cela permet de ne changer l'instanciation en y que l'orsque la ligne précédente est terminée. 
+            posy += -50f;
         }
     }
 

@@ -52,6 +52,7 @@ public class ScriptShipEquipement : MonoBehaviour {
 		this.gameObject.SetActive (m_IsAvailable);// The piece is available only if it has been unlocked (bought in the shop)
 
         m_EquipementNameField.text = m_EquipementNameShown;
+       
 
 	}
 
