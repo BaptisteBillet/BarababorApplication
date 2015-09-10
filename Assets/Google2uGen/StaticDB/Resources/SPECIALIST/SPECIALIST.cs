@@ -19,7 +19,8 @@ namespace Google2u
 		public int _Value;
 		public string _Description;
 		public int _Cost;
-		public SPECIALISTRow(string __ID, string __Name, string __Speciality, string __Value, string __Description, string __Cost) 
+		public string _Type;
+		public SPECIALISTRow(string __ID, string __Name, string __Speciality, string __Value, string __Description, string __Cost, string __Type) 
 		{
 			_Name = __Name.Trim();
 			_Speciality = __Speciality.Trim();
@@ -38,9 +39,10 @@ namespace Google2u
 				else
 					Debug.LogError("Failed To Convert _Cost string: "+ __Cost +" to int");
 			}
+			_Type = __Type.Trim();
 		}
 
-		public int Length { get { return 5; } }
+		public int Length { get { return 6; } }
 
 		public string this[int i]
 		{
@@ -70,6 +72,9 @@ namespace Google2u
 				case 4:
 					ret = _Cost.ToString();
 					break;
+				case 5:
+					ret = _Type.ToString();
+					break;
 			}
 
 			return ret;
@@ -95,6 +100,9 @@ namespace Google2u
 				case "Cost":
 					ret = _Cost.ToString();
 					break;
+				case "Type":
+					ret = _Type.ToString();
+					break;
 			}
 
 			return ret;
@@ -107,6 +115,7 @@ namespace Google2u
 			ret += "{" + "Value" + " : " + _Value.ToString() + "} ";
 			ret += "{" + "Description" + " : " + _Description.ToString() + "} ";
 			ret += "{" + "Cost" + " : " + _Cost.ToString() + "} ";
+			ret += "{" + "Type" + " : " + _Type.ToString() + "} ";
 			return ret;
 		}
 	}
@@ -133,8 +142,8 @@ namespace Google2u
 
 		private SPECIALIST()
 		{
-			Rows.Add( new SPECIALISTRow("Specialist1", "Specialist1", "Damage", "5", "A specialist", "12"));
-			Rows.Add( new SPECIALISTRow("Specialist2", "Specialist2", "Damage", "5", "Another Specialist", "12"));
+			Rows.Add( new SPECIALISTRow("Specialist1", "Specialist1", "Damage", "5", "A specialist", "12", "Specialist"));
+			Rows.Add( new SPECIALISTRow("Specialist2", "Specialist2", "Damage", "5", "Another Specialist", "12", "Specialist"));
 		}
 		public IGoogle2uRow GetGenRow(string in_RowString)
 		{

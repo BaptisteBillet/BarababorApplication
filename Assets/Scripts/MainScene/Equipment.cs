@@ -22,6 +22,7 @@ public class Equipment : Object {
     public string m_State2;
     public string m_Description;
 
+    public string m_Type;
     
 
     public Equipment()

@@ -8,7 +8,7 @@ public class ScriptShipEquipement : MonoBehaviour {
 
 	#region MembersDeclaration
 	//Definitions of the piece
-	public Image m_EquipementIconField;
+	
 	public Sprite m_EquipementIcon;
 	public Text m_EquipementNameField;
 	public string m_EquipementNameShown;
@@ -29,13 +29,15 @@ public class ScriptShipEquipement : MonoBehaviour {
 
 
     //______________________________________________________________
-
-	//Where the piece's description is displayed
-	public Text m_DescriptionField;
+    public Text m_DescriptionField;
+    public Image m_EquipmentIconField;
+	
 
 	//The ship we're customizing and the script where all it's infos are kept
 	GameObject m_Ship;
 	ScriptShip m_ScriptShip;
+
+   public ScriptStockSupportEquipment m_ScriptStockSupportEquipment;
 	//_______________________________________________________________
     
 	public string m_EquipementName; 
@@ -48,11 +50,15 @@ public class ScriptShipEquipement : MonoBehaviour {
 
     void Start () 
 	{
-	
+       
+
+
+
 		this.gameObject.SetActive (m_IsAvailable);// The piece is available only if it has been unlocked (bought in the shop)
 
         m_EquipementNameField.text = m_EquipementNameShown;
        
+
 
 	}
 
@@ -62,9 +68,9 @@ public class ScriptShipEquipement : MonoBehaviour {
         
 		m_DescriptionField.text = m_Description; //Display the description of the piece in the special place 
 
-        Debug.Log("OY");
+       
         
-        m_EquipementIconField.sprite = m_EquipementIcon;// Display the piece's icon
+        m_EquipmentIconField.sprite = m_EquipementIcon;// Display the piece's icon
 	}
 
 	

@@ -31,7 +31,8 @@ namespace Google2u
 		public string _State1;
 		public string _State2;
 		public string _Description;
-		public GADGETRow(string __ID, string __Level, string __LevelUp, string __Name, string __Damage, string __DamageUpgrade, string __Range, string __RangeUpgrade, string __Cooldown, string __CooldownUpgrade, string __ShootType, string __ShootTypeUpgrade, string __Cost, string __Grade, string __Rank, string __State1, string __State2, string __Description) 
+		public string _Type;
+		public GADGETRow(string __ID, string __Level, string __LevelUp, string __Name, string __Damage, string __DamageUpgrade, string __Range, string __RangeUpgrade, string __Cooldown, string __CooldownUpgrade, string __ShootType, string __ShootTypeUpgrade, string __Cost, string __Grade, string __Rank, string __State1, string __State2, string __Description, string __Type) 
 		{
 			{
 			int res;
@@ -116,9 +117,10 @@ namespace Google2u
 			_State1 = __State1.Trim();
 			_State2 = __State2.Trim();
 			_Description = __Description.Trim();
+			_Type = __Type.Trim();
 		}
 
-		public int Length { get { return 17; } }
+		public int Length { get { return 18; } }
 
 		public string this[int i]
 		{
@@ -184,6 +186,9 @@ namespace Google2u
 				case 16:
 					ret = _Description.ToString();
 					break;
+				case 17:
+					ret = _Type.ToString();
+					break;
 			}
 
 			return ret;
@@ -245,6 +250,9 @@ namespace Google2u
 				case "Description":
 					ret = _Description.ToString();
 					break;
+				case "Type":
+					ret = _Type.ToString();
+					break;
 			}
 
 			return ret;
@@ -269,6 +277,7 @@ namespace Google2u
 			ret += "{" + "State1" + " : " + _State1.ToString() + "} ";
 			ret += "{" + "State2" + " : " + _State2.ToString() + "} ";
 			ret += "{" + "Description" + " : " + _Description.ToString() + "} ";
+			ret += "{" + "Type" + " : " + _Type.ToString() + "} ";
 			return ret;
 		}
 	}

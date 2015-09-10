@@ -10,6 +10,7 @@ public class Specialist :Object {
 
     public int m_Cost;
 
+    public string m_Type;
 	// Use this for initialization
 	public Specialist () {
 	
