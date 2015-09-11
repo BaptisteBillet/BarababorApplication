@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class ScriptBuyableItems : MonoBehaviour
 {
@@ -23,6 +24,14 @@ public class ScriptBuyableItems : MonoBehaviour
     public string m_Description;
 
     public Mesh m_ItemAppearance;
+
+    public bool m_IsBought;
+
+    public ScriptInventory m_Inventory;
+
+    List<string> m_List;
+
+    public ScriptBuyButton m_ScriptBuyButton;
 
 	// Use this for initialization
 	void Start ()
@@ -185,10 +194,65 @@ public class ScriptBuyableItems : MonoBehaviour
 
 
             }
-        
+
+        CheckBought();
 
         m_NameField.text = m_ShownItemName;
 	}
 	
+    public void AlreadyBought ()
+    {
+        m_ScriptBuyButton.Enabled(m_IsBought);
+    }
 	
+    public void CheckBought ()
+    {
+        
+         
+        switch (m_ItemType)
+        {
+            case "Bow":
+
+                m_List = m_Inventory.m_PossessedBowInventory;
+                break;
+
+            case "Stern":
+                m_List = m_Inventory.m_PossessedSternInventory;
+                break;
+
+            case "Keel":
+                m_List = m_Inventory.m_PossessedKeelInventory;
+                break;
+
+            case "Mast":
+                m_List = m_Inventory.m_PossessedMastInventory;
+                break;
+
+            case "Specialist":
+
+                m_List = m_Inventory.m_PossessedSpecialistInventory;
+
+                break;
+
+            case "Weapon":
+                m_List = m_Inventory.m_PossessedWeaponInventory;
+                break;
+
+            case "Gadget":
+                m_List = m_Inventory.m_PossessedGadgetInventory;
+                break;
+
+            case "Ultimate":
+                m_List = m_Inventory.m_PossessedUltimateInventory;
+                break;
+        }
+
+        foreach( string Name in m_List)
+        {
+            if (m_ItemName==Name)
+            {
+                m_IsBought = true;
+            }
+        } 
+    }
 }

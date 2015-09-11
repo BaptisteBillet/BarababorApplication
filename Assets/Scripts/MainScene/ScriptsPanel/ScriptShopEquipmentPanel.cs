@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class ScriptShopEquipmentPanel : MonoBehaviour {
 
@@ -30,6 +31,7 @@ public class ScriptShopEquipmentPanel : MonoBehaviour {
 
     ScriptBuyableItems m_ScriptBuyableItems;
 
+   
 
     // Use this for initialization
     void Start() {
@@ -125,52 +127,60 @@ public class ScriptShopEquipmentPanel : MonoBehaviour {
 
     }
 
-    public void Buy (bool paidwithcoins)
+    public void Buy(bool paidwithcoins)
     {
 
         switch (m_ScriptBuyableItems.m_ItemType)
         {
             case "Specialist":
                 m_ScriptInventory.m_PossessedSpecialistInventory.Add(m_ScriptBuyableItems.m_ItemName);
-               
-                m_ScriptInventory.SaveInventory(m_ScriptInventory.m_PossessedSpecialistInventory,"SpecialistInventory");
+                m_ScriptInventory.SaveInventory(m_ScriptInventory.m_PossessedSpecialistInventory, "SpecialistInventory");
+                PlayerPrefs.SetInt("m_SpecialistInventoryAvailability", 1);
+
                 break;
 
             case "Weapon":
                 m_ScriptInventory.m_PossessedWeaponInventory.Add(m_ScriptBuyableItems.m_ItemName);
                 m_ScriptInventory.SaveInventory(m_ScriptInventory.m_PossessedWeaponInventory, "WeaponInventory");
+                PlayerPrefs.SetInt("m_WeaponInventoryAvailability", 1);
                 break;
 
             case "Gadget":
                 m_ScriptInventory.m_PossessedGadgetInventory.Add(m_ScriptBuyableItems.m_ItemName);
                 m_ScriptInventory.SaveInventory(m_ScriptInventory.m_PossessedGadgetInventory, "GadgetInventory");
+                PlayerPrefs.SetInt("m_GadgetInventoryAvailability", 1);
                 break;
 
             case "Ultimate":
                 m_ScriptInventory.m_PossessedUltimateInventory.Add(m_ScriptBuyableItems.m_ItemName);
                 m_ScriptInventory.SaveInventory(m_ScriptInventory.m_PossessedUltimateInventory, "UltimateInventory");
+                PlayerPrefs.SetInt("m_UltimateInventoryAvailability", 1);
                 break;
         }
+
+        m_ScriptBuyableItems.m_IsBought = true;
+
         int Coins;
         int Diamonds;
 
         Coins = PlayerPrefs.GetInt("m_Coins");
         Diamonds = PlayerPrefs.GetInt("m_Diamonds");
 
-       
-           if (paidwithcoins == true)
+
+        if (paidwithcoins == true)
         {
 
-           Coins -= m_ScriptBuyableItems.m_Cost;
-           PlayerPrefs.SetInt("m_Coins", Coins);
-           m_ScriptShopPanel.CurrencyMetersUpdate();
+            Coins -= m_ScriptBuyableItems.m_Cost;
+            PlayerPrefs.SetInt("m_Coins", Coins);
+            m_ScriptShopPanel.CurrencyMetersUpdate();
 
         }
-         
 
+    }
+          
         
         
 
 
     }
-}
+

@@ -15,37 +15,47 @@ public class ScriptInventory : MonoBehaviour {
     public List<string> m_PossessedGadgetInventory = new List<string>();
     public List<string> m_PossessedUltimateInventory = new List<string>();
 
-    
+    public int m_BowInventoryAvailability;
+    public int m_SternInventoryAvailability;
+    public int m_KeelInventoryAvailability;
+    public int m_MastInventoryAvailability;
+    public int m_SpecialistInventoryAvailability;
+    public int m_WeaponInventoryAvailability;
+    public int m_GadgetInventoryAvailability;
+    public int m_UltimateInventoryAvailability;
+
+
     string m_SaveString;
 
     public List<string> StringTest = new List<string>();
 
     void Awake ()
     {
-        if (File.ReadAllText(Application.dataPath + "BowInventory.txt") != null)
+       if (PlayerPrefs.GetInt("m_BowInventoryAvailability")!=0)
         { Load(m_PossessedBowInventory, "BowInventory"); }
 
-        if (File.ReadAllText(Application.dataPath + "SternInventory.txt") != null)
+        if (PlayerPrefs.GetInt("m_SternInventoryAvailability") != 0)
         { Load(m_PossessedSternInventory, "SternInventory"); }
 
-        if (File.ReadAllText(Application.dataPath + "KeelInventory.txt") != null)
+        if (PlayerPrefs.GetInt("m_KeelInventoryAvailability") != 0)
         { Load(m_PossessedKeelInventory, "KeelInventory"); }
 
-        if (File.ReadAllText(Application.dataPath + "MastInventory.txt") != null)
+        if (PlayerPrefs.GetInt("m_MastInventoryAvailability") != 0)
         { Load(m_PossessedMastInventory, "MastInventory"); }
 
-        if (File.ReadAllText(Application.dataPath+"SpecialistInventory.txt")!=null)
+        if (PlayerPrefs.GetInt("m_SpecialistInventoryAvailability") != 0)
         { Load(m_PossessedSpecialistInventory, "SpecialistInventory"); }
 
-        if (File.ReadAllText(Application.dataPath + "WeaponInventory.txt") != null)
+
+        if (PlayerPrefs.GetInt("m_WeaponInventoryAvailability") != 0)
         { Load(m_PossessedWeaponInventory, "WeaponInventory"); }
 
-        if (File.ReadAllText(Application.dataPath + "GadgetInventory.txt") != null)
+        if (PlayerPrefs.GetInt("m_GadgetInventoryAvailability") != 0)
         { Load(m_PossessedGadgetInventory, "GadgetInventory"); }
 
-        if (File.ReadAllText(Application.dataPath + "UltimateInventory.txt") != null)
+        if (PlayerPrefs.GetInt("m_UltimateInventoryAvailability") != 0)
         { Load(m_PossessedUltimateInventory, "UltimateInventory"); }
-
+        
         
             
     }
