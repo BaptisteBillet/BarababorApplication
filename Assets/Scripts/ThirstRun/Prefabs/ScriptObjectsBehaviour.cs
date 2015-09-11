@@ -34,7 +34,6 @@ public class ScriptObjectsBehaviour : MonoBehaviour
     void OnCollisionEnter (Collision other)
     {
        
-
         if (other.collider.tag == "Captain")
         {
            

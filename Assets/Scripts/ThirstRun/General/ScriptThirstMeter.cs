@@ -21,13 +21,15 @@ public class ScriptThirstMeter : MonoBehaviour {
 
    public void Fill ()
     {
-        if (posx<308.3512f )
-        { posx += 5f; }
+        
+        //if (m_MeterFilling.rectTransform.position.x<308.3512f )
+         m_MeterFilling.rectTransform.position = new Vector3 (120f,0f,0f); 
         
     }
 
     public void Empty()
     {
+        Debug.Log("OY2");
         if (posx>0f)
         posx -= 5f;
     }
