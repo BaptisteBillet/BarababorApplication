@@ -21,11 +21,14 @@ public class ScriptThirstMeter : MonoBehaviour {
 
    public void Fill ()
     {
-        posx += 5f;
+        if (posx<308.3512f )
+        { posx += 5f; }
+        
     }
 
     public void Empty()
     {
+        if (posx>0f)
         posx -= 5f;
     }
 	
