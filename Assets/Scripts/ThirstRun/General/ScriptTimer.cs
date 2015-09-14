@@ -6,12 +6,19 @@ public class ScriptTimer : MonoBehaviour {
 
     public Text m_Timer;
 
-    public int m_TimeMinutes;
-   
-    public int m_TimeSeconds;
+    public int m_InitialTimeMinutes;
+    public int m_InitialTimeSeconds;
 
+    [HideInInspector]
+    public int m_TimeMinutes;
+    [HideInInspector]
+    public int m_TimeSeconds;
+    
 	void Start ()
     {
+        m_TimeMinutes = m_InitialTimeMinutes;
+        m_TimeSeconds = m_InitialTimeSeconds;
+
         m_Timer.text = "" + m_TimeMinutes + ":" + m_TimeSeconds;
         Timer();
     }
@@ -19,6 +26,7 @@ public class ScriptTimer : MonoBehaviour {
 	
 	public void Timer ()
     {
+        
         StartCoroutine(CoroutineTimer());
     }
 
@@ -47,5 +55,10 @@ public class ScriptTimer : MonoBehaviour {
         }
         
         
+    }
+
+    public void WinandLoose()
+    {
+        StopCoroutine(CoroutineTimer());
     }
 }

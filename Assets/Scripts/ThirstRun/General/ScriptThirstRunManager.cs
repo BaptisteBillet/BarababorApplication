@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class ScriptThirstRunManager : MonoBehaviour {
 
@@ -12,10 +13,22 @@ public class ScriptThirstRunManager : MonoBehaviour {
     ScriptLauncher m_ScriptLauncher3;
 
 
+    public ScriptTimer m_ScriptTimer;
+    public Text m_VictoryTimerField;
+    public GameObject m_PanelVictory;
+
+    int m_VictoryMinuteTime;
+    int m_VictorySecondTime;
+
+
     float m_LaunchTime;
 
     int m_SelectLauncher;
     int m_ObjectToLaunch;
+
+    int m_Coconut;
+
+    public ScriptThirstMeter m_ScriptThirstManager;
      
 
     // Use this for initialization
@@ -39,7 +52,7 @@ public class ScriptThirstRunManager : MonoBehaviour {
        
             m_LaunchTime = Random.Range(1f, 2f);
             m_SelectLauncher = Mathf.CeilToInt(Random.Range(0.1f, 2.9f));
-            m_ObjectToLaunch = Mathf.FloorToInt(Random.Range(0.1f, 1.9f));
+            m_ObjectToLaunch = Mathf.FloorToInt(Random.Range(0.1f, 0.9f));
             yield return new WaitForSeconds(m_LaunchTime);
             
             switch (m_SelectLauncher)
@@ -59,4 +72,49 @@ public class ScriptThirstRunManager : MonoBehaviour {
 
              
     }
+
+    //________________________________________________________________________________________________________________
+
+    public void CoconutCount(bool Coconut)
+    {
+        if (Coconut == true)
+        {
+            m_Coconut++;
+            m_ScriptThirstManager.Fill();
+        }
+
+
+        if (Coconut == false)
+        { 
+            m_Coconut--;
+            m_ScriptThirstManager.Empty();
+        }
+
+        if (m_Coconut == 10)
+            Win();
+
+    }
+
+    //________________________________________________________________________________________________________________
+
+   
+
+    public void Win ()
+    {
+        m_ScriptTimer.WinandLoose();
+
+        m_PanelVictory.SetActive(true);
+
+        m_VictoryMinuteTime = m_ScriptTimer.m_InitialTimeMinutes - m_ScriptTimer.m_TimeMinutes;
+        m_VictorySecondTime = -(m_ScriptTimer.m_InitialTimeSeconds - m_ScriptTimer.m_TimeSeconds);
+
+        m_VictoryTimerField.text = "" + m_VictoryMinuteTime + ":" + m_VictorySecondTime;
+    }
+
+    public void Loose ()
+    {
+
+    }
+
+    //______________________________________________________________________________________________________________________
 }

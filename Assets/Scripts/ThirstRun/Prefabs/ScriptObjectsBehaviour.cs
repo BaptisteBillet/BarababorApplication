@@ -28,7 +28,7 @@ public class ScriptObjectsBehaviour : MonoBehaviour
 
     void OnTriggerEnter (Collider other)
     {
-       
+       if (other.tag=="Captain"||other.tag == "Reciever")
         Destroy(this.gameObject);
     }
     
