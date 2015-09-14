@@ -44,6 +44,7 @@ public class ScriptThirstRunManager : MonoBehaviour {
 	
 	public void PrepareforLaunch ()
     {
+        if (m_ScriptTimer.m_IsPlaying)            
         StartCoroutine(C_PrepareforLaunch());
     }
 
@@ -103,10 +104,18 @@ public class ScriptThirstRunManager : MonoBehaviour {
     {
         m_ScriptTimer.WinandLoose();
 
+        StopCoroutine(C_PrepareforLaunch());
         m_PanelVictory.SetActive(true);
 
         m_VictoryMinuteTime = m_ScriptTimer.m_InitialTimeMinutes - m_ScriptTimer.m_TimeMinutes;
+
+        if (m_ScriptTimer.m_InitialTimeSeconds!=0)
         m_VictorySecondTime = -(m_ScriptTimer.m_InitialTimeSeconds - m_ScriptTimer.m_TimeSeconds);
+
+        else
+        {
+            m_VictorySecondTime = 60- m_ScriptTimer.m_TimeSeconds;
+        }
 
         m_VictoryTimerField.text = "" + m_VictoryMinuteTime + ":" + m_VictorySecondTime;
     }

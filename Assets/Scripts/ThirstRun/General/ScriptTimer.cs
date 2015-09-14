@@ -13,6 +13,8 @@ public class ScriptTimer : MonoBehaviour {
     public int m_TimeMinutes;
     [HideInInspector]
     public int m_TimeSeconds;
+
+    public bool m_IsPlaying;
     
 	void Start ()
     {
@@ -32,22 +34,25 @@ public class ScriptTimer : MonoBehaviour {
 
     IEnumerator CoroutineTimer ()
     {
-
+        
         while (m_TimeMinutes>=0)
         {
-            
-            
-                while (m_TimeSeconds >= 1)
+
+
+            while (m_TimeSeconds >= 1)
+            {
+                if (m_IsPlaying == true)
                 {
-                if (m_TimeSeconds <10)
-                {
-                    m_Timer.color = Color.red;
-                    m_Timer.text = "" + m_TimeMinutes + ":" +"0"+ m_TimeSeconds;
-                }
+                    if (m_TimeSeconds < 10)
+                    {
+                        m_Timer.color = Color.red;
+                        m_Timer.text = "" + m_TimeMinutes + ":" + "0" + m_TimeSeconds;
+                    }
                     yield return new WaitForSeconds(1);
                     m_TimeSeconds--;
-                m_Timer.text = "" + m_TimeMinutes + ":" + m_TimeSeconds;
+                    m_Timer.text = "" + m_TimeMinutes + ":" + m_TimeSeconds;
                 }
+            }
 
             m_TimeMinutes--;
             m_TimeSeconds = 60;
