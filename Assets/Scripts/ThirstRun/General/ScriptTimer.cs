@@ -14,7 +14,7 @@ public class ScriptTimer : MonoBehaviour {
     [HideInInspector]
     public int m_TimeSeconds;
 
-    public bool m_IsPlaying;
+    public bool m_IsPlaying=true;
     
 	void Start ()
     {
@@ -37,26 +37,34 @@ public class ScriptTimer : MonoBehaviour {
         
         while (m_TimeMinutes>=0)
         {
-
+            if (m_IsPlaying == false)
+                break;
 
             while (m_TimeSeconds >= 1)
             {
-                if (m_IsPlaying == true)
-                {
-                    if (m_TimeSeconds < 10)
+                if (m_IsPlaying == false)
+                    break;
+
+                if (m_TimeSeconds < 10)
                     {
-                        m_Timer.color = Color.red;
+                        if (m_TimeMinutes==0)
+                        { m_Timer.color = Color.red; }
+                       
+
+
                         m_Timer.text = "" + m_TimeMinutes + ":" + "0" + m_TimeSeconds;
                     }
                     yield return new WaitForSeconds(1);
                     m_TimeSeconds--;
                     m_Timer.text = "" + m_TimeMinutes + ":" + m_TimeSeconds;
-                }
-            }
+             }
+
+
 
             m_TimeMinutes--;
             m_TimeSeconds = 60;
-            
+
+            yield return new WaitForEndOfFrame();
         }
         
         

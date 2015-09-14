@@ -44,7 +44,7 @@ public class ScriptThirstRunManager : MonoBehaviour {
 	
 	public void PrepareforLaunch ()
     {
-        if (m_ScriptTimer.m_IsPlaying)            
+        if (m_ScriptTimer.m_IsPlaying==true)            
         StartCoroutine(C_PrepareforLaunch());
     }
 
