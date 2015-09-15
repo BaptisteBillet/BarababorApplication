@@ -17,7 +17,8 @@ public class ScriptObjectsBehaviour : MonoBehaviour
 
    void Start ()
     {
-       
+        ScriptThirstRunManager.e_EndGame += Destruct;
+
     }
 
     void FixedUpdate ()
@@ -29,10 +30,17 @@ public class ScriptObjectsBehaviour : MonoBehaviour
     void OnTriggerEnter (Collider other)
     {
        if (other.tag=="Captain"||other.tag == "Reciever")
-        Destroy(this.gameObject);
+        {
+            ScriptThirstRunManager.e_EndGame -= Destruct;
+            Destroy(this.gameObject);
+        }
+        
     }
     
-	
+	void Destruct ()
+    {
+        Destroy(this.gameObject);
+    }
 	
 	
 }

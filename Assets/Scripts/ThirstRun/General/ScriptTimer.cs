@@ -9,6 +9,9 @@ public class ScriptTimer : MonoBehaviour {
     public int m_InitialTimeMinutes;
     public int m_InitialTimeSeconds;
 
+    public ScriptThirstRunManager m_ScriptThirstRunManager;
+
+
     [HideInInspector]
     public int m_TimeMinutes;
     [HideInInspector]
@@ -66,12 +69,18 @@ public class ScriptTimer : MonoBehaviour {
 
             yield return new WaitForEndOfFrame();
         }
+
+        if ((m_TimeMinutes == 0) && (m_TimeSeconds==0))
+        {
+            WinandLoose();
+            m_ScriptThirstRunManager.Loose();
+        }
         
         
     }
 
     public void WinandLoose()
     {
-        StopCoroutine(CoroutineTimer());
+        m_IsPlaying=false;
     }
 }

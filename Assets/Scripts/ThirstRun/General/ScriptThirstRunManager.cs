@@ -17,6 +17,8 @@ public class ScriptThirstRunManager : MonoBehaviour {
     public Text m_VictoryTimerField;
     public GameObject m_PanelVictory;
 
+    public GameObject m_PanelDefeat;
+
     int m_VictoryMinuteTime;
     int m_VictorySecondTime;
 
@@ -29,6 +31,11 @@ public class ScriptThirstRunManager : MonoBehaviour {
     int m_Coconut;
 
     public ScriptThirstMeter m_ScriptThirstManager;
+
+    //______________________________________________
+
+    public delegate void EndGame();
+    public static event EndGame e_EndGame;
      
 
     // Use this for initialization
@@ -53,7 +60,7 @@ public class ScriptThirstRunManager : MonoBehaviour {
        
             m_LaunchTime = Random.Range(1f, 2f);
             m_SelectLauncher = Mathf.CeilToInt(Random.Range(0.1f, 2.9f));
-            m_ObjectToLaunch = Mathf.FloorToInt(Random.Range(0.1f, 0.9f));
+            m_ObjectToLaunch = Mathf.FloorToInt(Random.Range(0.1f, 1.9f));
             yield return new WaitForSeconds(m_LaunchTime);
             
             switch (m_SelectLauncher)
@@ -104,6 +111,11 @@ public class ScriptThirstRunManager : MonoBehaviour {
     {
         m_ScriptTimer.WinandLoose();
 
+        if (e_EndGame!=null)
+        {
+            e_EndGame();
+        }
+
         StopCoroutine(C_PrepareforLaunch());
         m_PanelVictory.SetActive(true);
 
@@ -122,7 +134,14 @@ public class ScriptThirstRunManager : MonoBehaviour {
 
     public void Loose ()
     {
+        m_ScriptTimer.WinandLoose();
 
+        if (e_EndGame != null)
+        {
+            e_EndGame();
+        }
+
+        m_PanelDefeat.SetActive(true);
     }
 
     //______________________________________________________________________________________________________________________
