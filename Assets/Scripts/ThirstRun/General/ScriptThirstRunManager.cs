@@ -28,7 +28,7 @@ public class ScriptThirstRunManager : MonoBehaviour {
     int m_SelectLauncher;
     int m_ObjectToLaunch;
 
-    int m_Coconut;
+   public int m_Coconut;
 
     public ScriptThirstMeter m_ScriptThirstManager;
 
@@ -44,6 +44,8 @@ public class ScriptThirstRunManager : MonoBehaviour {
         m_ScriptLauncher1 = m_Launcher1.GetComponent<ScriptLauncher>();
         m_ScriptLauncher2 = m_Launcher2.GetComponent<ScriptLauncher>();
         m_ScriptLauncher3 = m_Launcher3.GetComponent<ScriptLauncher>();
+
+       
 
         PrepareforLaunch();
 
@@ -88,14 +90,17 @@ public class ScriptThirstRunManager : MonoBehaviour {
         if (Coconut == true)
         {
             m_Coconut++;
+            
             m_ScriptThirstManager.Fill();
         }
 
 
-        if (Coconut == false)
-        { 
-            m_Coconut--;
+        if ((Coconut == false)&&(m_Coconut>0))
+        {
             m_ScriptThirstManager.Empty();
+            m_Coconut--;
+            
+            
         }
 
         if (m_Coconut == 10)
@@ -111,12 +116,14 @@ public class ScriptThirstRunManager : MonoBehaviour {
     {
         m_ScriptTimer.WinandLoose();
 
+        StopCoroutine(C_PrepareforLaunch());
+
         if (e_EndGame!=null)
         {
             e_EndGame();
         }
 
-        StopCoroutine(C_PrepareforLaunch());
+       
         m_PanelVictory.SetActive(true);
 
         m_VictoryMinuteTime = m_ScriptTimer.m_InitialTimeMinutes - m_ScriptTimer.m_TimeMinutes;
@@ -134,9 +141,7 @@ public class ScriptThirstRunManager : MonoBehaviour {
 
     public void Loose ()
     {
-        m_ScriptTimer.WinandLoose();
-
-        if (e_EndGame != null)
+         if (e_EndGame != null)
         {
             e_EndGame();
         }

@@ -11,6 +11,8 @@ public class ScriptTimer : MonoBehaviour {
 
     public ScriptThirstRunManager m_ScriptThirstRunManager;
 
+    public GameObject m_GameInterface;
+
 
     [HideInInspector]
     public int m_TimeMinutes;
@@ -43,7 +45,7 @@ public class ScriptTimer : MonoBehaviour {
             if (m_IsPlaying == false)
                 break;
 
-            while (m_TimeSeconds >= 1)
+            while (m_TimeSeconds >= 0)
             {
                 if (m_IsPlaying == false)
                     break;
@@ -51,12 +53,25 @@ public class ScriptTimer : MonoBehaviour {
                 if (m_TimeSeconds < 10)
                     {
                         if (m_TimeMinutes==0)
-                        { m_Timer.color = Color.red; }
+                        { m_Timer.color = Color.red;
+
+                            if (m_TimeSeconds < 1)
+                             {
+                                  Debug.Log("Loose");
+                                  
+                                  WinandLoose();
+                                  m_ScriptThirstRunManager.Loose();
+                             }
+
+
+                       }
                        
 
 
                         m_Timer.text = "" + m_TimeMinutes + ":" + "0" + m_TimeSeconds;
-                    }
+
+                    
+                     }
                     yield return new WaitForSeconds(1);
                     m_TimeSeconds--;
                     m_Timer.text = "" + m_TimeMinutes + ":" + m_TimeSeconds;
@@ -70,11 +85,7 @@ public class ScriptTimer : MonoBehaviour {
             yield return new WaitForEndOfFrame();
         }
 
-        if ((m_TimeMinutes == 0) && (m_TimeSeconds==0))
-        {
-            WinandLoose();
-            m_ScriptThirstRunManager.Loose();
-        }
+        
         
         
     }
@@ -82,5 +93,6 @@ public class ScriptTimer : MonoBehaviour {
     public void WinandLoose()
     {
         m_IsPlaying=false;
+        m_GameInterface.SetActive(false);
     }
 }

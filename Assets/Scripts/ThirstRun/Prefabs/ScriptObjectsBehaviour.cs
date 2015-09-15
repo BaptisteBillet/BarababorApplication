@@ -39,6 +39,7 @@ public class ScriptObjectsBehaviour : MonoBehaviour
     
 	void Destruct ()
     {
+        if (this!=null)
         Destroy(this.gameObject);
     }
 	

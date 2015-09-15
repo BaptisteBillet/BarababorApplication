@@ -11,7 +11,7 @@ public class ScriptThirstMeter : MonoBehaviour {
     public RectTransform m_AreatoFill;
     Rect m_AreatoFillRect;
 
-    
+    public ScriptThirstRunManager m_ScriptThirstRunManager;
 
 
     // Use this for initialization
@@ -19,7 +19,7 @@ public class ScriptThirstMeter : MonoBehaviour {
         m_Rect = m_MeterFilling.GetComponent<RectTransform>();
 
         m_AreatoFillRect = m_AreatoFill.rect;
-
+        
     }
 
    public void Fill ()
@@ -32,19 +32,23 @@ public class ScriptThirstMeter : MonoBehaviour {
 
     public void Empty()
     {
-        
-        if (m_MeterFilling.rectTransform.position.x <= -150f)
-        {
-            m_MeterFilling.rectTransform.position = new Vector3(-151f, m_MeterFilling.rectTransform.position.y, m_MeterFilling.rectTransform.position.z);
-        }
 
-        else
-        {
-            m_MeterFilling.rectTransform.position -= new Vector3(m_AreatoFillRect.width / 10, 0f, 0f);
-        }
-        
+        if (m_ScriptThirstRunManager.m_Coconut != 0)
+           
+        m_MeterFilling.rectTransform.position -= new Vector3(m_AreatoFillRect.width / 10, 0f, 0f);
 
-        
+        /* if (m_MeterFilling.rectTransform.position.x <= -150f)
+         {
+             m_MeterFilling.rectTransform.position = new Vector3(-151f, m_MeterFilling.rectTransform.position.y, m_MeterFilling.rectTransform.position.z);
+         }
+
+         else
+         {
+             m_MeterFilling.rectTransform.position -= new Vector3(m_AreatoFillRect.width / 10, 0f, 0f);
+         }
+         */
+
+
     }
 
 
