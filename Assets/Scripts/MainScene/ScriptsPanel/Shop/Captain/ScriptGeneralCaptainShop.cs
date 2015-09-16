@@ -6,7 +6,7 @@ public class ScriptGeneralCaptainShop : MonoBehaviour {
     public GameObject m_Captain;
     public GameObject m_FirstDisplayStand;
 
-    public GameObject m_CurrentDisplayStand;
+    GameObject m_CurrentDisplayStand;
 
 	// Use this for initialization
 	void Start ()
@@ -21,6 +21,7 @@ public class ScriptGeneralCaptainShop : MonoBehaviour {
     public void LoadDisplayStand(GameObject DisplayStand)
     {
         DisplayStand.SetActive(true);
+        m_CurrentDisplayStand = DisplayStand;
     }
 	
     public void UnloadDisplayStand ()

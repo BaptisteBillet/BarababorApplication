@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class TriDataBase : MonoBehaviour
 {
+    #region ElementandEquipementDicos
     public Dictionary<string, Element> m_BowDico = new Dictionary<string, Element>();
     public Dictionary<string, Element> m_SternDico = new Dictionary<string, Element>();
     public Dictionary<string, Element> m_KeelDico = new Dictionary<string, Element>();
@@ -14,6 +15,21 @@ public class TriDataBase : MonoBehaviour
     public Dictionary<string, Specialist> m_SpecialistDico = new Dictionary<string, Specialist>();
     public Dictionary<string, Equipment> m_UltimateDico = new Dictionary<string, Equipment>();
     public Dictionary<string, Equipment> m_GadgetDico = new Dictionary<string, Equipment>();
+    #endregion
+
+
+    public Dictionary<string, ScriptCaptainParts> m_NoseDico = new Dictionary<string, ScriptCaptainParts>();
+    public Dictionary<string, ScriptCaptainParts> m_EarsDico = new Dictionary<string, ScriptCaptainParts>();
+    public Dictionary<string, ScriptCaptainParts> m_EyesDico = new Dictionary<string, ScriptCaptainParts>();
+    public Dictionary<string, ScriptCaptainParts> m_MouthDico = new Dictionary<string, ScriptCaptainParts>();
+
+    public Dictionary<string, ScriptCaptainWears> m_JacketDico = new Dictionary<string, ScriptCaptainWears>();
+    public Dictionary<string, ScriptCaptainWears> m_HatDico = new Dictionary<string, ScriptCaptainWears>();
+    public Dictionary<string, ScriptCaptainWears> m_PantsDico = new Dictionary<string, ScriptCaptainWears>();
+    public Dictionary<string, ScriptCaptainWears> m_BootsDico = new Dictionary<string, ScriptCaptainWears>();
+
+    public ScriptMeshLibrary m_ScriptMeshLibrary;
+
 
     #region Singleton
     static private TriDataBase s_Instance;
@@ -267,6 +283,138 @@ public class TriDataBase : MonoBehaviour
             m_SpecialistDico.Add(m_Specialist.m_Name, m_Specialist);
         }
         #endregion
+
+        #region CaptainWears
+
+        foreach (Google2u.BOOTSRow row in Google2u.BOOTS.Instance.Rows)
+        {
+            ScriptCaptainWears m_CaptainWear = new ScriptCaptainWears();
+
+
+            m_CaptainWear.m_WearName = row._Name;
+            m_CaptainWear.m_WearCost = row._Cost;
+            m_CaptainWear.m_WearShownName = row._ShownName;
+            m_CaptainWear.m_WearAppearance = m_ScriptMeshLibrary.m_BootsList[row._Appearance];
+            
+
+           
+
+            m_CaptainWear.m_WearShownName = row._ShownName;
+
+            m_BootsDico.Add(m_CaptainWear.m_WearName, m_CaptainWear);
+        }
+
+        foreach (Google2u.JACKETRow row in Google2u.JACKET.Instance.Rows)
+        {
+            ScriptCaptainWears m_CaptainWear = new ScriptCaptainWears();
+
+
+            m_CaptainWear.m_WearName = row._Name;
+            m_CaptainWear.m_WearCost = row._Cost;
+            m_CaptainWear.m_WearShownName = row._ShownName;
+            m_CaptainWear.m_WearAppearance = m_ScriptMeshLibrary.m_BootsList[row._Appearance];
+
+
+
+
+            m_CaptainWear.m_WearShownName = row._ShownName;
+
+            m_JacketDico.Add(m_CaptainWear.m_WearName, m_CaptainWear);
+        }
+
+        foreach (Google2u.HATRow row in Google2u.HAT.Instance.Rows)
+        {
+            ScriptCaptainWears m_CaptainWear = new ScriptCaptainWears();
+
+
+            m_CaptainWear.m_WearName = row._Name;
+            m_CaptainWear.m_WearCost = row._Cost;
+            m_CaptainWear.m_WearShownName = row._ShownName;
+            m_CaptainWear.m_WearAppearance = m_ScriptMeshLibrary.m_BootsList[row._Appearance];
+
+
+
+
+            m_CaptainWear.m_WearShownName = row._ShownName;
+
+            m_HatDico.Add(m_CaptainWear.m_WearName, m_CaptainWear);
+        }
+
+        foreach (Google2u.PANTSRow row in Google2u.PANTS.Instance.Rows)
+        {
+            ScriptCaptainWears m_CaptainWear = new ScriptCaptainWears();
+
+
+            m_CaptainWear.m_WearName = row._Name;
+            m_CaptainWear.m_WearCost = row._Cost;
+            m_CaptainWear.m_WearShownName = row._ShownName;
+            m_CaptainWear.m_WearAppearance = m_ScriptMeshLibrary.m_BootsList[row._Appearance];
+
+
+
+
+            m_CaptainWear.m_WearShownName = row._ShownName;
+
+            m_PantsDico.Add(m_CaptainWear.m_WearName, m_CaptainWear);
+        }
+        #endregion
+
+        foreach (Google2u.NOSERow row in Google2u.NOSE.Instance.Rows)
+        {
+            ScriptCaptainParts m_CaptainPart = new ScriptCaptainParts();
+
+
+            m_CaptainPart.m_PartsName = row._Name;
+            m_CaptainPart.m_PartsCost = row._Cost;
+            m_CaptainPart.m_PartsShownName = row._ShownName;
+            m_CaptainPart.m_PartsAppearance = m_ScriptMeshLibrary.m_BootsList[row._Appearance];
+
+
+            m_NoseDico.Add(m_CaptainPart.m_PartsName, m_CaptainPart);
+        }
+
+        foreach (Google2u.EARSRow row in Google2u.EARS.Instance.Rows)
+        {
+            ScriptCaptainParts m_CaptainPart = new ScriptCaptainParts();
+
+
+            m_CaptainPart.m_PartsName = row._Name;
+            m_CaptainPart.m_PartsCost = row._Cost;
+            m_CaptainPart.m_PartsShownName = row._ShownName;
+            m_CaptainPart.m_PartsAppearance = m_ScriptMeshLibrary.m_BootsList[row._Appearance];
+
+
+            m_EarsDico.Add(m_CaptainPart.m_PartsName, m_CaptainPart);
+        }
+
+
+        foreach (Google2u.EYESRow row in Google2u.EYES.Instance.Rows)
+        {
+            ScriptCaptainParts m_CaptainPart = new ScriptCaptainParts();
+
+
+            m_CaptainPart.m_PartsName = row._Name;
+            m_CaptainPart.m_PartsCost = row._Cost;
+            m_CaptainPart.m_PartsShownName = row._ShownName;
+            m_CaptainPart.m_PartsAppearance = m_ScriptMeshLibrary.m_BootsList[row._Appearance];
+
+
+            m_EyesDico.Add(m_CaptainPart.m_PartsName, m_CaptainPart);
+        }
+
+        foreach (Google2u.MOUTHRow row in Google2u.MOUTH.Instance.Rows)
+        {
+            ScriptCaptainParts m_CaptainPart = new ScriptCaptainParts();
+
+
+            m_CaptainPart.m_PartsName = row._Name;
+            m_CaptainPart.m_PartsCost = row._Cost;
+            m_CaptainPart.m_PartsShownName = row._ShownName;
+            m_CaptainPart.m_PartsAppearance = m_ScriptMeshLibrary.m_BootsList[row._Appearance];
+
+
+            m_MouthDico.Add(m_CaptainPart.m_PartsName, m_CaptainPart);
+        }
 
     }
 
