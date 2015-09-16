@@ -14,7 +14,7 @@ public class ScriptDisplayStand : MonoBehaviour {
                 break;
         }
 
-       // foreach ()
+       
 	
 	}
 	
