@@ -161,10 +161,10 @@ public class ScriptShopEquipmentPanel : MonoBehaviour {
         m_ScriptBuyableItems.m_IsBought = true;
 
         int Coins;
-        int Diamonds;
+        //int Diamonds;
 
         Coins = PlayerPrefs.GetInt("m_Coins");
-        Diamonds = PlayerPrefs.GetInt("m_Diamonds");
+        //Diamonds = PlayerPrefs.GetInt("m_Diamonds");
 
 
         if (paidwithcoins == true)

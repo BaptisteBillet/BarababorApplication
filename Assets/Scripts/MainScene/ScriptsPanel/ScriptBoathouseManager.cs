@@ -66,6 +66,7 @@ public class ScriptBoathouseManager : MonoBehaviour {
 	public void ShipStorage (GameObject Ship)
 	{
 		m_SelectedShip = Ship;
+        m_ScriptShip = m_SelectedShip.GetComponent<ScriptShip>();
        
 		
 	}

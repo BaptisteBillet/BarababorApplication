@@ -25,8 +25,8 @@ public class ScriptThirstMeter : MonoBehaviour {
    public void Fill ()
     {
                 
-        if (m_MeterFilling.rectTransform.position.x<270f )
-         m_MeterFilling.rectTransform.position += new Vector3 (m_AreatoFillRect.width/10,0f,0f); 
+        if (m_Rect.position.x<270f )
+         m_Rect.position += new Vector3 (m_AreatoFillRect.width/10,0f,0f); 
         
     }
 
@@ -35,7 +35,7 @@ public class ScriptThirstMeter : MonoBehaviour {
 
         if (m_ScriptThirstRunManager.m_Coconut != 0)
            
-        m_MeterFilling.rectTransform.position -= new Vector3(m_AreatoFillRect.width / 10, 0f, 0f);
+        m_Rect.position -= new Vector3(m_AreatoFillRect.width / 10, 0f, 0f);
 
         /* if (m_MeterFilling.rectTransform.position.x <= -150f)
          {
