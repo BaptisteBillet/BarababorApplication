@@ -124,7 +124,7 @@ namespace Google2u
 
 		private NOSE()
 		{
-			Rows.Add( new NOSERow("Nose1", "Nose1", "11", "1", "Nose 1"));
+			Rows.Add( new NOSERow("Nose1", "Nose1", "11", "0", "Nose 1"));
 		}
 		public IGoogle2uRow GetGenRow(string in_RowString)
 		{

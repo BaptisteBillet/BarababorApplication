@@ -316,7 +316,7 @@ public class TriDataBase : MonoBehaviour
             m_CaptainWear.m_WearName = row._Name;
             m_CaptainWear.m_WearCost = row._Cost;
             m_CaptainWear.m_WearShownName = row._ShownName;
-            m_CaptainWear.m_WearAppearance = m_ScriptMeshLibrary.m_BootsList[row._Appearance];
+            m_CaptainWear.m_WearAppearance = m_ScriptMeshLibrary.m_JacketList[row._Appearance];
 
 
 
@@ -336,7 +336,7 @@ public class TriDataBase : MonoBehaviour
             m_CaptainWear.m_WearName = row._Name;
             m_CaptainWear.m_WearCost = row._Cost;
             m_CaptainWear.m_WearShownName = row._ShownName;
-            m_CaptainWear.m_WearAppearance = m_ScriptMeshLibrary.m_BootsList[row._Appearance];
+            m_CaptainWear.m_WearAppearance = m_ScriptMeshLibrary.m_HatList[row._Appearance];
 
 
 
@@ -356,7 +356,7 @@ public class TriDataBase : MonoBehaviour
             m_CaptainWear.m_WearName = row._Name;
             m_CaptainWear.m_WearCost = row._Cost;
             m_CaptainWear.m_WearShownName = row._ShownName;
-            m_CaptainWear.m_WearAppearance = m_ScriptMeshLibrary.m_BootsList[row._Appearance];
+            m_CaptainWear.m_WearAppearance = m_ScriptMeshLibrary.m_PantsList[row._Appearance];
 
 
 
@@ -377,7 +377,7 @@ public class TriDataBase : MonoBehaviour
             m_CaptainPart.m_PartsName = row._Name;
             m_CaptainPart.m_PartsCost = row._Cost;
             m_CaptainPart.m_PartsShownName = row._ShownName;
-            m_CaptainPart.m_PartsAppearance = m_ScriptMeshLibrary.m_BootsList[row._Appearance];
+            m_CaptainPart.m_PartsAppearance = m_ScriptMeshLibrary.m_NoseList[row._Appearance];
 
 
             m_NoseDico.Add(m_CaptainPart.m_PartsName, m_CaptainPart);
@@ -393,7 +393,7 @@ public class TriDataBase : MonoBehaviour
             m_CaptainPart.m_PartsName = row._Name;
             m_CaptainPart.m_PartsCost = row._Cost;
             m_CaptainPart.m_PartsShownName = row._ShownName;
-            m_CaptainPart.m_PartsAppearance = m_ScriptMeshLibrary.m_BootsList[row._Appearance];
+            m_CaptainPart.m_PartsAppearance = m_ScriptMeshLibrary.m_EarsList[row._Appearance];
 
 
             m_EarsDico.Add(m_CaptainPart.m_PartsName, m_CaptainPart);
@@ -410,7 +410,7 @@ public class TriDataBase : MonoBehaviour
             m_CaptainPart.m_PartsName = row._Name;
             m_CaptainPart.m_PartsCost = row._Cost;
             m_CaptainPart.m_PartsShownName = row._ShownName;
-            m_CaptainPart.m_PartsAppearance = m_ScriptMeshLibrary.m_BootsList[row._Appearance];
+            m_CaptainPart.m_PartsAppearance = m_ScriptMeshLibrary.m_EyesList[row._Appearance];
 
 
             m_EyesDico.Add(m_CaptainPart.m_PartsName, m_CaptainPart);
@@ -426,7 +426,7 @@ public class TriDataBase : MonoBehaviour
             m_CaptainPart.m_PartsName = row._Name;
             m_CaptainPart.m_PartsCost = row._Cost;
             m_CaptainPart.m_PartsShownName = row._ShownName;
-            m_CaptainPart.m_PartsAppearance = m_ScriptMeshLibrary.m_BootsList[row._Appearance];
+            m_CaptainPart.m_PartsAppearance = m_ScriptMeshLibrary.m_MouthList[row._Appearance];
 
 
             m_MouthDico.Add(m_CaptainPart.m_PartsName, m_CaptainPart);
