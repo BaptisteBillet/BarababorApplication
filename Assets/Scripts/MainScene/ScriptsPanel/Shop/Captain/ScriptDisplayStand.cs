@@ -8,6 +8,8 @@ public class ScriptDisplayStand : MonoBehaviour {
 
     public ScriptShopPanel m_ScriptShopPanel;
 
+    public ScriptMeshLibrary m_ScriptMeshLibrary;
+
     public GameObject m_Prefab;
     ScriptBuyableCaptainItems m_PrefabScript;
     RectTransform m_Rect;
@@ -19,10 +21,10 @@ public class ScriptDisplayStand : MonoBehaviour {
 
     public int m_LineLength;
 
-    public float posx;
-    public float posy;
+    float posx;
+    float posy;
 
-    string m_Type;
+    
 
 	// Use this for initialization
 	void Start ()
@@ -30,43 +32,44 @@ public class ScriptDisplayStand : MonoBehaviour {
         switch (m_DisplayStandType)
         {
             case "Nose":
+                Debug.Log("OY");
                 FillingStand(m_ScriptShopPanel.m_NoseCatalog);
-                m_Type = "Nose";
+                
                 break;
 
             case "Ears":
                 FillingStand(m_ScriptShopPanel.m_EarsCatalog);
-                m_Type = "Ears";
+            
                 break;
 
             case "Eyes":
                 FillingStand(m_ScriptShopPanel.m_EyesCatalog);
-                m_Type = "Eyes";
+
                 break;
 
             case "Mouth":
                 FillingStand(m_ScriptShopPanel.m_MouthCatalog);
-                m_Type = "Mouth";
+      
                 break;
 
             case "Jacket":
                 FillingStand(m_ScriptShopPanel.m_JacketCatalog);
-                m_Type = "Jacket";
+        
                 break;
 
             case "Boots":
                 FillingStand(m_ScriptShopPanel.m_BootsCatalog);
-                m_Type = "Boots";
+     
                 break;
 
             case "Hat":
                 FillingStand(m_ScriptShopPanel.m_HatCatalog);
-                m_Type = "Hat";
+       
                 break;
 
             case "Pants":
                 FillingStand(m_ScriptShopPanel.m_PantsCatalog);
-                m_Type = "Pants";
+      
                 break;
         }
 
@@ -97,9 +100,11 @@ public class ScriptDisplayStand : MonoBehaviour {
                 {
                     decrementvalue = m_List.Count - i;
 
-                    m_PrefabScript.m_ItemsName = m_List[decrementvalue];
+                    m_PrefabScript.m_ItemsType = m_DisplayStandType;
                     m_PrefabScript.m_CostField = m_CostField;
-                    m_PrefabScript.m_ItemsType = m_Type;
+                    m_PrefabScript.m_ScriptMeshLibrary = m_ScriptMeshLibrary;
+                    m_PrefabScript.m_ItemsName = m_List[decrementvalue];
+                    
                    
 
                     if (j == 0)
