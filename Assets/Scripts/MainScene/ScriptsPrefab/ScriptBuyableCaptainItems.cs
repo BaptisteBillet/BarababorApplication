@@ -31,7 +31,9 @@ public class ScriptBuyableCaptainItems : MonoBehaviour {
     [HideInInspector]
     public ScriptMeshLibrary m_ScriptMeshLibrary;
 
-	// Use this for initialization
+    public Text m_ShownNameField;
+
+	
 	void Start ()
     {
        switch (m_ItemsType)
@@ -70,6 +72,8 @@ public class ScriptBuyableCaptainItems : MonoBehaviour {
 
         }
 
+        m_ShownNameField.text = m_ItemsShownName;
+
 	
 	}
 	
@@ -89,6 +93,11 @@ public class ScriptBuyableCaptainItems : MonoBehaviour {
         m_ItemsShownName = dico[m_ItemsName].m_WearShownName;
 
 
+    }
+
+    public void CostDisplay()
+    {
+        m_CostField.text = "" + m_ItemsCost;
     }
 
 }

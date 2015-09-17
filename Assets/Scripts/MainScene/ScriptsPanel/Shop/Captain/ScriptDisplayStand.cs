@@ -19,6 +19,8 @@ public class ScriptDisplayStand : MonoBehaviour {
 
     public Text m_CostField;
 
+    
+
     public int m_LineLength;
 
     float posx;
@@ -32,7 +34,7 @@ public class ScriptDisplayStand : MonoBehaviour {
         switch (m_DisplayStandType)
         {
             case "Nose":
-                Debug.Log("OY");
+             
                 FillingStand(m_ScriptShopPanel.m_NoseCatalog);
                 
                 break;
@@ -84,10 +86,10 @@ public class ScriptDisplayStand : MonoBehaviour {
 
 
 
-        posy = 410f;
+        posy = 510f;
 
         int i = m_List.Count;
-        Debug.Log(i);
+       
         int decrementvalue = m_List.Count - i;
 
         while (i > 0)
@@ -109,7 +111,7 @@ public class ScriptDisplayStand : MonoBehaviour {
 
                     if (j == 0)
                     {
-                        posx = -200f;
+                        posx = -160f;
                     }
 
                     else
@@ -117,7 +119,7 @@ public class ScriptDisplayStand : MonoBehaviour {
                         posx += (m_Rect.rect.width + 35f);
                     }
 
-                    Debug.Log("OY2");
+                   
                     m_PrefabInstance = Instantiate(m_Prefab, new Vector3(0, 0, 0), transform.rotation) as GameObject;
 
                     m_Rect.localScale = new Vector3(0.15f, 0.15f, 1f);
