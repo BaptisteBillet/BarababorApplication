@@ -30,6 +30,8 @@ public class TriDataBase : MonoBehaviour
 
     public ScriptMeshLibrary m_ScriptMeshLibrary;
 
+    public ScriptShopPanel m_ScriptShopPanel;
+
 
     #region Singleton
     static private TriDataBase s_Instance;
@@ -302,6 +304,8 @@ public class TriDataBase : MonoBehaviour
             m_CaptainWear.m_WearShownName = row._ShownName;
 
             m_BootsDico.Add(m_CaptainWear.m_WearName, m_CaptainWear);
+
+            m_ScriptShopPanel.m_BootsCatalog.Add(m_CaptainWear.m_WearName);
         }
 
         foreach (Google2u.JACKETRow row in Google2u.JACKET.Instance.Rows)
@@ -320,6 +324,8 @@ public class TriDataBase : MonoBehaviour
             m_CaptainWear.m_WearShownName = row._ShownName;
 
             m_JacketDico.Add(m_CaptainWear.m_WearName, m_CaptainWear);
+
+            m_ScriptShopPanel.m_JacketCatalog.Add(m_CaptainWear.m_WearName);
         }
 
         foreach (Google2u.HATRow row in Google2u.HAT.Instance.Rows)
@@ -338,6 +344,8 @@ public class TriDataBase : MonoBehaviour
             m_CaptainWear.m_WearShownName = row._ShownName;
 
             m_HatDico.Add(m_CaptainWear.m_WearName, m_CaptainWear);
+
+            m_ScriptShopPanel.m_HatCatalog.Add(m_CaptainWear.m_WearName);
         }
 
         foreach (Google2u.PANTSRow row in Google2u.PANTS.Instance.Rows)
@@ -356,6 +364,8 @@ public class TriDataBase : MonoBehaviour
             m_CaptainWear.m_WearShownName = row._ShownName;
 
             m_PantsDico.Add(m_CaptainWear.m_WearName, m_CaptainWear);
+
+            m_ScriptShopPanel.m_PantsCatalog.Add(m_CaptainWear.m_WearName);
         }
         #endregion
 
@@ -371,6 +381,8 @@ public class TriDataBase : MonoBehaviour
 
 
             m_NoseDico.Add(m_CaptainPart.m_PartsName, m_CaptainPart);
+
+            m_ScriptShopPanel.m_NoseCatalog.Add(m_CaptainPart.m_PartsName);
         }
 
         foreach (Google2u.EARSRow row in Google2u.EARS.Instance.Rows)
@@ -385,6 +397,8 @@ public class TriDataBase : MonoBehaviour
 
 
             m_EarsDico.Add(m_CaptainPart.m_PartsName, m_CaptainPart);
+
+            m_ScriptShopPanel.m_EarsCatalog.Add(m_CaptainPart.m_PartsName);
         }
 
 
@@ -400,6 +414,8 @@ public class TriDataBase : MonoBehaviour
 
 
             m_EyesDico.Add(m_CaptainPart.m_PartsName, m_CaptainPart);
+
+            m_ScriptShopPanel.m_EyesCatalog.Add(m_CaptainPart.m_PartsName);
         }
 
         foreach (Google2u.MOUTHRow row in Google2u.MOUTH.Instance.Rows)
@@ -414,6 +430,8 @@ public class TriDataBase : MonoBehaviour
 
 
             m_MouthDico.Add(m_CaptainPart.m_PartsName, m_CaptainPart);
+
+            m_ScriptShopPanel.m_MouthCatalog.Add(m_CaptainPart.m_PartsName);
         }
 
     }
