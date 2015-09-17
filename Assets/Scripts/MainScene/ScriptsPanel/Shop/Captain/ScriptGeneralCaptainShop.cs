@@ -10,7 +10,7 @@ public class ScriptGeneralCaptainShop : MonoBehaviour {
 
     public GameObject[] m_ArrayofCaptainParts = new GameObject[11];
 
-	// Use this for initialization
+	
 	void Start ()
     {
         m_Captain.SetActive(true);

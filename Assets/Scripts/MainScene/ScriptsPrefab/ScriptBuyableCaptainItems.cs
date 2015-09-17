@@ -33,7 +33,10 @@ public class ScriptBuyableCaptainItems : MonoBehaviour {
 
     public Text m_ShownNameField;
 
-	
+    
+
+
+
 	void Start ()
     {
        switch (m_ItemsType)
