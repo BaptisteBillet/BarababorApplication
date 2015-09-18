@@ -96,6 +96,8 @@ public class ScriptBuyableCaptainItems : MonoBehaviour {
 
         }
 
+        
+
         m_ShownNameField.text = m_ItemsShownName;
 
         m_CaptainPartMeshFilter = m_CaptainParttoChange.GetComponent<MeshFilter>();
@@ -105,8 +107,9 @@ public class ScriptBuyableCaptainItems : MonoBehaviour {
             m_CaptainPartMeshFilter2 = m_CaptainParttoChange2.GetComponent<MeshFilter>();
         }
 
-	
-	}
+        CheckBought();
+
+    }
 	
     public void CharacteristicsCollect (Dictionary<string,ScriptCaptainParts> dico)
     {
@@ -165,44 +168,46 @@ public class ScriptBuyableCaptainItems : MonoBehaviour {
 
         switch (m_ItemsType)
         {
-            case "Bow":
+            case "Nose":
 
-                m_List = m_Inventory.m_PossessedBowInventory;
+                Debug.Log("OY2");
+                m_List = m_Inventory.m_PossessedNoseInventory;
                 break;
 
-            case "Stern":
-                m_List = m_Inventory.m_PossessedSternInventory;
+            case "Ears":
+                m_List = m_Inventory.m_PossessedEarsInventory;
                 break;
 
-            case "Keel":
-                m_List = m_Inventory.m_PossessedKeelInventory;
+            case "Eyes":
+                m_List = m_Inventory.m_PossessedEyesInventory;
                 break;
 
-            case "Mast":
-                m_List = m_Inventory.m_PossessedMastInventory;
+            case "Mouth":
+                m_List = m_Inventory.m_PossessedMouthInventory;
                 break;
 
-            case "Specialist":
+            case "Jacket":
 
-                m_List = m_Inventory.m_PossessedSpecialistInventory;
+                m_List = m_Inventory.m_PossessedJacketInventory;
 
                 break;
 
-            case "Weapon":
-                m_List = m_Inventory.m_PossessedWeaponInventory;
+            case "Boots":
+                m_List = m_Inventory.m_PossessedBootsInventory;
                 break;
 
-            case "Gadget":
-                m_List = m_Inventory.m_PossessedGadgetInventory;
+            case "Pants":
+                m_List = m_Inventory.m_PossessedPantsInventory;
                 break;
 
-            case "Ultimate":
-                m_List = m_Inventory.m_PossessedUltimateInventory;
+            case "Hat":
+                m_List = m_Inventory.m_PossessedHatInventory;
                 break;
         }
 
         foreach (string Name in m_List)
         {
+            Debug.Log(Name);
             if (m_ItemsName == Name)
             {
                 m_IsBought = true;

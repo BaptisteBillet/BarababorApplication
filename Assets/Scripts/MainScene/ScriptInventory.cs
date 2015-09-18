@@ -140,30 +140,31 @@ public class ScriptInventory : MonoBehaviour
         { Load(m_PossessedUltimateInventory, "UltimateInventory"); }
 
 
+        Debug.Log(PlayerPrefs.GetInt("m_NoseInventoryAvailability"));
         if (PlayerPrefs.GetInt("m_NoseInventoryAvailability") != 0)
-        { Load(m_PossessedSpecialistInventory, "NoseInventory"); }
+        { Load(m_PossessedNoseInventory, "NoseInventory"); }
 
         if (PlayerPrefs.GetInt("m_EarsInventoryAvailability") != 0)
-        { Load(m_PossessedWeaponInventory, "EarsInventory"); }
+        { Load(m_PossessedEarsInventory, "EarsInventory"); }
 
         if (PlayerPrefs.GetInt("m_EyesInventoryAvailability") != 0)
-        { Load(m_PossessedGadgetInventory, "EyesInventory"); }
+        { Load(m_PossessedEyesInventory, "EyesInventory"); }
 
         if (PlayerPrefs.GetInt("m_MouthInventoryAvailability") != 0)
-        { Load(m_PossessedUltimateInventory, "MouthInventory"); }
+        { Load(m_PossessedMouthInventory, "MouthInventory"); }
 
 
         if (PlayerPrefs.GetInt("m_JacketInventoryAvailability") != 0)
-        { Load(m_PossessedSpecialistInventory, "JacketInventory"); }
+        { Load(m_PossessedJacketInventory, "JacketInventory"); }
 
         if (PlayerPrefs.GetInt("m_BootsInventoryAvailability") != 0)
-        { Load(m_PossessedWeaponInventory, "BootsInventory"); }
+        { Load(m_PossessedBootsInventory, "BootsInventory"); }
 
         if (PlayerPrefs.GetInt("m_PantsInventoryAvailability") != 0)
-        { Load(m_PossessedGadgetInventory, "PantsInventory"); }
+        { Load(m_PossessedPantsInventory, "PantsInventory"); }
 
         if (PlayerPrefs.GetInt("m_HatInventoryAvailability") != 0)
-        { Load(m_PossessedUltimateInventory, "HatInventory"); }
+        { Load(m_PossessedHatInventory, "HatInventory"); }
 
 
     }

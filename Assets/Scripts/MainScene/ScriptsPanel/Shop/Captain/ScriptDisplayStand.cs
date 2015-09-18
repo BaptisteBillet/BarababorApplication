@@ -148,6 +148,11 @@ public class ScriptDisplayStand : MonoBehaviour {
                         m_PrefabScript.m_CaptainParttoChange2 = m_CaptainParttoChange2;
                         m_PrefabScript.m_DoubleChange = true;
                     }
+
+                    else
+                    {
+                        m_PrefabScript.m_DoubleChange = false;
+                    }
                        
 
 

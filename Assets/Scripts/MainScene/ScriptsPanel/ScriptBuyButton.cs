@@ -16,7 +16,10 @@ public class ScriptBuyButton : MonoBehaviour {
 	
 	public void Enabled (bool AlreadyBought)
     {
+        Debug.Log("OY");
+        Debug.Log(AlreadyBought);
         this.gameObject.SetActive(!AlreadyBought);
+       
     }
 
     public void LaunchBuy()
