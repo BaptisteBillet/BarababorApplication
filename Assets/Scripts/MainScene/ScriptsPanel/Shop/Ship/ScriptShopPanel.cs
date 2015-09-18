@@ -18,6 +18,8 @@ public class ScriptShopPanel : MonoBehaviour {
     public List<string> m_PantsCatalog = new List<string>();
     public List<string> m_HatCatalog = new List<string>();
 
+    public ScriptCaptainBody m_ScriptCaptainBody;
+    public ScriptCaptainHead m_ScriptCaptainHead;
 
     // Use this for initialization
     void Start ()

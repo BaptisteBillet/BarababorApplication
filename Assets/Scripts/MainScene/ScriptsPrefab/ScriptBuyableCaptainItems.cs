@@ -33,11 +33,15 @@ public class ScriptBuyableCaptainItems : MonoBehaviour {
 
     public Text m_ShownNameField;
 
-    
+    public GameObject m_CaptainParttoChange;
+    public GameObject m_CaptainParttoChange2;
 
+    public bool m_DoubleChange;
 
+    MeshFilter m_CaptainPartMeshFilter;
+    MeshFilter m_CaptainPartMeshFilter2;
 
-	void Start ()
+    void Start ()
     {
        switch (m_ItemsType)
         {
@@ -77,6 +81,13 @@ public class ScriptBuyableCaptainItems : MonoBehaviour {
 
         m_ShownNameField.text = m_ItemsShownName;
 
+        m_CaptainPartMeshFilter = m_CaptainParttoChange.GetComponent<MeshFilter>();
+
+        if (m_DoubleChange==true)
+        {
+            m_CaptainPartMeshFilter2 = m_CaptainParttoChange2.GetComponent<MeshFilter>();
+        }
+
 	
 	}
 	
@@ -103,4 +114,25 @@ public class ScriptBuyableCaptainItems : MonoBehaviour {
         m_CostField.text = "" + m_ItemsCost;
     }
 
+    public void ChangePart ()
+    {
+       
+       
+
+
+        m_CaptainPartMeshFilter.mesh= m_ItemsAppearance;
+
+     
+
+       
+
+        if (m_DoubleChange==true)
+        {
+           m_CaptainPartMeshFilter2.mesh = m_ItemsAppearance;
+
+
+        }
+        
+
+    }
 }
