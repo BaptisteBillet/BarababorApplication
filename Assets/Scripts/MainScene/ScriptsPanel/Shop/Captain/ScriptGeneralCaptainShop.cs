@@ -6,9 +6,10 @@ public class ScriptGeneralCaptainShop : MonoBehaviour {
     public GameObject m_Captain;
     public GameObject m_FirstDisplayStand;
 
-    GameObject m_CurrentDisplayStand;
+    [HideInInspector]
+    public GameObject m_CurrentDisplayStand;
 
-    public GameObject[] m_ArrayofCaptainParts = new GameObject[11];
+    
 
 	
 	void Start ()

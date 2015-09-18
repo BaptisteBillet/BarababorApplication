@@ -104,10 +104,10 @@ namespace Google2u
 	public sealed class EYES : IGoogle2uDB
 	{
 		public enum rowIds {
-	
+			Eyes1
 		};
 		public string [] rowNames = {
-	
+			"Eyes1"
 		};
 		public System.Collections.Generic.List<EYESRow> Rows = new System.Collections.Generic.List<EYESRow>();
 
@@ -124,6 +124,7 @@ namespace Google2u
 
 		private EYES()
 		{
+			Rows.Add( new EYESRow("Eyes1", "Eyes1", "11", "0", "Eyes1"));
 		}
 		public IGoogle2uRow GetGenRow(string in_RowString)
 		{
