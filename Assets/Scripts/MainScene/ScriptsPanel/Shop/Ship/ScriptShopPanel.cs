@@ -21,6 +21,7 @@ public class ScriptShopPanel : MonoBehaviour {
     public ScriptCaptainBody m_ScriptCaptainBody;
     public ScriptCaptainHead m_ScriptCaptainHead;
 
+    
     // Use this for initialization
     void Start ()
     {

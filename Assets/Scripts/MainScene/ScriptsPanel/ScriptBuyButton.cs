@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ScriptBuyButton : MonoBehaviour {
 
-    public GameObject m_BuyButton;
+   
 
 	// Use this for initialization
 	void Start () {
@@ -12,6 +12,6 @@ public class ScriptBuyButton : MonoBehaviour {
 	
 	public void Enabled (bool AlreadyBought)
     {
-        m_BuyButton.SetActive(!AlreadyBought);
+        this.gameObject.SetActive(!AlreadyBought);
     }
 }

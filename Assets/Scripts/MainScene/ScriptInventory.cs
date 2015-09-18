@@ -4,30 +4,113 @@ using System.Collections.Generic;
 using System.IO;
 
 
-public class ScriptInventory : MonoBehaviour {
-
+public class ScriptInventory : MonoBehaviour
+{
+    #region MemberDeclaration
+    [HideInInspector]
     public List<string> m_PossessedBowInventory = new List<string>();
+
+    [HideInInspector]
     public List<string> m_PossessedSternInventory = new List<string>();
+
+    [HideInInspector]
     public List<string> m_PossessedKeelInventory = new List<string>();
+
+    [HideInInspector]
     public List<string> m_PossessedMastInventory = new List<string>();
+
+    [HideInInspector]
     public List<string> m_PossessedSpecialistInventory = new List<string>();
+
+    [HideInInspector]
     public List<string> m_PossessedWeaponInventory = new List<string>();
+
+    [HideInInspector]
     public List<string> m_PossessedGadgetInventory = new List<string>();
+
+    [HideInInspector]
     public List<string> m_PossessedUltimateInventory = new List<string>();
 
+
+    [HideInInspector]
+    public List<string> m_PossessedNoseInventory = new List<string>();
+
+    [HideInInspector]
+    public List<string> m_PossessedEarsInventory = new List<string>();
+
+    [HideInInspector]
+    public List<string> m_PossessedEyesInventory = new List<string>();
+
+    [HideInInspector]
+    public List<string> m_PossessedMouthInventory = new List<string>();
+
+
+    [HideInInspector]
+    public List<string> m_PossessedJacketInventory = new List<string>();
+
+    [HideInInspector]
+    public List<string> m_PossessedPantsInventory = new List<string>();
+
+    [HideInInspector]
+    public List<string> m_PossessedBootsInventory = new List<string>();
+
+    [HideInInspector]
+    public List<string> m_PossessedHatInventory = new List<string>();
+
+
+
+    [HideInInspector]
     public int m_BowInventoryAvailability;
+
+    [HideInInspector]
     public int m_SternInventoryAvailability;
+
+    [HideInInspector]
     public int m_KeelInventoryAvailability;
+
+    [HideInInspector]
     public int m_MastInventoryAvailability;
+
+    [HideInInspector]
     public int m_SpecialistInventoryAvailability;
+
+    [HideInInspector]
     public int m_WeaponInventoryAvailability;
+
+    [HideInInspector]
     public int m_GadgetInventoryAvailability;
+
+    [HideInInspector]
     public int m_UltimateInventoryAvailability;
 
+    [HideInInspector]
+    public int m_NoseInventoryAvailability;
+
+    [HideInInspector]
+    public int m_EarsInventoryAvailability;
+
+    [HideInInspector]
+    public int m_EyesInventoryAvailability;
+
+    [HideInInspector]
+    public int m_MouthInventoryAvailability;
+
+    [HideInInspector]
+    public int m_JacketInventoryAvailability;
+
+    [HideInInspector]
+    public int m_BootsInventoryAvailability;
+
+    [HideInInspector]
+    public int m_PantsInventoryAvailability;
+
+    [HideInInspector]
+    public int m_HatInventoryAvailability;
 
     string m_SaveString;
 
     public List<string> StringTest = new List<string>();
+    #endregion
 
     void Awake ()
     {
@@ -43,9 +126,9 @@ public class ScriptInventory : MonoBehaviour {
         if (PlayerPrefs.GetInt("m_MastInventoryAvailability") != 0)
         { Load(m_PossessedMastInventory, "MastInventory"); }
 
+
         if (PlayerPrefs.GetInt("m_SpecialistInventoryAvailability") != 0)
         { Load(m_PossessedSpecialistInventory, "SpecialistInventory"); }
-
 
         if (PlayerPrefs.GetInt("m_WeaponInventoryAvailability") != 0)
         { Load(m_PossessedWeaponInventory, "WeaponInventory"); }
@@ -55,9 +138,34 @@ public class ScriptInventory : MonoBehaviour {
 
         if (PlayerPrefs.GetInt("m_UltimateInventoryAvailability") != 0)
         { Load(m_PossessedUltimateInventory, "UltimateInventory"); }
-        
-        
-            
+
+
+        if (PlayerPrefs.GetInt("m_NoseInventoryAvailability") != 0)
+        { Load(m_PossessedSpecialistInventory, "NoseInventory"); }
+
+        if (PlayerPrefs.GetInt("m_EarsInventoryAvailability") != 0)
+        { Load(m_PossessedWeaponInventory, "EarsInventory"); }
+
+        if (PlayerPrefs.GetInt("m_EyesInventoryAvailability") != 0)
+        { Load(m_PossessedGadgetInventory, "EyesInventory"); }
+
+        if (PlayerPrefs.GetInt("m_MouthInventoryAvailability") != 0)
+        { Load(m_PossessedUltimateInventory, "MouthInventory"); }
+
+
+        if (PlayerPrefs.GetInt("m_JacketInventoryAvailability") != 0)
+        { Load(m_PossessedSpecialistInventory, "JacketInventory"); }
+
+        if (PlayerPrefs.GetInt("m_BootsInventoryAvailability") != 0)
+        { Load(m_PossessedWeaponInventory, "BootsInventory"); }
+
+        if (PlayerPrefs.GetInt("m_PantsInventoryAvailability") != 0)
+        { Load(m_PossessedGadgetInventory, "PantsInventory"); }
+
+        if (PlayerPrefs.GetInt("m_HatInventoryAvailability") != 0)
+        { Load(m_PossessedUltimateInventory, "HatInventory"); }
+
+
     }
 	
    

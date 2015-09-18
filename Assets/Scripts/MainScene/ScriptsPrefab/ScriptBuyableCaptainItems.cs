@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 
 public class ScriptBuyableCaptainItems : MonoBehaviour {
-
+    #region Member Declaration
     [HideInInspector]
     public string m_ItemsName;
 
@@ -31,6 +31,9 @@ public class ScriptBuyableCaptainItems : MonoBehaviour {
     [HideInInspector]
     public ScriptMeshLibrary m_ScriptMeshLibrary;
 
+    [HideInInspector]
+    public GameObject m_DisplayStand;
+
     public Text m_ShownNameField;
 
     public GameObject m_CaptainParttoChange;
@@ -40,6 +43,20 @@ public class ScriptBuyableCaptainItems : MonoBehaviour {
 
     MeshFilter m_CaptainPartMeshFilter;
     MeshFilter m_CaptainPartMeshFilter2;
+
+    public ScriptBuyButton m_ScriptBuyButton;
+
+    public ScriptInventory m_Inventory;
+
+    public bool m_IsBought;
+
+    List<string> m_List;
+
+    #endregion
+
+
+
+
 
     void Start ()
     {
@@ -134,5 +151,72 @@ public class ScriptBuyableCaptainItems : MonoBehaviour {
         }
         
 
+    }
+
+
+    public void AlreadyBought()
+    {
+        m_ScriptBuyButton.Enabled(m_IsBought);
+    }
+
+    public void CheckBought()
+    {
+
+
+        switch (m_ItemsType)
+        {
+            case "Bow":
+
+                m_List = m_Inventory.m_PossessedBowInventory;
+                break;
+
+            case "Stern":
+                m_List = m_Inventory.m_PossessedSternInventory;
+                break;
+
+            case "Keel":
+                m_List = m_Inventory.m_PossessedKeelInventory;
+                break;
+
+            case "Mast":
+                m_List = m_Inventory.m_PossessedMastInventory;
+                break;
+
+            case "Specialist":
+
+                m_List = m_Inventory.m_PossessedSpecialistInventory;
+
+                break;
+
+            case "Weapon":
+                m_List = m_Inventory.m_PossessedWeaponInventory;
+                break;
+
+            case "Gadget":
+                m_List = m_Inventory.m_PossessedGadgetInventory;
+                break;
+
+            case "Ultimate":
+                m_List = m_Inventory.m_PossessedUltimateInventory;
+                break;
+        }
+
+        foreach (string Name in m_List)
+        {
+            if (m_ItemsName == Name)
+            {
+                m_IsBought = true;
+            }
+        }
+    }
+
+    public void TransmissionGameObject()
+    {
+        ScriptDisplayStand m_ScriptDisplayStand;
+
+        m_ScriptDisplayStand = m_DisplayStand.GetComponent<ScriptDisplayStand>();
+
+        m_ScriptDisplayStand.m_SelectedItem = this.gameObject;
+        m_ScriptDisplayStand.m_SelectedItemScript = this;
     }
 }

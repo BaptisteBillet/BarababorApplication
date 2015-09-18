@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 
 public class ScriptDisplayStand : MonoBehaviour {
+
+# region MemberDeclaration
     public string m_DisplayStandType;
 
     public ScriptShopPanel m_ScriptShopPanel;
@@ -19,7 +21,10 @@ public class ScriptDisplayStand : MonoBehaviour {
 
     public Text m_CostField;
 
+    [HideInInspector]
     public ScriptCaptainBody m_ScriptCaptainBody;
+
+    [HideInInspector]
     public ScriptCaptainHead m_ScriptCaptainHead;
 
     public int m_LineLength;
@@ -30,7 +35,17 @@ public class ScriptDisplayStand : MonoBehaviour {
     GameObject m_CaptainParttoChange;
     GameObject m_CaptainParttoChange2;
 
+    public ScriptInventory m_Inventory;
+    public ScriptBuyButton m_ScriptBuyButton;
+
+    [HideInInspector]
+    public GameObject m_SelectedItem;
+    [HideInInspector]
+    public ScriptBuyableCaptainItems m_SelectedItemScript;
+
     bool m_DoubleChange;
+
+    #endregion
     // Use this for initialization
     void Start ()
     {
@@ -99,7 +114,7 @@ public class ScriptDisplayStand : MonoBehaviour {
 
 
 
-        posy = 510f;
+        posy = 410f;
 
         int i = m_List.Count;
        
@@ -122,6 +137,11 @@ public class ScriptDisplayStand : MonoBehaviour {
                     m_PrefabScript.m_ScriptMeshLibrary = m_ScriptMeshLibrary;
                     m_PrefabScript.m_ItemsName = m_List[decrementvalue];
                     m_PrefabScript.m_CaptainParttoChange = m_CaptainParttoChange;
+                    m_PrefabScript.m_Inventory = m_Inventory;
+                    m_PrefabScript.m_ScriptBuyButton = m_ScriptBuyButton;
+                    m_PrefabScript.m_DisplayStand = this.gameObject;
+
+
 
                     if(m_DoubleChange== true)
                     {
@@ -158,6 +178,82 @@ public class ScriptDisplayStand : MonoBehaviour {
             posy -= 50f;
         }
     }
-	
-	
+
+   
+
+    public void Buy(bool paidwithcoins)
+    {
+
+        switch (m_DisplayStandType)
+        {
+            case "Nose":
+                m_Inventory.m_PossessedSpecialistInventory.Add(m_SelectedItemScript.m_ItemsName);
+                m_Inventory.SaveInventory(m_Inventory.m_PossessedSpecialistInventory, "NoseInventory");
+                PlayerPrefs.SetInt("m_NoseInventoryAvailability", 1);
+
+                break;
+
+            case "Ears":
+                m_Inventory.m_PossessedSpecialistInventory.Add(m_SelectedItemScript.m_ItemsName);
+                m_Inventory.SaveInventory(m_Inventory.m_PossessedSpecialistInventory, "EarsInventory");
+                PlayerPrefs.SetInt("m_EarsInventoryAvailability", 1);
+                break;
+
+            case "Eyes":
+                m_Inventory.m_PossessedSpecialistInventory.Add(m_SelectedItemScript.m_ItemsName);
+                m_Inventory.SaveInventory(m_Inventory.m_PossessedSpecialistInventory, "NoseInventory");
+                PlayerPrefs.SetInt("m_EyesInventoryAvailability", 1);
+                break;
+
+            case "Mouth":
+                m_Inventory.m_PossessedSpecialistInventory.Add(m_SelectedItemScript.m_ItemsName);
+                m_Inventory.SaveInventory(m_Inventory.m_PossessedSpecialistInventory, "MouthInventory");
+                PlayerPrefs.SetInt("m_MouthInventoryAvailability", 1);
+                break;
+
+            case "Jacket":
+                m_Inventory.m_PossessedSpecialistInventory.Add(m_SelectedItemScript.m_ItemsName);
+                m_Inventory.SaveInventory(m_Inventory.m_PossessedSpecialistInventory, "JacketInventory");
+                PlayerPrefs.SetInt("m_JacketInventoryAvailability", 1);
+                break;
+
+            case "Boots":
+                m_Inventory.m_PossessedSpecialistInventory.Add(m_SelectedItemScript.m_ItemsName);
+                m_Inventory.SaveInventory(m_Inventory.m_PossessedSpecialistInventory, "BootsInventory");
+                PlayerPrefs.SetInt("m_BootsInventoryAvailability", 1);
+                break;
+
+            case "Pants":
+                m_Inventory.m_PossessedSpecialistInventory.Add(m_SelectedItemScript.m_ItemsName);
+                m_Inventory.SaveInventory(m_Inventory.m_PossessedSpecialistInventory, "PantsInventory");
+                PlayerPrefs.SetInt("m_PantsInventoryAvailability", 1);
+                break;
+
+            case "Hat":
+                m_Inventory.m_PossessedSpecialistInventory.Add(m_SelectedItemScript.m_ItemsName);
+                m_Inventory.SaveInventory(m_Inventory.m_PossessedSpecialistInventory, "HatInventory");
+                PlayerPrefs.SetInt("m_HatInventoryAvailability", 1);
+                break;
+
+        }
+
+        m_SelectedItemScript.m_IsBought = true;
+
+        int Coins;
+        //int Diamonds;
+
+        Coins = PlayerPrefs.GetInt("m_Coins");
+        //Diamonds = PlayerPrefs.GetInt("m_Diamonds");
+
+
+        if (paidwithcoins == true)
+        {
+
+            Coins -= m_SelectedItemScript.m_ItemsCost;
+            PlayerPrefs.SetInt("m_Coins", Coins);
+            m_ScriptShopPanel.CurrencyMetersUpdate();
+
+        }
+
+    }
 }
