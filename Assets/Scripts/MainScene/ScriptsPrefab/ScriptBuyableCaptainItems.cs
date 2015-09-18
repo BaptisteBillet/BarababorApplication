@@ -170,7 +170,7 @@ public class ScriptBuyableCaptainItems : MonoBehaviour {
         {
             case "Nose":
 
-                Debug.Log("OY2");
+                
                 m_List = m_Inventory.m_PossessedNoseInventory;
                 break;
 
@@ -207,7 +207,7 @@ public class ScriptBuyableCaptainItems : MonoBehaviour {
 
         foreach (string Name in m_List)
         {
-            Debug.Log(Name);
+            
             if (m_ItemsName == Name)
             {
                 m_IsBought = true;

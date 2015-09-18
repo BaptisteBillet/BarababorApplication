@@ -104,10 +104,10 @@ namespace Google2u
 	public sealed class HAT : IGoogle2uDB
 	{
 		public enum rowIds {
-	
+			Hat1
 		};
 		public string [] rowNames = {
-	
+			"Hat1"
 		};
 		public System.Collections.Generic.List<HATRow> Rows = new System.Collections.Generic.List<HATRow>();
 
@@ -124,6 +124,7 @@ namespace Google2u
 
 		private HAT()
 		{
+			Rows.Add( new HATRow("Hat1", "Hat1", "11", "0", "Hat1"));
 		}
 		public IGoogle2uRow GetGenRow(string in_RowString)
 		{

@@ -140,7 +140,7 @@ public class ScriptInventory : MonoBehaviour
         { Load(m_PossessedUltimateInventory, "UltimateInventory"); }
 
 
-        Debug.Log(PlayerPrefs.GetInt("m_NoseInventoryAvailability"));
+      
         if (PlayerPrefs.GetInt("m_NoseInventoryAvailability") != 0)
         { Load(m_PossessedNoseInventory, "NoseInventory"); }
 

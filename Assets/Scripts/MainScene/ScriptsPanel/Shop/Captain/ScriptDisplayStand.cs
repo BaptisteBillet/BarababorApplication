@@ -83,21 +83,30 @@ public class ScriptDisplayStand : MonoBehaviour {
                 break;
 
             case "Jacket":
+
+                m_CaptainParttoChange = m_ScriptCaptainBody.m_ArrayofWears[5];
                 FillingStand(m_ScriptShopPanel.m_JacketCatalog);
         
                 break;
 
             case "Boots":
+                m_CaptainParttoChange = m_ScriptCaptainBody.m_ArrayofWears[3];
+                m_CaptainParttoChange2 = m_ScriptCaptainBody.m_ArrayofWears[4];
+                m_DoubleChange = true;
                 FillingStand(m_ScriptShopPanel.m_BootsCatalog);
      
                 break;
 
             case "Hat":
+                m_CaptainParttoChange = m_ScriptCaptainBody.m_ArrayofWears[0];
                 FillingStand(m_ScriptShopPanel.m_HatCatalog);
        
                 break;
 
             case "Pants":
+                m_CaptainParttoChange = m_ScriptCaptainBody.m_ArrayofWears[1];
+                m_CaptainParttoChange2 = m_ScriptCaptainBody.m_ArrayofWears[2];
+                m_DoubleChange = true;
                 FillingStand(m_ScriptShopPanel.m_PantsCatalog);
       
                 break;
@@ -151,6 +160,7 @@ public class ScriptDisplayStand : MonoBehaviour {
 
                     else
                     {
+                        m_PrefabScript.m_CaptainParttoChange2 = null;
                         m_PrefabScript.m_DoubleChange = false;
                     }
                        
@@ -217,26 +227,26 @@ public class ScriptDisplayStand : MonoBehaviour {
                 break;
 
             case "Jacket":
-                m_Inventory.m_PossessedSpecialistInventory.Add(m_SelectedItemScript.m_ItemsName);
-                m_Inventory.SaveInventory(m_Inventory.m_PossessedSpecialistInventory, "JacketInventory");
+                m_Inventory.m_PossessedJacketInventory.Add(m_SelectedItemScript.m_ItemsName);
+                m_Inventory.SaveInventory(m_Inventory.m_PossessedJacketInventory, "JacketInventory");
                 PlayerPrefs.SetInt("m_JacketInventoryAvailability", 1);
                 break;
 
             case "Boots":
-                m_Inventory.m_PossessedSpecialistInventory.Add(m_SelectedItemScript.m_ItemsName);
-                m_Inventory.SaveInventory(m_Inventory.m_PossessedSpecialistInventory, "BootsInventory");
+                m_Inventory.m_PossessedBootsInventory.Add(m_SelectedItemScript.m_ItemsName);
+                m_Inventory.SaveInventory(m_Inventory.m_PossessedBootsInventory, "BootsInventory");
                 PlayerPrefs.SetInt("m_BootsInventoryAvailability", 1);
                 break;
 
             case "Pants":
-                m_Inventory.m_PossessedSpecialistInventory.Add(m_SelectedItemScript.m_ItemsName);
-                m_Inventory.SaveInventory(m_Inventory.m_PossessedSpecialistInventory, "PantsInventory");
+                m_Inventory.m_PossessedPantsInventory.Add(m_SelectedItemScript.m_ItemsName);
+                m_Inventory.SaveInventory(m_Inventory.m_PossessedPantsInventory, "PantsInventory");
                 PlayerPrefs.SetInt("m_PantsInventoryAvailability", 1);
                 break;
 
             case "Hat":
-                m_Inventory.m_PossessedSpecialistInventory.Add(m_SelectedItemScript.m_ItemsName);
-                m_Inventory.SaveInventory(m_Inventory.m_PossessedSpecialistInventory, "HatInventory");
+                m_Inventory.m_PossessedHatInventory.Add(m_SelectedItemScript.m_ItemsName);
+                m_Inventory.SaveInventory(m_Inventory.m_PossessedHatInventory, "HatInventory");
                 PlayerPrefs.SetInt("m_HatInventoryAvailability", 1);
                 break;
 

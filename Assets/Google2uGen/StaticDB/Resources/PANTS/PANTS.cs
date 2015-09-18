@@ -104,10 +104,10 @@ namespace Google2u
 	public sealed class PANTS : IGoogle2uDB
 	{
 		public enum rowIds {
-	
+			Pants1
 		};
 		public string [] rowNames = {
-	
+			"Pants1"
 		};
 		public System.Collections.Generic.List<PANTSRow> Rows = new System.Collections.Generic.List<PANTSRow>();
 
@@ -124,6 +124,7 @@ namespace Google2u
 
 		private PANTS()
 		{
+			Rows.Add( new PANTSRow("Pants1", "Pants1", "11", "0", "Pants1"));
 		}
 		public IGoogle2uRow GetGenRow(string in_RowString)
 		{

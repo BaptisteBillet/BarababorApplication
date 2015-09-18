@@ -9,14 +9,14 @@ public class ScriptGeneralCaptainShop : MonoBehaviour {
     [HideInInspector]
     public GameObject m_CurrentDisplayStand;
 
-    
+    public GameObject m_CurrentSection;
 
 	
 	void Start ()
     {
         m_Captain.SetActive(true);
-        m_Captain.transform.localScale = new Vector3 (0.43f, 0.43f, 0.43f);
-        m_Captain.transform.position = new Vector3(m_Captain.transform.position.x, 0.46f, m_Captain.transform.position.z);
+        m_Captain.transform.localScale = new Vector3 (0.33f, 0.33f, 0.33f);
+        m_Captain.transform.position = new Vector3(m_Captain.transform.position.x, 0.50f, m_Captain.transform.position.z);
 
         LoadDisplayStand(m_FirstDisplayStand);
 	}
@@ -31,5 +31,13 @@ public class ScriptGeneralCaptainShop : MonoBehaviour {
     {
         m_CurrentDisplayStand.SetActive(false);
     }
-	
+
+    public void ChangeSection(GameObject Section)
+    {
+      
+        m_CurrentSection.SetActive(false);
+        Section.SetActive(true);
+        m_CurrentSection = Section;
+    }
+
 }
