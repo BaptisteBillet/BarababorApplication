@@ -104,10 +104,10 @@ namespace Google2u
 	public sealed class MOUTH : IGoogle2uDB
 	{
 		public enum rowIds {
-	
+			Mouth1
 		};
 		public string [] rowNames = {
-	
+			"Mouth1"
 		};
 		public System.Collections.Generic.List<MOUTHRow> Rows = new System.Collections.Generic.List<MOUTHRow>();
 
@@ -124,6 +124,7 @@ namespace Google2u
 
 		private MOUTH()
 		{
+			Rows.Add( new MOUTHRow("Mouth1", "Mouth1", "11", "0", "Mouth1"));
 		}
 		public IGoogle2uRow GetGenRow(string in_RowString)
 		{
