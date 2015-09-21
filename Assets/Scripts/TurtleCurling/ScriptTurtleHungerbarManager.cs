@@ -27,9 +27,10 @@ public class ScriptTurtleHungerbarManager : MonoBehaviour
 	
 	public void Fill()
     {
-        if (m_RectTransform.position.x < HungerBartoFillRect.width)
+        if (m_RectTransform.position.x < 156)
         {
             m_RectTransform.position += new Vector3((HungerBartoFillRect.width / 4), 0f, 0f);
+            Debug.Log(m_RectTransform.position.x);
         }
     }
 }

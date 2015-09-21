@@ -19,7 +19,7 @@ public class ScriptTurtle : MonoBehaviour {
         m_RB = this.GetComponent<Rigidbody>();
 
 
-        Debug.Log(m_RB.velocity);
+     
     }
 
    
