@@ -8,7 +8,7 @@ public class ScriptTurtle : MonoBehaviour {
     Rigidbody m_RB;
 
 
-
+    Quaternion m_RotationMemory;
 
     float m_RotationY;
 
@@ -55,24 +55,22 @@ public class ScriptTurtle : MonoBehaviour {
         m_RotationY = this.transform.rotation.eulerAngles.y;
 
 
-
-       
-
-
-
     }
 
     public void ThrowThatTurtle()
     {
+        m_RotationMemory = this.transform.rotation;
         m_RB.AddForce(new Vector3((Mathf.Sin(m_RotationY * Mathf.Deg2Rad)*900), 0f, (Mathf.Cos(m_RotationY * Mathf.Deg2Rad)*900)));
-        Debug.Log(m_RB.velocity);
+       
     }
 
     public void ComeBackTurtle()
     {
         this.transform.position = new Vector3(0f, -19.9f, -9f);
-       // m_RB.velocity =new Vector3 (0f,0f,0f) ;
-       
+        this.transform.rotation = m_RotationMemory;
+        m_RB.velocity =new Vector3 (0f,0f,0f) ;
+        m_RB.angularVelocity = new Vector3(0f, 0f, 0f);
+
 
     }
 }
