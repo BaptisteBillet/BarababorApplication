@@ -7,6 +7,7 @@ public class ScriptTurtle : MonoBehaviour {
 
     Rigidbody m_RB;
 
+    public ScriptTurtleCurlingManager m_ScriptTurtleCurlingManager;
 
     Quaternion m_RotationMemory;
 
@@ -71,6 +72,22 @@ public class ScriptTurtle : MonoBehaviour {
         m_RB.velocity =new Vector3 (0f,0f,0f) ;
         m_RB.angularVelocity = new Vector3(0f, 0f, 0f);
 
+
+    }
+
+    public void Location()
+    {
+        switch (m_ScriptTurtleCurlingManager.m_LevelDesign)
+        {
+            case 0:
+                this.transform.position = new Vector3(0f, -19.761f, -8.5f);
+                break;
+
+            case 1:
+                this.transform.position = new Vector3(0f, -19.761f, -8.5f);
+                break;
+
+        }
 
     }
 }

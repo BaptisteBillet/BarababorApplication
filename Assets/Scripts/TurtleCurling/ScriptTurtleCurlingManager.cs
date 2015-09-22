@@ -7,8 +7,12 @@ public class ScriptTurtleCurlingManager : MonoBehaviour
 
     public ScriptTurtleTimer m_ScriptTurtleTimer;
 
+    public int m_LevelDesign;
+
 	// Use this for initialization
-	void Start () {
+	void Awake ()
+    {
+        m_LevelDesign = 0;
 	
 	}
 	
