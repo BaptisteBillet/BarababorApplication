@@ -83,21 +83,65 @@ public class ScriptTurtleWalls : MonoBehaviour {
                         break;
 
                     case 4:
+                        this.gameObject.SetActive(true);
                         this.transform.position = new Vector3(-5.25f, -19.5f, 7.03f);
                         this.transform.Rotate(new Vector3(0f, 44.02f, 0f));
                         this.transform.localScale = new Vector3(1f, 1f, 5f);
                         break;
 
                     case 5:
+                        this.gameObject.SetActive(true);
                         this.transform.position = new Vector3(5.88f, -19.5f, 7.28f);
                         this.transform.Rotate(new Vector3(0f, 315.1f, 0f));
                         this.transform.localScale = new Vector3(1f, 1f, 3f);
                         break;
 
                     case 6:
+                        this.gameObject.SetActive(true);
                         this.transform.position = new Vector3(2.23f, -19.5f, 0.23f);
                         this.transform.Rotate(new Vector3(0f, 0f, 0f));
                         this.transform.localScale = new Vector3(1f, 1f, 4f);
+                        break;
+                }
+                break;
+
+            case 2:
+                switch (m_WallNumber)
+                {
+                    case 1:
+                        this.transform.position = new Vector3(-2.09f, -19.5f, -3.22f);
+                        this.transform.Rotate(new Vector3(0f, 328.2676f, 0f));
+                        this.transform.localScale = new Vector3(3f, 1f, 1f);
+                        break;
+
+                    case 2:
+                        this.transform.position = new Vector3(3.35f, -19.5f, 3.15f);
+                        this.transform.Rotate(new Vector3(0f, 0f, 0f));
+                        this.transform.localScale = new Vector3(1f, 1f, 4f);
+                        break;
+
+                    case 3:
+                        this.transform.position = new Vector3(-5.05f, -19.5f, -3.95f);
+                        this.transform.Rotate(new Vector3(0f, 90f, 0f));
+                        this.transform.localScale = new Vector3(1f, 1f, 4f);
+                        break;
+
+                    case 4:
+                        this.gameObject.SetActive(true);
+                        this.transform.position = new Vector3(2.74f, -19.5f, 5.53f);
+                        this.transform.Rotate(new Vector3(0f, 90f, 0f));
+                        this.transform.localScale = new Vector3(1f, 1f, 8f);
+                        break;
+
+                    case 5:
+                        this.gameObject.SetActive(true);
+                        this.transform.position = new Vector3(4.9f, -19.5f, -8.07f);
+                        this.transform.Rotate(new Vector3(0f, 270f, 0f));
+                        this.transform.localScale = new Vector3(1f, 1f, 4f);
+                        break;
+
+                    case 6:
+                        this.gameObject.SetActive(false);
                         break;
                 }
                 break;

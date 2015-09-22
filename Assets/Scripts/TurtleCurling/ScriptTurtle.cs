@@ -9,8 +9,12 @@ public class ScriptTurtle : MonoBehaviour {
 
     public ScriptTurtleCurlingManager m_ScriptTurtleCurlingManager;
 
+    public GameObject m_Sight;
+
     Quaternion m_RotationMemory;
 
+    bool m_IsThrown; 
+    
     float m_RotationY;
 
 
@@ -23,7 +27,13 @@ public class ScriptTurtle : MonoBehaviour {
      
     }
 
-   
+   void Update()
+    {
+       if ((m_IsThrown == true) && (m_RB.velocity.x <= 0.03f) && (m_RB.velocity.x >= 0.03f) && (m_RB.velocity.y <= 0.03f) && (m_RB.velocity.y >= 0.03f) && (m_RB.velocity.z <= 0.03f) && (m_RB.velocity.z >= 0.03f))
+          ComeBackTurtle();
+
+    }
+
     void OnMouseDown()
     {
         m_ScreenPoint = Camera.main.WorldToScreenPoint(this.transform.position);
@@ -60,17 +70,26 @@ public class ScriptTurtle : MonoBehaviour {
 
     public void ThrowThatTurtle()
     {
-        m_RotationMemory = this.transform.rotation;
-        m_RB.AddForce(new Vector3((Mathf.Sin(m_RotationY * Mathf.Deg2Rad)*900), 0f, (Mathf.Cos(m_RotationY * Mathf.Deg2Rad)*900)));
-       
+        if(m_IsThrown == false)
+        {
+            m_Sight.SetActive(false);
+            m_RotationMemory = this.transform.rotation;
+            m_RB.AddForce(new Vector3((Mathf.Sin(m_RotationY * Mathf.Deg2Rad) * 900), 0f, (Mathf.Cos(m_RotationY * Mathf.Deg2Rad) * 900)));
+            m_IsThrown = true;
+        }
+        
     }
 
     public void ComeBackTurtle()
     {
+        
+        m_IsThrown = false;
         this.transform.position = new Vector3(0f, -19.9f, -9f);
         this.transform.rotation = m_RotationMemory;
         m_RB.velocity =new Vector3 (0f,0f,0f) ;
         m_RB.angularVelocity = new Vector3(0f, 0f, 0f);
+
+        m_Sight.SetActive(true);
 
 
     }
@@ -81,13 +100,21 @@ public class ScriptTurtle : MonoBehaviour {
         {
             case 0:
                 this.transform.position = new Vector3(0f, -19.761f, -8.5f);
+                this.transform.eulerAngles = new Vector3(0f, 0f, 0f);
                 break;
 
             case 1:
                 this.transform.position = new Vector3(0f, -19.761f, -8.5f);
+                this.transform.eulerAngles = new Vector3(0f, 0f, 0f);
                 break;
 
         }
+
+    }
+
+    public void DisplaySpeed ()
+    {
+        Debug.Log(m_RB.velocity);
 
     }
 }

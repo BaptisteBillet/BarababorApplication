@@ -32,6 +32,10 @@ public class ScriptCookingPot : MonoBehaviour {
                 this.transform.position = new Vector3(4.66f, -19.5f, 0.89f);
                 break;
 
+            case 2:
+                this.transform.position = new Vector3(-2.36f, -19.5f, 1.66f);
+                break;
+
         }
 
     }

@@ -12,7 +12,7 @@ public class ScriptTurtleCurlingManager : MonoBehaviour
 	// Use this for initialization
 	void Awake ()
     {
-        m_LevelDesign = 0;
+        m_LevelDesign = 1;
 	
 	}
 	
