@@ -9,6 +9,9 @@ public class ScriptTurtleTimer : MonoBehaviour {
     public int m_InitialTimeMinutes;
     public int m_InitialTimeSeconds;
 
+    public int m_MinuteCount;
+    bool m_FirstMinute;
+
     public ScriptTurtleCurlingManager m_ScriptTurtleCurlingManager;
 
     public GameObject m_GameInterface;
@@ -23,6 +26,7 @@ public class ScriptTurtleTimer : MonoBehaviour {
     
 	void Start ()
     {
+        m_FirstMinute = true;
         m_TimeMinutes = m_InitialTimeMinutes;
         m_TimeSeconds = m_InitialTimeSeconds;
 
@@ -67,7 +71,7 @@ public class ScriptTurtleTimer : MonoBehaviour {
                                     
                                   
                                     WinandLoose();
-                                    // m_ScriptThirstRunManager.Loose();
+                                    m_ScriptTurtleCurlingManager.Loose();
                                  }
 
 
@@ -87,8 +91,14 @@ public class ScriptTurtleTimer : MonoBehaviour {
                     }
              }
 
+            if (m_FirstMinute==false)
+            { m_MinuteCount++; }
 
-
+            else
+            {
+                m_FirstMinute = false;
+            }
+            
             m_TimeMinutes--;
             m_TimeSeconds = 60;
 

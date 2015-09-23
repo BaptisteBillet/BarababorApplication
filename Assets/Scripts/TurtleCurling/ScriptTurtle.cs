@@ -80,7 +80,7 @@ public class ScriptTurtle : MonoBehaviour {
             
             m_Sight.SetActive(false);
             m_RotationMemory = this.transform.rotation;
-            m_RB.AddForce(new Vector3((Mathf.Sin(m_RotationY * Mathf.Deg2Rad) * 900), 0f, (Mathf.Cos(m_RotationY * Mathf.Deg2Rad) * 900)));
+            m_RB.AddForce(new Vector3((Mathf.Sin(m_RotationY * Mathf.Deg2Rad) * 1200), 0f, (Mathf.Cos(m_RotationY * Mathf.Deg2Rad) * 1200)));
             m_IsThrown = true;
         }
         
@@ -100,13 +100,24 @@ public class ScriptTurtle : MonoBehaviour {
 
     }
 
+    public void LevelComeBackTurtle()
+    {
+        m_IsThrown = false;
+        this.transform.position = new Vector3(0f, -24.9f, -9f);
+        this.transform.rotation = new Quaternion(0f, 0f, 0f,0f);
+        m_RB.velocity = new Vector3(0f, 0f, 0f);
+        m_RB.angularVelocity = new Vector3(0f, 0f, 0f);
+
+        m_Sight.SetActive(true);
+    }
+
+    public void Destroy()
+    {
+        Destroy(this.gameObject);
+    }
     
 
-    public void DisplaySpeed ()
-    {
-        Debug.Log(m_RB.velocity);
-
-    }
+  
 
    
 }

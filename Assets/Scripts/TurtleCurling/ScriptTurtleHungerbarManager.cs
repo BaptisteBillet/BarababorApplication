@@ -13,6 +13,8 @@ public class ScriptTurtleHungerbarManager : MonoBehaviour
 
     public ScriptTurtleCurlingManager m_ScriptTurtleCurlingManager;
 
+    public ScriptTurtle m_ScriptTurtle;
+
     int m_FillingCount;
 
 
@@ -40,6 +42,12 @@ public class ScriptTurtleHungerbarManager : MonoBehaviour
             if (m_FillingCount == 4)
             {
                 m_ScriptTurtleCurlingManager.Win();
+                m_ScriptTurtle.Destroy();
+            }
+
+            else
+            {
+                m_ScriptTurtle.LevelComeBackTurtle();
             }
             
         }

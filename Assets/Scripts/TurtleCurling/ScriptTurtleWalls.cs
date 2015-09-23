@@ -16,11 +16,7 @@ public class ScriptTurtleWalls : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        foreach(GameObject GO in m_ArrayofWalls)
-        {
-           GO.transform.eulerAngles = new Vector3(0f, 0f, 0f);
-        }     
-      
+        Initialize();
 
         Location();
     
@@ -32,7 +28,9 @@ public class ScriptTurtleWalls : MonoBehaviour {
         {
             case 0:
                 
-                    
+
+                Initialize();
+
                 m_ArrayofWalls[0].transform.position = new Vector3(-4.24f, -24.5f, -1.82f);
                 m_ArrayofWalls[0].transform.Rotate (new Vector3(0f, 308.7244f, 0f));
                 m_ArrayofWalls[0].transform.localScale = new Vector3(8.5f, 1f, 1f);
@@ -55,8 +53,12 @@ public class ScriptTurtleWalls : MonoBehaviour {
                 break;
 
             case 1:
-                
-                          m_ArrayofWalls[0].transform.position = new Vector3(4.65f, -24.5f, -1.28f);
+
+            
+
+                Initialize();
+
+                m_ArrayofWalls[0].transform.position = new Vector3(4.65f, -24.5f, -1.28f);
                           m_ArrayofWalls[0].transform.Rotate(new Vector3(0f, 0f, 0f));
                           m_ArrayofWalls[0].transform.localScale = new Vector3(4f, 1f, 1f);
 
@@ -69,7 +71,7 @@ public class ScriptTurtleWalls : MonoBehaviour {
                           m_ArrayofWalls[2].transform.localScale = new Vector3(1f, 1f, 8f);  
                                     
                           m_ArrayofWalls[3].gameObject.SetActive(true);
-                          m_ArrayofWalls[3].transform.position = new Vector3(-5.25f, -24.5f, 7.03f);
+                          m_ArrayofWalls[3].transform.position = new Vector3(-5.45f, -24.5f, 6.82f);
                           m_ArrayofWalls[3].transform.Rotate(new Vector3(0f, 44.02f, 0f));
                           m_ArrayofWalls[3].transform.localScale = new Vector3(1f, 1f, 5f);
                                       
@@ -86,8 +88,12 @@ public class ScriptTurtleWalls : MonoBehaviour {
                 break;
 
             case 2:
-               
-                          m_ArrayofWalls[0].transform.position = new Vector3(-2.09f, -24.5f, -3.22f);
+
+              
+
+                Initialize();
+
+                m_ArrayofWalls[0].transform.position = new Vector3(-2.09f, -24.5f, -3.22f);
                           m_ArrayofWalls[0].transform.Rotate(new Vector3(0f, 328.2676f, 0f));
                           m_ArrayofWalls[0].transform.localScale = new Vector3(3f, 1f, 1f);
                      
@@ -105,7 +111,7 @@ public class ScriptTurtleWalls : MonoBehaviour {
                           m_ArrayofWalls[3].transform.localScale = new Vector3(1f, 1f, 8f);
                         
                           m_ArrayofWalls[4].gameObject.SetActive(true);
-                          m_ArrayofWalls[4].transform.position = new Vector3(4.9f, -24.5f, -8.07f);
+                          m_ArrayofWalls[4].transform.position = new Vector3(4.9f, -24.5f, -8.87f);
                           m_ArrayofWalls[4].transform.Rotate(new Vector3(0f, 270f, 0f));
                           m_ArrayofWalls[4].transform.localScale = new Vector3(1f, 1f, 4f);
                          
@@ -116,6 +122,14 @@ public class ScriptTurtleWalls : MonoBehaviour {
         }
 
         
+    }
+
+    public void Initialize ()
+    {
+        foreach (GameObject GO in m_ArrayofWalls)
+        {
+            GO.transform.eulerAngles = new Vector3(0f, 0f, 0f);
+        }
     }
 
   
