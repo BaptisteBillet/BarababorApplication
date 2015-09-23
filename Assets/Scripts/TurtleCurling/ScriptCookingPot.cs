@@ -7,20 +7,23 @@ public class ScriptCookingPot : MonoBehaviour {
 
     public ScriptTurtleCurlingManager m_ScriptTurtleCurlingManager;
 
+    public ScriptTurtleWalls m_ScriptTurtleWalls;
+
  
 
     // Use this for initialization
     void Start ()
     {
-      
-
-        Location();
+      Location();
     }
 	
 	void OnTriggerEnter(Collider other)
     {
         if (other.tag =="Turtle")
         m_ScriptTurtleHungerBarManager.Fill();
+        m_ScriptTurtleCurlingManager.LevelDesignSelection();
+        m_ScriptTurtleWalls.Location();
+        Location();
     }
 
     public void Location()

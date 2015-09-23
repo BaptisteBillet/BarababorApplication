@@ -14,7 +14,7 @@ public class ScriptTurtleCurlingManager : MonoBehaviour
 	// Use this for initialization
 	void Awake ()
     {
-        m_LevelDesign = 1;
+        LevelDesignSelection();
 	
 	}
 	
@@ -24,5 +24,9 @@ public class ScriptTurtleCurlingManager : MonoBehaviour
         m_WinPanel.SetActive(true);
     }
 
+    public void LevelDesignSelection()
+    {
+        m_LevelDesign = Mathf.FloorToInt(Random.Range(0.0f, 2.9f));
+    }
    
 }

@@ -8,8 +8,6 @@ public class ScriptTurtle : MonoBehaviour {
 
     Rigidbody m_RB;
 
-    public ScriptTurtleCurlingManager m_ScriptTurtleCurlingManager;
-
     public GameObject m_Sight;
 
     Quaternion m_RotationMemory;
@@ -17,9 +15,7 @@ public class ScriptTurtle : MonoBehaviour {
     bool m_IsThrown; 
     
     float m_RotationY;
-
-    public Slider m_Slider;
-
+    
    
    
 
@@ -104,25 +100,7 @@ public class ScriptTurtle : MonoBehaviour {
 
     }
 
-    public void Location()
-    {
-        switch (m_ScriptTurtleCurlingManager.m_LevelDesign)
-        {
-            case 0:
-                this.transform.position = new Vector3(0f, -24.9f, -8.5f);
-                this.transform.eulerAngles = new Vector3(0f, 0f, 0f);
-                break;
-
-            case 1:
-                this.transform.position = new Vector3(0f, -24.9f, -8.5f);
-                this.transform.eulerAngles = new Vector3(0f, 0f, 0f);
-                break;
-
-        }
-
-    }
-
-   
+    
 
     public void DisplaySpeed ()
     {
