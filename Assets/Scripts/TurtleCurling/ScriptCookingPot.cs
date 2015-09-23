@@ -7,16 +7,19 @@ public class ScriptCookingPot : MonoBehaviour {
 
     public ScriptTurtleCurlingManager m_ScriptTurtleCurlingManager;
 
-	// Use this for initialization
-	void Start ()
+ 
+
+    // Use this for initialization
+    void Start ()
     {
+      
+
         Location();
-	
-	}
+    }
 	
 	void OnTriggerEnter(Collider other)
     {
-        
+        if (other.tag =="Turtle")
         m_ScriptTurtleHungerBarManager.Fill();
     }
 
@@ -25,19 +28,21 @@ public class ScriptCookingPot : MonoBehaviour {
         switch (m_ScriptTurtleCurlingManager.m_LevelDesign)
         {
             case 0:
-                this.transform.position = new Vector3(-3.12f, -19.5f, 6.94f);
+                this.transform.position = new Vector3(-3.12f, -24.5f, 6.94f);
                 break;
 
             case 1:
-                this.transform.position = new Vector3(4.66f, -19.5f, 0.89f);
+                this.transform.position = new Vector3(4.66f, -24.5f, 0.89f);
                 break;
 
             case 2:
-                this.transform.position = new Vector3(-2.36f, -19.5f, 1.66f);
+                this.transform.position = new Vector3(-2.36f, -24.5f, 1.66f);
                 break;
 
         }
 
     }
-     
+
+    
+
 }

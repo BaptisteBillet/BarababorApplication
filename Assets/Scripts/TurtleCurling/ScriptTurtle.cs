@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class ScriptTurtle : MonoBehaviour {
 
@@ -17,10 +18,16 @@ public class ScriptTurtle : MonoBehaviour {
     
     float m_RotationY;
 
+    public Slider m_Slider;
+
+   
+   
 
     // Use this for initialization
     void Start()
     {
+        
+
         m_RB = this.GetComponent<Rigidbody>();
 
 
@@ -36,6 +43,8 @@ public class ScriptTurtle : MonoBehaviour {
 
     void OnMouseDown()
     {
+       
+
         m_ScreenPoint = Camera.main.WorldToScreenPoint(this.transform.position);
 
     }
@@ -72,6 +81,7 @@ public class ScriptTurtle : MonoBehaviour {
     {
         if(m_IsThrown == false)
         {
+            
             m_Sight.SetActive(false);
             m_RotationMemory = this.transform.rotation;
             m_RB.AddForce(new Vector3((Mathf.Sin(m_RotationY * Mathf.Deg2Rad) * 900), 0f, (Mathf.Cos(m_RotationY * Mathf.Deg2Rad) * 900)));
@@ -84,7 +94,7 @@ public class ScriptTurtle : MonoBehaviour {
     {
         
         m_IsThrown = false;
-        this.transform.position = new Vector3(0f, -19.9f, -9f);
+        this.transform.position = new Vector3(0f, -24.9f, -9f);
         this.transform.rotation = m_RotationMemory;
         m_RB.velocity =new Vector3 (0f,0f,0f) ;
         m_RB.angularVelocity = new Vector3(0f, 0f, 0f);
@@ -99,12 +109,12 @@ public class ScriptTurtle : MonoBehaviour {
         switch (m_ScriptTurtleCurlingManager.m_LevelDesign)
         {
             case 0:
-                this.transform.position = new Vector3(0f, -19.761f, -8.5f);
+                this.transform.position = new Vector3(0f, -24.9f, -8.5f);
                 this.transform.eulerAngles = new Vector3(0f, 0f, 0f);
                 break;
 
             case 1:
-                this.transform.position = new Vector3(0f, -19.761f, -8.5f);
+                this.transform.position = new Vector3(0f, -24.9f, -8.5f);
                 this.transform.eulerAngles = new Vector3(0f, 0f, 0f);
                 break;
 
@@ -112,11 +122,15 @@ public class ScriptTurtle : MonoBehaviour {
 
     }
 
+   
+
     public void DisplaySpeed ()
     {
         Debug.Log(m_RB.velocity);
 
     }
+
+   
 }
 
 

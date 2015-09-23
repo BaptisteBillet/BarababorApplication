@@ -7,6 +7,8 @@ public class ScriptTurtleCurlingManager : MonoBehaviour
 
     public ScriptTurtleTimer m_ScriptTurtleTimer;
 
+    
+
     public int m_LevelDesign;
 
 	// Use this for initialization
@@ -21,4 +23,6 @@ public class ScriptTurtleCurlingManager : MonoBehaviour
         m_ScriptTurtleTimer.WinandLoose();
         m_WinPanel.SetActive(true);
     }
+
+   
 }
