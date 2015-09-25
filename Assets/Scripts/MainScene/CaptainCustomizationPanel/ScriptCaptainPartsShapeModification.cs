@@ -6,148 +6,133 @@ public class ScriptCaptainPartsShapeModification : MonoBehaviour
 {
     Slider m_Slider;
 
-    string m_Type;
+    public ScriptGeneralCaptainCustomizationPanel m_SuperiorScript;
 
-    string m_Characteristic;
+    int m_PanelNumber = 1;
 
     bool m_DoubleChange;
 
     Transform m_ParttoChange1;
     Transform m_ParttoChange2;
 
+    public Vector3 m_Transformation;
 
-   public void ModificationLauncher1 (Slider slider)
+    public Transform[] m_ArrayofHeadTransform = new Transform[7];
+
+    public Transform[] m_ArrayofBodyTransform = new Transform[7];
+
+
+    void Start()
+    {
+        
+        m_SuperiorScript.CaptainScale(m_PanelNumber);
+    }
+
+    public void GiveSlider (Slider slider)
     {
         m_Slider = slider;
     }
 
-    public void ModificationLauncher2(string type)
+    public void GiveType(string type)
     {
-        m_Type = type;
-        if ((type == "Eyes") || (type == "Eyes") || (type == "Arms") || (type == "Legs") || (type == "Feet"))
+      
+        if ((type == "Eyes") || (type == "Ears") || (type == "Arms") || (type == "Legs") || (type == "Feet"))
         {
             m_DoubleChange = true;
         }
+
+        else
+        {
+            m_DoubleChange = false;
+        }
+
+        switch (type)
+        {
+            case "Head":
+                m_ParttoChange1 = m_ArrayofHeadTransform[0];
+                m_ParttoChange2 = null;
+                break;
+
+            case "Nose":
+                m_ParttoChange1 = m_ArrayofHeadTransform[1];
+                m_ParttoChange2 = null;
+                break;
+
+            case "Ears":
+                m_ParttoChange1 = m_ArrayofHeadTransform[2];
+                m_ParttoChange2 = m_ArrayofHeadTransform[3];
+                break;
+
+            case "Eyes":
+                m_ParttoChange1 = m_ArrayofHeadTransform[4];
+                m_ParttoChange2 = m_ArrayofHeadTransform[5];
+                break;
+
+            case "Mouth":
+                m_ParttoChange1 = m_ArrayofHeadTransform[6];
+                m_ParttoChange2 = null;
+                break;
+
+            case "Body":
+                m_ParttoChange1 = m_ArrayofBodyTransform[0];
+                m_ParttoChange2 = null;
+                break;
+
+            case "Legs":
+                m_ParttoChange1 = m_ArrayofBodyTransform[1];
+                m_ParttoChange2 = m_ArrayofBodyTransform[2];
+                break;
+
+            case "Feet":
+                m_ParttoChange1 = m_ArrayofBodyTransform[3];
+                m_ParttoChange2 = m_ArrayofBodyTransform[4];
+                break;
+
+            case "Arms":
+                m_ParttoChange1 = m_ArrayofBodyTransform[5];
+                m_ParttoChange2 = m_ArrayofBodyTransform[6];
+                break;
+
+        }
     }
 
-    public void ModificationLauncher3 (string characteristic)
+    public void GiveCharacteristic (string characteristic)
     {
-        m_Characteristic = characteristic;
+       
+
+        switch (characteristic)
+        {
+            case "Length":
+                m_Transformation = new Vector3(m_ParttoChange1.localScale.x, m_Slider.value, m_ParttoChange1.localScale.z);
+                break;
+
+            case "Width":
+                m_Transformation = new Vector3(m_Slider.value, m_ParttoChange1.localScale.y, m_ParttoChange1.localScale.z);
+                break;
+
+            case "Depth":
+                m_Transformation = new Vector3(m_ParttoChange1.localScale.x, m_ParttoChange1.localScale.y, m_Slider.value);
+                break;
+
+        }
+
+        Modification();
     }
 
     public void Modification ()
     {
+        m_ParttoChange1.localScale = m_Transformation;
+
+        if (m_DoubleChange == true)
+        {
+            if (m_ParttoChange2!=null)
+            {
+                m_ParttoChange2.localScale = m_Transformation;
+            }
+        }
 
     }
 
+
+
 }
-/*public ScriptGeneralCaptainCustomizationPanel m_SuperiorScript;
-
-
-   public GameObject m_CaptainHead;
-   ScriptCaptainHead m_ScriptCaptainHead;
-
-   Transform[] m_ArrayofHeadTransform = new Transform[7];
-
-   public Transform[] m_ArrayofBodyTransform = new Transform[7];
-
-   [HideInInspector]
-   public float[,] m_ArrayofHeadCharacteristics = new float[5,3];
-
-
-   [HideInInspector]
-   public float[,] m_ArrayofBodyCharacteristics = new float[4, 3];
-
-   public Slider[] m_ArrayofSliderHead = new Slider[15];
-
-   public Slider[] m_ArrayofSliderBody = new Slider[12];
-
-   int m_PanelNumber = 1;
-
-   Slider m_Slider;
-   string m_Type;
-   int m_IndexSup;
-   int m_IndexInf;
-
-   // Use this for initialization
-   void Start ()
-   {
-
-       m_ScriptCaptainHead = m_CaptainHead.GetComponent<ScriptCaptainHead>();
-
-       for(int i=0;i<m_ArrayofHeadTransform.Length;i++)
-       {
-           m_ArrayofHeadTransform[i] = m_ScriptCaptainHead.m_HeadParts[i].transform;
-
-       }
-
-
-
-       m_SuperiorScript.CaptainScale(m_PanelNumber);
-   }
-
-   public void ModificationLauncher1 (Slider slider)
-   {
-       m_Slider = slider;
-   }
-
-   public void ModificationLauncher2 (string type)
-   {
-       m_Type = type;
-   }
-
-   public void ModificationLauncher3 (int indexsup)
-   {
-       m_IndexSup = indexsup;
-   }
-
-   public void ModificationLauncher4 (int indexinf)
-   {
-       m_IndexInf = indexinf;
-
-       if (m_Type=="Body")
-       {
-           Modification(m_Slider, m_ArrayofBodyCharacteristics);
-       }
-
-       else if (m_Type == "Head")
-       {
-           Modification(m_Slider,m_ArrayofHeadCharacteristics);
-       }
-
-
-   }
-
-   public void Modification (Slider slider, float[,] Array)
-   {
-      Array[m_IndexSup, m_IndexInf] = slider.value;
-   }
-
-
-
-   public void Save()
-   {
-
-   }
-
-   public void SliderValueAttribution (Slider[] SliderArray, float [,]ValueArray)
-   {
-       int dataNumber=SliderArray.Length;
-
-       while(dataNumber>0)
-       {
-           for (int i =0;i<=ValueArray.GetLength(0);i++)
-           {
-               for (int j =0; j<=ValueArray.GetLength(1);j++)
-               {
-                   SliderArray[dataNumber].value = ValueArray[i, j];
-                   dataNumber--; 
-               }
-
-           } 
-       }
-
-   }
-
-
-   */
