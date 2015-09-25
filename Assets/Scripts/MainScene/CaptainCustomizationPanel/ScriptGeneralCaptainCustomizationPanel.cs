@@ -15,6 +15,7 @@ public class ScriptGeneralCaptainCustomizationPanel : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
+        m_CurrentPanel = this.gameObject;
         m_PanelNumber = 0;
         Captain.SetActive(true);
         //CaptainScale(m_PanelNumber);
@@ -26,13 +27,13 @@ public class ScriptGeneralCaptainCustomizationPanel : MonoBehaviour {
         switch (panel)
         {
             case 0:
-                Captain.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+                Captain.transform.localScale = new Vector3(1f, 1f, 1f);
                 Captain.transform.position = new Vector3(0f, 0.1f, 2.5f);
                 break;
 
             case 1:
             
-                Captain.transform.localScale = new Vector3(0.35f, 0.35f, 0.35f);
+                Captain.transform.localScale = new Vector3(1f, 1f, 1f);
                 Captain.transform.position = new Vector3(0f, 0.6f, 2.5f);
                 break;
 
