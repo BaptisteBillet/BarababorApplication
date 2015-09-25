@@ -9,13 +9,13 @@ public class ScriptGeneralCaptainCustomizationPanel : MonoBehaviour {
 
     public int m_PanelNumber;
 
-    GameObject m_CurrentPanel;
+    public GameObject m_CurrentPanel;
 
 
 	// Use this for initialization
 	void Start ()
     {
-        m_CurrentPanel = this.gameObject;
+        
         m_PanelNumber = 0;
         Captain.SetActive(true);
         //CaptainScale(m_PanelNumber);
@@ -42,10 +42,11 @@ public class ScriptGeneralCaptainCustomizationPanel : MonoBehaviour {
 
     public void ChangePanel(GameObject Panel)
     {
-        m_CurrentPanel.SetActive(false);
         Panel.SetActive(true);
+        m_CurrentPanel.SetActive(false);
         m_CurrentPanel = Panel;
 
     }
+
 	
 }
