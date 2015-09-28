@@ -47,10 +47,10 @@ public class ScriptHand : MonoBehaviour
         }
     }
 
-    public void Shoot()
+    public void OnMouseDown()
     {
-      
-           
+
+        Debug.Log(m_PillRB.velocity);
             Debug.Log(m_IsShot);
             if (m_IsShot == false)
             {
@@ -76,6 +76,7 @@ public class ScriptHand : MonoBehaviour
     public void ComeBack()
     {
         m_PillRB.useGravity = false;
+        m_PillRB.velocity = new Vector3(0f, 0f, 0f);
         m_Pill.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 0.61f, this.transform.position.z + 0.72f);
         m_IsShot = false;
         m_Moving = true;
