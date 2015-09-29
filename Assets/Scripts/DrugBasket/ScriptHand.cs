@@ -5,6 +5,8 @@ public class ScriptHand : MonoBehaviour
 {
     public float m_Movement;
 
+    public ScriptDrugsUIPanel m_ScriptDrugsUIPanel;
+
     [HideInInspector]
     public bool m_Direction;
 
@@ -18,10 +20,13 @@ public class ScriptHand : MonoBehaviour
     public bool m_IsShot;
 
     bool m_IsReady;
+
+    public bool m_IsPlaying;
 	
 
     void Start ()
     {
+        m_IsPlaying = true;
         m_PillRB = m_Pill.GetComponent<Rigidbody>();
         m_Moving = true;
        
@@ -30,49 +35,45 @@ public class ScriptHand : MonoBehaviour
 
 	void Update ()
     {
-
-        if (m_Moving==true)
+        if(m_IsPlaying==true)
         {
-            if (m_Direction == true)
-                this.transform.position += new Vector3(m_Movement, 0f, 0f) * Time.deltaTime;
+            if (m_Moving == true)
+            {
+                if (m_Direction == true)
+                    this.transform.position += new Vector3(m_Movement, 0f, 0f) * Time.deltaTime;
 
-            else if (m_Direction == false)
-                this.transform.position += new Vector3(-m_Movement, 0f, 0f) * Time.deltaTime;
+                else if (m_Direction == false)
+                    this.transform.position += new Vector3(-m_Movement, 0f, 0f) * Time.deltaTime;
 
+            }
+
+            if (m_Pill.transform.position.y < -1f)
+            {
+                ComeBack();
+            }
         }
-       
-       if (m_Pill.transform.position.y<-1f)
-        {
-            ComeBack();
-        }
+        
     }
 
     public void OnMouseDown()
     {
-
-        Debug.Log(m_PillRB.velocity);
-            Debug.Log(m_IsShot);
+        if (m_IsPlaying==true)
+        {
             if (m_IsShot == false)
             {
-
                 m_Moving = false;
                 m_IsShot = true;
 
                 m_PillRB.AddForce(new Vector3(0f, m_Shoot, m_Shoot));
-                Debug.Log(m_Shoot);
-
                 m_PillRB.useGravity = true;
+
+                m_ScriptDrugsUIPanel.PillsCounter();
             }
-
-        
-
+        }
+          
     }
 
-   /* public void OnMouseUp()
-    {
-        m_IsReady = true;
-    }
-    */
+ 
     public void ComeBack()
     {
         m_PillRB.useGravity = false;

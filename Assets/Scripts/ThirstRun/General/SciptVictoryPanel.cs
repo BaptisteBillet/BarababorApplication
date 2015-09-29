@@ -10,6 +10,6 @@ public class SciptVictoryPanel : MonoBehaviour {
 
     public void Retry()
     {
-        Application.LoadLevel("ThirstRun");
+        Application.LoadLevel(Application.loadedLevel);
     }
 }

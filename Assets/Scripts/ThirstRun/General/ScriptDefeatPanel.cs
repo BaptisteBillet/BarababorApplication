@@ -5,8 +5,11 @@ public class ScriptDefeatPanel : MonoBehaviour {
 
 	public void Retry()
     {
-        Application.LoadLevel("ThirstRun");
+        Application.LoadLevel(Application.loadedLevel);
     }
 	
-	
+	public void BackHomeMenu ()
+    {
+        Application.LoadLevel("GeneralInterfaceScene");
+    }
 }
